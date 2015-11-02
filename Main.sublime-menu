@@ -16,6 +16,13 @@
                                 }
                             },
                             {
+                                "caption": "CHANGELOG",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/open-sesame/CHANGELOG.md"
+                                }
+                            },
+                            {
                                 "caption": "LICENSE",
                                 "command": "open_file",
                                 "args": {
