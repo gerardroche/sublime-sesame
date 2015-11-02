@@ -10,6 +10,7 @@ Quickly open folders and projects.
 
 * [Installation](#installation)
 * [Usage](#usage)
+* [Contributing](#contributing)
 * [Changelog](#changelog)
 * [License](#license)
 
@@ -27,11 +28,12 @@ The preferred method of installation is via Package Control.
 
 ### Manual installation
 
-1. Download or clone this repository to a directory named `open-sesame` in the Sublime Text Packages directory for your platform:
+1. Close Sublime Text.
+2. Download or clone this repository to a directory named `open-sesame` in the Sublime Text Packages directory for your platform:
     * Linux: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/.config/sublime-text-3/Packages/open-sesame`
     * OS X: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/open-sesame`
     * Windows: `git clone https://github.com/gerardroche/sublime-open-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/open-sesame`
-2. Restart Sublime Text to complete installation. The features listed above should now be available.
+3. Restart Sublime Text to complete installation. The features listed above should now be available.
 
 ## Usage
 
