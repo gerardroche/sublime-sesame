@@ -1,6 +1,6 @@
 # gerardroche/sublime-open-sesame changelog
 
-# 0.2.0-dev
+# 0.2.0
 
 * Added: CHANGELOG link to package settings menu
 
