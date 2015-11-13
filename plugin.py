@@ -13,33 +13,28 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
 
     def run(self, path = None):
 
-        # if no path given,
-        # then use user setting
-
         if not path:
             view = self.window.active_view()
             if view:
                 path = view.settings().get('open-sesame.projects_path')
 
-        # if no user setting
-        # then use environment variable
+            if not path:
+                path = os.getenv('PROJECTS_PATH')
 
-        if not path:
-            path = os.getenv('PROJECTS_PATH')
-
-        # if no environment variable
-        # then do nothing
-
-        if not path:
-            return
+            if not path:
+                return
 
         self.open(path)
 
     def open(self, path):
-        self.quick_panel_list = self.get_quick_panel_list(path)
-        if not self.quick_panel_list:
+        if not path:
             return
 
+        path = os.path.expanduser(path)
+        if not os.path.isdir(path):
+            return
+
+        self.quick_panel_list = self.get_quick_panel_list(path)
         self.window.show_quick_panel(self.quick_panel_list[1], self.on_done)
 
     def on_done(self, index):
@@ -65,13 +60,6 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
             open_folder_in_new_window(folder)
 
     def get_quick_panel_list(self, path):
-        if not path:
-            return
-
-        path = os.path.expanduser(path)
-        if not os.path.isdir(path):
-            return
-
         project_paths = []
         project_names = []
         for path in glob.glob(path + '/*/*/'):
