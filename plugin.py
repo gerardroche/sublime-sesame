@@ -72,18 +72,15 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
         if not os.path.isdir(path):
             return
 
-        paths = glob.glob(path + '/*/*/')
-        if not paths:
-            return
+        project_paths = []
+        project_names = []
+        for path in glob.glob(path + '/*/*/'):
+            match_result = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', path)
+            if match_result:
+                project_paths.append(os.path.normpath(path))
+                project_names.append(match_result.group(1))
 
-        names = []
-        for path in paths:
-            name = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', path)
-            if not name:
-                raise RuntimeError('Invalid path name in path')
-            names.append(name.group(1))
-
-        return (paths, names)
+        return (project_paths, project_names)
 
 def open_project_in_new_window(sublime_project_file):
     """
