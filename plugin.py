@@ -72,13 +72,13 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
         if not os.path.isdir(path):
             return
 
-        paths = glob.glob(path + '/*/*')
+        paths = glob.glob(path + '/*/*/')
         if not paths:
             return
 
         names = []
         for path in paths:
-            name = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)$', path)
+            name = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', path)
             if not name:
                 raise RuntimeError('Invalid path name in path')
             names.append(name.group(1))
