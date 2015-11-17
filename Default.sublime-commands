@@ -2,5 +2,9 @@
     {
         "caption": "Open Sesame: Open Project",
         "command": "open_sesame"
+    },
+    {
+        "caption": "Open Sesame: Add Folder",
+        "command": "open_sesame_add_folder"
     }
 ]

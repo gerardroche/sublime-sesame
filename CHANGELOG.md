@@ -2,6 +2,7 @@
 
 # master branch
 
+* Added: "Open Sesame: Add Folder" command
 * Changed: "Open Sesame: Project" command caption to "Open Sesame: Open Project"
 
 # 0.2.1
