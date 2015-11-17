@@ -1,5 +1,9 @@
 # gerardroche/sublime-open-sesame changelog
 
+# master branch
+
+* Changed: "Open Sesame: Project" command caption to "Open Sesame: Open Project"
+
 # 0.2.1
 
 * Fixed: #1 should only prompts to open projects and folders not files
