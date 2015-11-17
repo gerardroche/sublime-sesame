@@ -1,6 +1,6 @@
 # gerardroche/sublime-open-sesame changelog
 
-# master branch
+# 0.3.0
 
 * Added: "Open Sesame: Add Folder" command
 * Changed: "Open Sesame: Project" command caption to "Open Sesame: Open Project"

@@ -37,39 +37,40 @@ The preferred method of installation is via Package Control.
 
 ## Usage
 
-The `Open Sesame: Projects` command uses the following sources to look for folders and projects to open.
+### Commands
 
-**User Setting**
+* `Open Sesame: Open Project`
+* `Open Sesame: Add Folder`
 
-`Preferences > Settings - User`
+### Configuration
 
-```json
+The commands use the following sources to look for things.
+
+**Preferences**
+
+e.g. `Preferences > Settings - User`
+
+```
 {
     "open-sesame.projects_path": "~/code"
 }
 ```
 
-**An environment variable**
+**Environment variable**
 
-On linux for example.
-
-`~/.profile`
+e.g. on linux `~/.profile`
 
 ```
 export PROJECTS_PATH=~/code
 ```
 
-Now running the `Open Sesame: Projects` command will prompt to open folders and projects from `~/code/*/*`.
-
 ### Custom commands
-
-Example
 
 ```
 {
     "caption": "Open Sesame: Custom",
     "command": "open_sesame",
-    "args": { "path": "~/custom-location" }
+    "args": { "path": "~/specific/path" }
 }
 ```
 
