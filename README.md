@@ -37,18 +37,22 @@ The preferred method of installation is via Package Control.
 
 ## Usage
 
-### Commands
+### Command Palette
 
+* `Open Sesame: Add Project`
 * `Open Sesame: Open Project`
-* `Open Sesame: Add Folder`
 
 ### Configuration
 
-The commands use the following sources to look for things.
+The following sources are used to find projects and folders.
 
 **Preferences**
 
-e.g. `Preferences > Settings - User`
+If a `open-sesame.projects_path` preference exists and is a valid path then it used as the default location of projects. The tilda character (`~`) will be expanded to the user home directory.
+
+Example
+
+`Preferences > Settings - User`
 
 ```
 {
@@ -58,20 +62,24 @@ e.g. `Preferences > Settings - User`
 
 **Environment variable**
 
-e.g. on linux `~/.profile`
+If the preference above is not set then if the environment variable `PROJECTS_PATH` exists and is a valid path then it is used as the default location of projects. The tilda character (`~`) will be expanded to the user home directory.
+
+Example on Ubuntu
+
+`~/.profile`
 
 ```
 export PROJECTS_PATH=~/code
 ```
 
-### Custom commands
+#### Custom Key Binding
+
+The following key binding is recommended.
+
+`Preferences > Key Bindings - User`
 
 ```
-{
-    "caption": "Open Sesame: Custom",
-    "command": "open_sesame",
-    "args": { "path": "~/specific/path" }
-}
+{ "keys": ["ctrl+alt+p"], "command": "open_sesame" },
 ```
 
 ## Contributing
