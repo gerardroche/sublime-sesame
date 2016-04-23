@@ -1,5 +1,9 @@
 # gerardroche/sublime-open-sesame changelog
 
+# next
+
+* Changed: "Open Sesame: Add Project" command caption to "Open Sesame: Add Folder"
+
 # 0.3.0
 
 * Added: "Open Sesame: Add Folder" command
