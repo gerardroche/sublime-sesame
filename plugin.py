@@ -37,7 +37,16 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
     """
 
     def run(self, path = None):
-        self.quick_panel_items = Projects(path).quick_panel_items()
+
+        # exclude folders already added
+        exclude_paths = []
+        project_data = self.window.project_data() if self.window.project_data() else {'folders': []}
+        for f in project_data['folders']:
+            if f['path'] and f['path'] not in exclude_paths:
+                exclude_paths.append(f['path'])
+
+        self.quick_panel_items = Projects(path).quick_panel_items(exclude_paths=exclude_paths)
+
         if not self.quick_panel_items:
             return
 
@@ -52,9 +61,6 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
 class Projects():
 
     def __init__(self, path = None):
-        self.path = self._path(path)
-
-    def _path(self, path = None):
         """
         If no path given then the path is sourced in the following order:
 
@@ -80,17 +86,18 @@ class Projects():
             path = os.getenv('PROJECTS_PATH')
 
         if not path:
-            return None
+            self.path = None
+            return
 
         # normalise path
         path = os.path.expanduser(path)
 
         if not os.path.isdir(path):
-            return False
+            self.path = False
 
-        return path
+        self.path = path
 
-    def quick_panel_items(self):
+    def quick_panel_items(self, exclude_paths = []):
         if not self.path:
             return None
 
@@ -99,8 +106,12 @@ class Projects():
         for path in glob.glob(self.path + '/*/*/'):
             match_result = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', path)
             if match_result:
-                project_paths.append(os.path.normpath(path))
-                project_names.append(match_result.group(1))
+                project_path = os.path.normpath(path)
+                project_name = match_result.group(1)
+
+                if project_path not in exclude_paths:
+                    project_paths.append(project_path)
+                    project_names.append(project_name)
 
         return (project_paths, project_names)
 

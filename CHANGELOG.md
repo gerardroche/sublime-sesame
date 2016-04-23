@@ -3,6 +3,7 @@
 # next
 
 * Changed: "Open Sesame: Add Project" command caption to "Open Sesame: Add Folder"
+* Fixed: The Add Folder command now only displays folders that have not already been added
 
 # 0.3.0
 
