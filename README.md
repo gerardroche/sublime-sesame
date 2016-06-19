@@ -1,10 +1,8 @@
 # gerardroche/sublime-open-sesame
 
-A plugin for Sublime Text.
+A plugin for Sublime Text 3.
 
 Quickly open folders and projects.
-
-**Sublime Text 3 only**
 
 ## Overview
 
