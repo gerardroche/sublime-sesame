@@ -4,6 +4,32 @@ A plugin for Sublime Text 3.
 
 Quickly open folders and projects.
 
+Assumes you organise your projects with the following structure:
+
+```
+. projects
+├── a
+│   └── name-a
+├── b
+│   ├── name-a
+│   └── name-b
+└── c
+    ├── name-a
+    ├── name-b
+    └── name-c
+```
+
+Where the above projects names will seen as:
+
+```
+a/name-a
+b/name-a
+b/name-b
+c/name-a
+c/name-b
+c/name-c
+```
+
 ## Overview
 
 * [Installation](#installation)
@@ -35,44 +61,48 @@ The preferred method of installation is via Package Control.
 
 ## Usage
 
-### Command Palette
-
 * `Open Sesame: Add Project`
 * `Open Sesame: Open Project`
 
 ### Configuration
 
-The following sources are used to find projects and folders.
-
-**Preferences**
-
-If a `open-sesame.projects_path` preference exists and is a valid path then it used as the default location of projects. The tilda character (`~`) will be expanded to the user home directory.
-
-Example
-
-`Preferences > Settings - User`
+Assumes you organise your projects with the following structure:
 
 ```
-{
-    "open-sesame.projects_path": "~/code"
-}
+. projects
+├── a
+│   └── name-a
+├── b
+│   ├── name-a
+│   └── name-b
+└── c
+    ├── name-a
+    ├── name-b
+    └── name-c
 ```
+
+Where the above projects names will seen as:
+
+```
+a/name-a
+b/name-a
+b/name-b
+c/name-a
+c/name-b
+c/name-c
+```
+
+Projects and folders are sourced in the following order *(first one found is used)*:
+
+**User Setting**
+
+If an `open-sesame.projects_path` setting exists and is a valid path then it used as the default location of projects. *The tilda character (`~`) will be expanded to the user home directory.* `Preferences > Settings - User` `{ "open-sesame.projects_path": "~/projects" }`
 
 **Environment variable**
 
-If the preference above is not set then if the environment variable `PROJECTS_PATH` exists and is a valid path then it is used as the default location of projects. The tilda character (`~`) will be expanded to the user home directory.
-
-Example on Ubuntu
-
-`~/.profile`
-
-```
-export PROJECTS_PATH=~/code
-```
+If the environment variable `PROJECTS_PATH` exists and is a valid path then it is used as the default location of projects. *The tilda character (`~`) will be expanded to the user home directory* e.g. in Ubuntu `~/.profile` `export PROJECTS_PATH=~/projects`
 
 #### Custom Key Binding
-
-The following key binding is recommended.
 
 `Preferences > Key Bindings - User`
 
