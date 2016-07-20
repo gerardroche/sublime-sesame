@@ -1,8 +1,15 @@
 # gerardroche/sublime-open-sesame
 
-A plugin for Sublime Text 3.
+[![Author](http://img.shields.io/badge/author-@gerardroche-blue.svg?style=flat)](https://twitter.com/gerardroche)
+[![Source Code](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat)](https://github.com/gerardroche/sublime-open-sesame)
+[![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat)](https://github.com/gerardroche/sublime-open-sesame/stargazers)
+[![License](https://img.shields.io/badge/license-BSD--3-blue.svg?style=flat)](https://raw.githubusercontent.com/gerardroche/sublime-open-sesame/master/LICENSE)
 
-Quickly open folders and projects.
+[![Sublime version](https://img.shields.io/badge/sublime-v3-lightgrey.svg?style=flat)](http://sublimetext.com)
+[![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?maxAge=2592000?style=flat&label=release)](https://github.com/gerardroche/sublime-open-sesame/tags)
+[![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?maxAge=2592000?style=flat)](https://packagecontrol.io/packages/open-sesame)
+
+Quickly open folders and projects in sublime text.
 
 Assumes you organise your projects with the following structure:
 
