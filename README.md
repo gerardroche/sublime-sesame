@@ -9,7 +9,7 @@
 [![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?maxAge=2592000?style=flat&label=release)](https://github.com/gerardroche/sublime-open-sesame/tags)
 [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?maxAge=2592000?style=flat)](https://packagecontrol.io/packages/open-sesame)
 
-Quickly open folders and projects in sublime text.
+Open folders and projects quickly in Sublime Text
 
 Assumes you organise your projects with the following structure:
 
