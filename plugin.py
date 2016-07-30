@@ -63,16 +63,12 @@ class Projects():
     def __init__(self, path = None):
         """
         If no path given then the path is sourced in the following order:
+        1. "open-sesame.projects_path" setting
+        2. "PROJECTS_PATH" environment variable
 
-        1. a user setting: "open-sesame.projects_path"
-        2. an environment variable: "PROJECTS_PATH"
-
-        Returns None if path cannot be found.
-
-        Returns False if path is not a valid directory.
-
-        Returns the path with an initial component of ~ or ~user replaced by that
-        user's home directory.
+        Sets path with initial component of ~ or ~user replaced by that user's home directory.
+        Sets path to False if path is not a valid directory.
+        Sets path to None if path cannot be found.
         """
 
         if not path:
