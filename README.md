@@ -9,33 +9,7 @@
 [![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?label=release&style=flat&maxAge=2592000)](https://github.com/gerardroche/sublime-open-sesame/tags)
 [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat&maxAge=2592000)](https://packagecontrol.io/packages/open-sesame)
 
-Open folders and projects quickly in Sublime Text
-
-Assumes you organise your projects with the following structure:
-
-```
-. projects
-├── a
-│   └── name-a
-├── b
-│   ├── name-a
-│   └── name-b
-└── c
-    ├── name-a
-    ├── name-b
-    └── name-c
-```
-
-Where the above projects names will seen as:
-
-```
-a/name-a
-b/name-a
-b/name-b
-c/name-a
-c/name-b
-c/name-c
-```
+Add or open folders quickly in Sublime Text.
 
 ## Overview
 
@@ -47,75 +21,62 @@ c/name-c
 
 ## Installation
 
-### Package Control installation
-
-The preferred method of installation is via Package Control.
-
-1. Install [Package Control](https://packagecontrol.io).
-2. From inside Sublime Text, open Package Control's Command Pallet: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows, Linux) or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Mac.
-3. Type `install package` and hit Return. A list of available packages will be displayed.
-4. Type `open-sesame` and hit Return. The package will be downloaded to the appropriate directory.
-5. Restart Sublime Text to complete installation. The features listed above should now be available.
+The preferred method of installation is via [Package Control](https://packagecontrol.io).
 
 ### Manual installation
 
 1. Close Sublime Text.
-2. Download or clone this repository to a directory named `open-sesame` in the Sublime Text Packages directory for your platform:
+2. Download or clone this repository to a directory named `open-sesame` in the Sublime Text Packages directory:
     * Linux: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/.config/sublime-text-3/Packages/open-sesame`
     * OS X: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/open-sesame`
     * Windows: `git clone https://github.com/gerardroche/sublime-open-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/open-sesame`
-3. Restart Sublime Text to complete installation. The features listed above should now be available.
 
 ## Usage
 
-* `Open Sesame: Add Project`
-* `Open Sesame: Open Project`
-
-### Configuration
-
-Assumes you organise your projects with the following structure:
+Specify the location of your projects: `Preferences > Settings - User`
 
 ```
-. projects
-├── a
-│   └── name-a
-├── b
-│   ├── name-a
-│   └── name-b
-└── c
-    ├── name-a
-    ├── name-b
-    └── name-c
+"open-sesame.projects_path": "~/projects"
 ```
 
-Where the above projects names will seen as:
+Or set an environment variable (linux, requires system restart):
 
 ```
-a/name-a
-b/name-a
-b/name-b
-c/name-a
-c/name-b
-c/name-c
+$ echo "export PROJECTS_PATH=~/projects" >> ~/.profile
 ```
 
-Projects and folders are sourced in the following order *(first one found is used)*:
+Given the following location:
 
-**User Setting**
+```
+. ~/projects
+├── doctrine
+│   └── dbal
+├── symfony
+│   └── console
+└── zend
+    ├── mvc
+    └── escaper
+```
 
-If an `open-sesame.projects_path` setting exists and is a valid path then it used as the default location of projects. *The tilda character (`~`) will be expanded to the user home directory.* `Preferences > Settings - User` `{ "open-sesame.projects_path": "~/projects" }`
+Opening a project will be prompt you with the following list to select from:
 
-**Environment variable**
+```
+doctrine/dbal
+symfony/console
+zend/mvc
+zend/escaper
+```
 
-If the environment variable `PROJECTS_PATH` exists and is a valid path then it is used as the default location of projects. *The tilda character (`~`) will be expanded to the user home directory* e.g. in Ubuntu `~/.profile` `export PROJECTS_PATH=~/projects`
-
-#### Custom Key Binding
-
-`Preferences > Key Bindings - User`
+Add a custom keybinding: `Preferences > Key Bindings - User`
 
 ```
 { "keys": ["ctrl+alt+p"], "command": "open_sesame" },
 ```
+
+### Commands
+
+* `Open Sesame: Add Project`
+* `Open Sesame: Open Project`
 
 ## Contributing
 

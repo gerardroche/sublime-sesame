@@ -1,5 +1,9 @@
 # gerardroche/sublime-open-sesame changelog
 
+# 1.0.0
+
+* Added: readme usage and badges via shields.io
+
 # 0.5.0
 
 * Changed: "Open Sesame: Add Folder" caption to "Open Sesame: Add Project Folder"
