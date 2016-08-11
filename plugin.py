@@ -8,7 +8,7 @@ import sublime_plugin
 class OpenSesameCommand(sublime_plugin.WindowCommand):
 
     """
-    Quickly open folders and projects
+    Open folders or projects
     """
 
     def run(self, path = None):
@@ -24,14 +24,14 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
         folder_projects = glob.glob(folder + '/*.sublime-project')
 
         if len(folder_projects) == 1 and os.path.isfile(folder_projects[0]):
-            Window().open_project_in_new(folder_projects[0])
+            open_project_in_new_window(folder_projects[0])
         elif os.path.isdir(folder):
-            Window().open_folder_in_new(folder)
+            open_folder_in_new_window(folder)
 
 class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
 
     """
-    Quickly add folders
+    Add folders
     """
 
     def run(self, path = None):
@@ -56,115 +56,102 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
         if index == -1:
             return
 
-        Window().add_folder_to_current(self.folders[index][1])
+        add_folder_to_window(self.folders[index][1])
 
-def find_folders(path = None):
-    if not path:
+def find_folders(base_path = None):
+    if not base_path:
         window = sublime.active_window()
         if window:
             view = window.active_view()
             if view:
-                path = view.settings().get('open-sesame.projects_path')
+                base_path = view.settings().get('open-sesame.projects_path')
 
-    if not path:
-        path = os.getenv('PROJECTS_PATH')
+    if not base_path:
+        base_path = os.getenv('PROJECTS_PATH')
 
-    if not path:
+    if not base_path:
         return None
 
-    # normalise path
-    path = os.path.expanduser(path)
+    base_path = os.path.expanduser(base_path)
 
-    if not os.path.isdir(path):
-        raise ValueError('path must be a valid directory')
+    if not os.path.isdir(base_path):
+        raise ValueError('base path must be a valid directory')
 
-    projects = []
+    folders = []
 
-    for globbed_path in glob.glob(path + '/*/*/'):
-        project = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', globbed_path)
-        if project:
-            project_name = project.group(1)
-            project_path = os.path.normpath(globbed_path)
-            project_struct = [project_name, project_path]
-            if project_struct not in projects:
-                projects.append(project_struct)
+    for folder in glob.glob(base_path + '/*/*/'):
+        folder_match_result = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', folder)
+        if folder_match_result:
+            folder_name = folder_match_result.group(1)
+            folder_path = os.path.normpath(folder)
+            folder_struct = [folder_name, folder_path]
+            if folder_struct not in folders:
+                folders.append(folder_struct)
 
-    projects.sort()
+    folders.sort()
 
-    return projects
+    return folders
 
-class Window():
+def open_project_in_new_window(sublime_project_file):
+    if not sublime_project_file:
+        return
 
-    def open_project_in_new(self, sublime_project_file):
-        """
-        Open a project in a new window
-        """
+    if not re.match('^.+\.sublime-project$', sublime_project_file):
+        return
 
-        if not sublime_project_file:
-            return
+    if not os.path.isfile(sublime_project_file):
+        return
 
-        if not re.match('^.+\.sublime-project$', sublime_project_file):
-            return
+    sublime.set_timeout_async(lambda: subl(['--new-window', '--project', sublime_project_file]))
 
-        if not os.path.isfile(sublime_project_file):
-            return
+def open_folder_in_new_window(folder):
+    if not folder:
+        return
 
-        sublime.set_timeout_async(lambda: subl(['--new-window', '--project', sublime_project_file]))
+    if not os.path.isdir(folder):
+        return
 
-    def open_folder_in_new(self, folder):
-        """
-        Open a folder in a new window
-        """
+    sublime.set_timeout_async(lambda: subl(['--new-window', folder]))
 
-        if not folder:
-            return
+def add_folder_to_window(folder):
+    if not folder:
+        return
 
-        if not os.path.isdir(folder):
-            return
+    if not os.path.isdir(folder):
+        return
 
-        sublime.set_timeout_async(lambda: subl(['--new-window', folder]))
+    window = sublime.active_window()
+    if not window:
+        return
 
-    def add_folder_to_current(self, folder):
-        """
-        Add a folder to the current window
-        """
+    if window.project_data():
+        project_data = window.project_data()
+    else:
+        project_data = {'folders': []}
 
-        window = sublime.active_window()
-        if not window:
-            return
+    # Normalise folder
+    # @todo folder should be normalised to be relative paths to project file
+    folder = os.path.normpath(folder)
+    project_file_name = window.project_file_name()
+    if project_file_name:
+        project_file_dir = os.path.dirname(project_file_name)
+        if project_file_dir == folder:
+            folder = '.'
 
-        if not folder:
-            return
+    for f in project_data['folders']:
+        if f['path'] and folder == f['path']:
+            return # already exists
 
-        if not os.path.isdir(folder):
-            return
+    folder_struct = {
+        'path': folder
+    }
 
-        project_data = window.project_data() if window.project_data() else {'folders': []}
+    if folder != '.':
+        folder_struct['follow_symlinks'] = True
 
-        # normalise folder
-        # @todo folder should be normalised to be relative paths to project file
-        folder = os.path.normpath(folder)
-        project_file_name = window.project_file_name()
-        if project_file_name:
-            project_file_dir = os.path.dirname(project_file_name)
-            if project_file_dir == folder:
-                folder = '.'
+    project_data['folders'].append(folder_struct)
 
-        # check if it already exists
-        for f in project_data['folders']:
-            if f['path'] and folder == f['path']:
-                return # already exists
-
-        folder_struct = {
-            'path': folder
-        }
-
-        if folder != '.':
-            folder_struct['follow_symlinks'] = True
-
-        project_data['folders'].append(folder_struct)
-
-        window.set_project_data(project_data)
+    window.set_project_data(project_data)
 
 def subl(args=[]):
     # credit: randy3k/Project-Manager
