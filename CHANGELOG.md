@@ -1,6 +1,6 @@
 # gerardroche/sublime-open-sesame changelog
 
-# Unreleased
+# 1.1.0
 
 * Added: project path is now displayed below project name in quick panel list
 

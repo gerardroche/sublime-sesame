@@ -11,6 +11,8 @@
 
 Add or open folders quickly in Sublime Text.
 
+![Screenshot](screenshot.png)
+
 ## Overview
 
 * [Installation](#installation)
@@ -75,8 +77,8 @@ Add a custom keybinding: `Preferences > Key Bindings - User`
 
 ### Commands
 
-* `Open Sesame: Add Project`
 * `Open Sesame: Open Project`
+* `Open Sesame: Add Project Folder`
 
 ## Contributing
 
