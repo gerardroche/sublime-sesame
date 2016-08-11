@@ -12,22 +12,20 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
     """
 
     def run(self, path = None):
-        self.quick_panel_items = Projects(path).quick_panel_items()
-        if not self.quick_panel_items:
-            return
-
-        self.window.show_quick_panel(self.quick_panel_items[1], self.on_done)
+        self.folders = find_folders(path)
+        if self.folders:
+            self.window.show_quick_panel(self.folders, self.on_done)
 
     def on_done(self, index):
         if index == -1:
             return
 
-        folder = self.quick_panel_items[0][index]
-        sublime_project_files = glob.glob(folder + '/*.sublime-project')
+        folder = self.folders[index][1]
+        folder_projects = glob.glob(folder + '/*.sublime-project')
 
-        if len(sublime_project_files) == 1:
-            Window().open_project_in_new(sublime_project_files[0])
-        else:
+        if len(folder_projects) == 1 and os.path.isfile(folder_projects[0]):
+            Window().open_project_in_new(folder_projects[0])
+        elif os.path.isdir(folder):
             Window().open_folder_in_new(folder)
 
 class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
@@ -38,78 +36,62 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
 
     def run(self, path = None):
 
-        # exclude folders already added
-        exclude_paths = []
-        project_data = self.window.project_data() if self.window.project_data() else {'folders': []}
-        for f in project_data['folders']:
-            if f['path'] and f['path'] not in exclude_paths:
-                exclude_paths.append(f['path'])
+        # Exclude folders already added
+        existing_folders = []
+        if self.window.project_data():
+            for folder in self.window.project_data()['folders']:
+                if folder['path']:
+                    if folder['path'] not in existing_folders:
+                        existing_folders.append(folder['path'])
 
-        self.quick_panel_items = Projects(path).quick_panel_items(exclude_paths=exclude_paths)
+        self.folders = []
+        for folder in find_folders(path):
+            if folder[1] not in existing_folders:
+                self.folders.append(folder)
 
-        if not self.quick_panel_items:
-            return
-
-        self.window.show_quick_panel(self.quick_panel_items[1], self.on_done)
+        if self.folders:
+            self.window.show_quick_panel(self.folders, self.on_done)
 
     def on_done(self, index):
         if index == -1:
             return
 
-        Window().add_folder_to_current(self.quick_panel_items[0][index])
+        Window().add_folder_to_current(self.folders[index][1])
 
-class Projects():
+def find_folders(path = None):
+    if not path:
+        window = sublime.active_window()
+        if window:
+            view = window.active_view()
+            if view:
+                path = view.settings().get('open-sesame.projects_path')
 
-    def __init__(self, path = None):
-        """
-        If no path given then the path is sourced in the following order:
-        1. "open-sesame.projects_path" setting
-        2. "PROJECTS_PATH" environment variable
+    if not path:
+        path = os.getenv('PROJECTS_PATH')
 
-        Sets path with initial component of ~ or ~user replaced by that user's home directory.
-        Sets path to False if path is not a valid directory.
-        Sets path to None if path cannot be found.
-        """
+    if not path:
+        return None
 
-        if not path:
-            window = sublime.active_window()
-            if window:
-                view = window.active_view()
-                if view:
-                    path = view.settings().get('open-sesame.projects_path')
+    # normalise path
+    path = os.path.expanduser(path)
 
-        if not path:
-            path = os.getenv('PROJECTS_PATH')
+    if not os.path.isdir(path):
+        raise ValueError('path must be a valid directory')
 
-        if not path:
-            self.path = None
-            return
+    projects = []
 
-        # normalise path
-        path = os.path.expanduser(path)
+    for globbed_path in glob.glob(path + '/*/*/'):
+        project = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', globbed_path)
+        if project:
+            project_name = project.group(1)
+            project_path = os.path.normpath(globbed_path)
+            project_struct = [project_name, project_path]
+            if project_struct not in projects:
+                projects.append(project_struct)
 
-        if not os.path.isdir(path):
-            self.path = False
+    projects.sort()
 
-        self.path = path
-
-    def quick_panel_items(self, exclude_paths = []):
-        if not self.path:
-            return None
-
-        project_paths = []
-        project_names = []
-        for path in glob.glob(self.path + '/*/*/'):
-            match_result = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', path)
-            if match_result:
-                project_path = os.path.normpath(path)
-                project_name = match_result.group(1)
-
-                if project_path not in exclude_paths:
-                    project_paths.append(project_path)
-                    project_names.append(project_name)
-
-        return (project_paths, project_names)
+    return projects
 
 class Window():
 
@@ -121,10 +103,10 @@ class Window():
         if not sublime_project_file:
             return
 
-        if not os.path.isfile(sublime_project_file):
+        if not re.match('^.+\.sublime-project$', sublime_project_file):
             return
 
-        if not re.match('^.+\.sublime-project$', sublime_project_file):
+        if not os.path.isfile(sublime_project_file):
             return
 
         sublime.set_timeout_async(lambda: subl(['--new-window', '--project', sublime_project_file]))

@@ -1,5 +1,9 @@
 # gerardroche/sublime-open-sesame changelog
 
+# Unreleased
+
+* Added: project path is now displayed below project name in quick panel list
+
 # 1.0.0
 
 * Added: readme usage and badges via shields.io
