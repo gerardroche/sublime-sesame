@@ -23,7 +23,9 @@ Add or open folders quickly in Sublime Text.
 
 ## Installation
 
-The preferred method of installation is via [Package Control](https://packagecontrol.io).
+### Package Control installation
+
+The preferred method of installation is [Package Control].
 
 ### Manual installation
 
@@ -91,3 +93,5 @@ See [CHANGELOG.md](CHANGELOG.md).
 ## License
 
 Released under the [BSD 3-Clause License](LICENSE).
+
+[Package Control]: https://packagecontrol.io/browse/authors/gerardroche
