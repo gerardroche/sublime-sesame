@@ -1,5 +1,9 @@
 # gerardroche/sublime-open-sesame changelog
 
+# 1.1.1
+
+* Fixed: error trying to add a folder when the project has no existing folders
+
 # 1.1.0
 
 * Added: project path is now displayed below project name in quick panel list

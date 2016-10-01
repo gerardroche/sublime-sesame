@@ -37,13 +37,15 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
 
     def run(self, path = None):
 
-        # Exclude folders already added
+        # Exclude folders that already exist
         existing_folders = []
-        if self.window.project_data():
-            for folder in self.window.project_data()['folders']:
-                if folder['path']:
-                    if folder['path'] not in existing_folders:
-                        existing_folders.append(folder['path'])
+        project_data = self.window.project_data()
+        if project_data:
+            if 'folders' in project_data:
+                for folder in project_data['folders']:
+                    if folder['path']:
+                        if folder['path'] not in existing_folders:
+                            existing_folders.append(folder['path'])
 
         self.folders = []
         for folder in find_folders(path):
@@ -125,10 +127,12 @@ def add_folder_to_window(folder):
     if not window:
         return
 
-    if window.project_data():
-        project_data = window.project_data()
-    else:
-        project_data = {'folders': []}
+    project_data = window.project_data()
+    if not project_data:
+        project_data = {}
+
+    if 'folders' not in project_data:
+        project_data['folders'] = []
 
     # Normalise folder
     # @todo folder should be normalised to be relative paths to project file
