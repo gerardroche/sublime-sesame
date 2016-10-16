@@ -1,5 +1,15 @@
 [
     {
+        "id": "project",
+        "children": [
+            { "caption": "-" },
+            {
+                "caption": "Open Sesame",
+                "command": "open_sesame"
+            }
+        ]
+    },
+    {
         "id": "preferences",
         "children": [
             {

@@ -1,4 +1,8 @@
-# gerardroche/sublime-open-sesame changelog
+# OPEN-SESAME
+
+# Unreleased
+
+* Added: Open Sesame Project Menu
 
 # 1.1.1
 
