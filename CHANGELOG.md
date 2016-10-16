@@ -1,8 +1,9 @@
 # OPEN-SESAME
 
-# Unreleased
+# 1.2.0
 
 * Added: Open Sesame Project Menu
+* Added: Default keymap <kbd>Ctrl+Shift+O</kbd>
 
 # 1.1.1
 

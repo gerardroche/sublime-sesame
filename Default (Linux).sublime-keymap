@@ -1,0 +1,11 @@
+[
+    {
+        "keys": ["ctrl+alt+o"],
+        "command": "open_sesame",
+        "context": [
+            {
+                "key": "setting.open-sesame.keymaps"
+            }
+        ]
+    }
+]

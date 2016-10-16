@@ -1,0 +1,4 @@
+{
+    // Enable the default keymaps.
+    "open-sesame.keymaps": true
+}
