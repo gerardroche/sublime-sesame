@@ -52,8 +52,7 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
     def on_done(self, index):
         if index == -1:
             return
-
-        add_folder_to_window(self.folders[index][1])
+        add_folder(self.window, self.folders[index][1])
 
 
 def find_folders(base_path = None):
@@ -114,15 +113,14 @@ def open_folder_in_new_window(folder):
     sublime.set_timeout_async(lambda: subl(['--new-window', folder]))
 
 
-def add_folder_to_window(folder):
+def add_folder(window, folder):
+    if not instanceof(window, sublime.Window):
+        return
+
     if not folder:
         return
 
     if not os.path.isdir(folder):
-        return
-
-    window = sublime.active_window()
-    if not window:
         return
 
     project_data = window.project_data()

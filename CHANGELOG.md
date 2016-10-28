@@ -1,6 +1,10 @@
 # OPEN-SESAME
 
-# 1.2.0
+# Unreleased
+
+* Fixed: Race condition when adding a folder to the active window
+
+# [1.2.0]
 
 * Added: Open Sesame Project Menu
 * Added: Default keymap <kbd>Ctrl+Shift+O</kbd> (Win, Linux) <kbd>Super+Shift+O</kbd> (OSX)
