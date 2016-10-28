@@ -100,7 +100,7 @@ def open_project_in_new_window(sublime_project_file):
     if not os.path.isfile(sublime_project_file):
         return
 
-    sublime.set_timeout_async(lambda: subl(['--new-window', '--project', sublime_project_file]))
+    subl_async(['--new-window', '--project', sublime_project_file])
 
 
 def open_folder_in_new_window(folder):
@@ -110,7 +110,7 @@ def open_folder_in_new_window(folder):
     if not os.path.isdir(folder):
         return
 
-    sublime.set_timeout_async(lambda: subl(['--new-window', folder]))
+    subl_async(['--new-window', folder])
 
 
 def add_folder(window, folder):
@@ -154,9 +154,10 @@ def add_folder(window, folder):
 
     window.set_project_data(project_data)
 
+def subl_async(args=[]):
+    sublime.set_timeout_async(lambda: subl(args))
 
 def subl(args=[]):
-    # credit: randy3k/Project-Manager
     executable_path = sublime.executable_path()
     if sublime.platform() == 'osx':
         app_path = executable_path[:executable_path.rfind('.app/') + 5]
