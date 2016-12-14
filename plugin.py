@@ -23,9 +23,9 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
         folder_projects = glob.glob(folder + '/*.sublime-project')
 
         if len(folder_projects) == 1 and os.path.isfile(folder_projects[0]):
-            open_project_in_new_window(folder_projects[0])
+            subl_open_project_in_new_window(folder_projects[0])
         elif os.path.isdir(folder):
-            open_folder_in_new_window(folder)
+            subl_open_folder_in_new_window(folder)
 
 
 class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
@@ -52,7 +52,7 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
     def on_done(self, index):
         if index == -1:
             return
-        add_folder(self.window, self.folders[index][1])
+        subl_add_folder(self.window, self.folders[index][1])
 
 
 def find_folders(base_path = None):
@@ -90,7 +90,7 @@ def find_folders(base_path = None):
     return folders
 
 
-def open_project_in_new_window(sublime_project_file):
+def subl_open_project_in_new_window(sublime_project_file):
     if not sublime_project_file:
         return
 
@@ -103,7 +103,7 @@ def open_project_in_new_window(sublime_project_file):
     subl_async(['--new-window', '--project', sublime_project_file])
 
 
-def open_folder_in_new_window(folder):
+def subl_open_folder_in_new_window(folder):
     if not folder:
         return
 
@@ -113,7 +113,7 @@ def open_folder_in_new_window(folder):
     subl_async(['--new-window', folder])
 
 
-def add_folder(window, folder):
+def subl_add_folder(window, folder):
     if not instanceof(window, sublime.Window):
         return
 
