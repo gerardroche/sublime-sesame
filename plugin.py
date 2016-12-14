@@ -114,7 +114,7 @@ def subl_open_folder_in_new_window(folder):
 
 
 def subl_add_folder(window, folder):
-    if not instanceof(window, sublime.Window):
+    if not isinstance(window, sublime.Window):
         return
 
     if not folder:

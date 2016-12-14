@@ -1,5 +1,9 @@
 # OPEN-SESAME
 
+# [1.2.2]
+
+* Fixed: adding folder doesn't work
+
 # [1.2.1]
 
 * Fixed: Race condition when adding a folder to the active window
