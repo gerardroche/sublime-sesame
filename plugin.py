@@ -69,11 +69,30 @@ def find_folders(base_path = None):
     if not base_path:
         return None
 
-    base_path = os.path.expanduser(base_path)
 
-    if not os.path.isdir(base_path):
-        raise ValueError('base path must be a valid directory')
+    paths = base_path.split(':')
+    paths = [os.path.expanduser(path) for path in paths]
 
+    for path in paths:
+        if not os.path.isdir(path):
+            raise ValueError("{path} must be a valid directory".format(path=path))
+
+    folders = glob_paths(paths)
+    folders.sort()
+    return folders
+
+
+def flatten_once(array_of_arrays):
+    return [item for array in array_of_arrays for item in array]
+
+
+def glob_paths(paths):
+    globs = [glob_path(path) for path in paths]
+    folders = flatten_once(globs)
+    return folders
+
+
+def glob_path(base_path = None):
     folders = []
 
     for folder in glob.glob(base_path + '/*/*/'):
@@ -84,8 +103,6 @@ def find_folders(base_path = None):
             folder_struct = [folder_name, folder_path]
             if folder_struct not in folders:
                 folders.append(folder_struct)
-
-    folders.sort()
 
     return folders
 
