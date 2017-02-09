@@ -70,7 +70,7 @@ def find_folders(base_path = None):
         return None
 
 
-    paths = base_path.split(':')
+    paths = base_path.split(os.pathsep)
     paths = [os.path.expanduser(path) for path in paths]
 
     for path in paths:
