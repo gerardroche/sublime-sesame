@@ -17,7 +17,7 @@ Add, open and launch folders and projects quickly in Sublime Text.
 * [Changelog](#changelog)
 * [License](#license)
 
-Assuming the following projects structure:
+Assume the following projects structure.
 
 ```
 . ~/projects
@@ -30,7 +30,9 @@ Assuming the following projects structure:
     └── escaper
 ```
 
-Setup a the projects path by editing `Preferences > Settings - User`.
+And the following configuration.
+
+`Preferences > Settings - User`
 
 ```json
 {
@@ -38,7 +40,7 @@ Setup a the projects path by editing `Preferences > Settings - User`.
 }
 ```
 
-Open Sesame <kbd>Super+Alt+O</kbd> will display a quick panel list of projects to open as follows:
+The command "Open Sesame: Open Project" or the key binding <kbd>Ctrl+Alt+O</kbd> (<kbd>Super+Alt+O</kbd> on OSX) will prompt a quick panel list of projects to select from to open.
 
 ```
 doctrine/dbal
@@ -46,6 +48,8 @@ symfony/console
 zend/mvc
 zend/escaper
 ```
+
+See the [configuration](#configuration) section for a more detailed explaination of the possible configurations.
 
 ## COMMANDS
 
@@ -65,7 +69,33 @@ Key | Description | Type | Default
 `open-sesame.keymaps` | Disable the default keymaps. | `boolean` | `true`
 `open-sesame.projects_path` | Directory to look for projects. | `string` | `null`
 
-The directory to look for projects consults the environment variable `PROJECTS_PATH` first, then `open-sesame.projects_path`, so you can setup the projects path by setting an environment variable e.g. linux (requires restart) `echo "export PROJECTS_PATH=~/projects" >> ~/.profile`.
+### Configuring the projects path(s)
+
+`Preferences > Settings - User`
+
+```json
+{
+    "open-sesame.projects_path": "~/projects"
+}
+```
+
+Multiple projects paths can be configured by using a path separater (':' for POSIX or ';' for Windows).
+
+```json
+{
+    "open-sesame.projects_path": "~/work:~/src"
+}
+```
+
+
+An environment variable `PROJECTS_PATH` can also be used to specify the projects path(s).
+
+
+For example on Linux (requires restart) add the environment to `~/.profile`.
+
+```
+echo "export PROJECTS_PATH=~/projects" >> ~/.profile
+```
 
 ### User Settings
 
