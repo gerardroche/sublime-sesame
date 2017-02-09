@@ -1,5 +1,9 @@
 # OPEN-SESAME
 
+# [1.3.0]
+
+* Added [#3](https://github.com/gerardroche/sublime-open-sesame/pull/3): Allow for multiple project (@tijn)
+
 # [1.2.2]
 
 * Fixed: adding folder doesn't work
@@ -52,6 +56,8 @@
 
 * Initial import
 
+[1.3.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.2.2...1.3.0
+[1.2.2]: https://github.com/gerardroche/sublime-open-sesame/compare/1.2.1...1.2.2
 [1.2.1]: https://github.com/gerardroche/sublime-open-sesame/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/gerardroche/sublime-open-sesame/compare/1.1.0...1.1.1
