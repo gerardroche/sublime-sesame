@@ -34,7 +34,7 @@ Configure the location of projects: `Preferences > Settings - User`
     └── escaper
 ```
 
-Invoking Open Sesame given the above folder configuration and folder structure (<kbd>Ctrl+Alt+O</kbd> or <kbd>Super+Alt+O</kbd> on OSX) opens a quick panel list of projects to open in the format `vendor/name`:
+Invoking Open Sesame (<kbd>Ctrl+Alt+O</kbd> or <kbd>Super+Alt+O</kbd> on OSX) with the configuration and folder structure above opens a quick panel list of projects to select from in the format `vendor/name`:
 
 ```
 doctrine/dbal
