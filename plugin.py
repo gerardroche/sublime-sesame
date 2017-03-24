@@ -96,7 +96,10 @@ def glob_path(base_path = None):
     folders = []
 
     for folder in glob.glob(base_path + '/*/*/'):
-        folder_match_result = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', folder)
+        if sublime.platform() == 'windows':
+            folder_match_result = re.match('^.*\\\\([a-zA-Z0-9\._-]+\\\\[a-zA-Z0-9\._-]+)\\\\$', folder)
+        else:
+            folder_match_result = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', folder)
         if folder_match_result:
             folder_name = folder_match_result.group(1)
             folder_path = os.path.normpath(folder)
