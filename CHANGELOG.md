@@ -1,5 +1,10 @@
 # OPEN-SESAME
 
+## [1.3.1]
+
+* Fixed: Projects path (Windows)
+* Fixed: Preferences menus
+
 ## [1.3.0]
 
 * Added [#3](https://github.com/gerardroche/sublime-open-sesame/pull/3): Allow for multiple project (@tijn)
@@ -56,6 +61,7 @@
 
 * Initial import
 
+[1.3.1]: https://github.com/gerardroche/sublime-open-sesame/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.2.2...1.3.0
 [1.2.2]: https://github.com/gerardroche/sublime-open-sesame/compare/1.2.1...1.2.2
 [1.2.1]: https://github.com/gerardroche/sublime-open-sesame/compare/1.2.0...1.2.1
