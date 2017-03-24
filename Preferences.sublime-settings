@@ -1,4 +1,9 @@
 {
     // Enable the default keymaps.
-    "open-sesame.keymaps": true
+    "open-sesame.keymaps": true,
+
+    // Path(s) to search for projects.
+    // A path seperator (':' for POSIX or ';' for Windows) can be used to
+    // specify multiple locations e.g. "~/work:~/src"
+    // "open-sesame.projects_path": "~/projects"
 }
