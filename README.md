@@ -90,9 +90,7 @@ Multiple projects paths can be configured by using a path separater (':' for POS
 }
 ```
 
-Alternatively, an environment variable (`PROJECTS_PATH`) can be used to specify the projects path.
-
-For example, on Linux set a projects path environment in `~/.profile` (requires restart):
+Alternatively, an environment variable (`PROJECTS_PATH`) can be used to specify the projects path. For example, on Linux set a projects path environment in `~/.profile` (requires restart):
 
 ```sh
 echo "export PROJECTS_PATH=~/projects" >> ~/.profile
