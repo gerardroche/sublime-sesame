@@ -67,7 +67,7 @@ The projects path can be configured using a PROJECTS_PATH environment variable e
 
 ### Depth
 
-By default projects are listed as two directory structures i.e. `projects_path/*/*`. To list projects as one directory structures i.e. `projects_path/*`, set the depth to 1.s
+By default projects are listed as two directory structures i.e. `projects_path/*/*`. To list projects as one directory structures i.e. `projects_path/*`, set the depth to 1.
 
 Configure globally: `Preferences > Settings - User`
 
