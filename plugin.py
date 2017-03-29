@@ -92,13 +92,30 @@ def glob_paths(paths):
 
 
 def glob_path(base_path = None):
-    folders = []
 
-    for folder in glob.glob(base_path + '/*/*/'):
+    depth = 2
+    window = sublime.active_window()
+    if window:
+        view = window.active_view()
+        if view:
+            depth = int(view.settings().get('open-sesame.projects_depth'))
+
+    if depth == 1:
+        glob_pattern = base_path + '/*/'
         if sublime.platform() == 'windows':
-            folder_match_result = re.match('^.*\\\\([a-zA-Z0-9\._-]+\\\\[a-zA-Z0-9\._-]+)\\\\$', folder)
+            folder_match_pattern = '^.*\\\\([a-zA-Z0-9\._-]+)\\\\$'
         else:
-            folder_match_result = re.match('^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$', folder)
+            folder_match_pattern = '^.*\/([a-zA-Z0-9\._-]+)\/$'
+    else:
+        glob_pattern = base_path + '/*/*/'
+        if sublime.platform() == 'windows':
+            folder_match_pattern = '^.*\\\\([a-zA-Z0-9\._-]+\\\\[a-zA-Z0-9\._-]+)\\\\$'
+        else:
+            folder_match_pattern = '^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$'
+
+    folders = []
+    for folder in glob.glob(glob_pattern):
+        folder_match_result = re.match(folder_match_pattern, folder)
         if folder_match_result:
             folder_name = folder_match_result.group(1)
             folder_path = os.path.normpath(folder)

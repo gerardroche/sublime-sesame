@@ -1,5 +1,9 @@
 # OPEN-SESAME
 
+## [1.4.0]
+
+* Added [#4](https://github.com/gerardroche/sublime-open-sesame/issues/4): Single level directory projects structures
+
 ## [1.3.1]
 
 * Fixed: Projects path (Windows)
@@ -61,6 +65,7 @@
 
 * Initial import
 
+[1.4.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.3.1...1.4.0
 [1.3.1]: https://github.com/gerardroche/sublime-open-sesame/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.2.2...1.3.0
 [1.2.2]: https://github.com/gerardroche/sublime-open-sesame/compare/1.2.1...1.2.2

@@ -6,4 +6,10 @@
     // A path seperator (':' for POSIX or ';' for Windows) can be used to
     // specify multiple locations e.g. "~/work:~/src"
     // "open-sesame.projects_path": "~/projects"
+
+    // How many levels deep projects are within the projects path.
+    // Supported values are 1 and 2.
+    // 1 lists projects one level deep i.e. projects_path/*
+    // 2 lists projects two levels deep i.e. projects_path/*/*
+    "open-sesame.projects_depth": 2
 }

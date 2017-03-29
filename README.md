@@ -35,6 +35,7 @@ Key | Description | Type | Default
 ----|-------------|------|--------
 `open-sesame.keymaps` | Enable the default keymaps. | `boolean` | `true`
 `open-sesame.projects_path` | Location of projects. | `string` | `null`
+`open-sesame.projects_depth` | How many levels deep projects are within projects path. | `1` or `2` | `2`
 
 ### Projects path
 
@@ -63,6 +64,28 @@ Set multiple paths by separating them with the PATH environment separater (':' f
 #### PROJECTS_PATH environment variable
 
 The projects path can be configured using a PROJECTS_PATH environment variable e.g. on Linux edit `~/.profile` (requires restart) `export PROJECTS_PATH=~/projects`.
+
+### Depth
+
+By default projects are listed as two directory structures i.e. `projects_path/*/*`. To list projects as one directory structures i.e. `projects_path/*`, set the depth to 1.s
+
+Configure globally: `Preferences > Settings - User`
+
+```json
+{
+    "open-sesame.projects_depth": 1
+}
+```
+
+Per project: `Project > Edit Project`
+
+```json
+{
+    "settings": {
+        "open-sesame.projects_depth": 1
+    }
+}
+```
 
 ## INSTALLATION
 
