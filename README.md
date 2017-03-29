@@ -16,38 +16,12 @@ Add, open and launch folders and projects quickly in Sublime Text.
 * [Changelog](#changelog)
 * [License](#license)
 
-Configure the location of projects: `Preferences > Settings - User`
-
-```json
-{
-    "open-sesame.projects_path": "~/projects"
-}
-```
-
-```
-. ~/projects
-├── doctrine
-│   └── dbal
-├── symfony
-│   └── console
-└── zend
-    └── escaper
-```
-
-Invoking Open Sesame (<kbd>Ctrl+Alt+O</kbd> or <kbd>Super+Alt+O</kbd> on OSX) with the configuration and folder structure above opens a quick panel list of projects to select from in the format `vendor/name`:
-
-```
-doctrine/dbal
-symfony/console
-zend/escaper
-```
-
 ## COMMANDS
 
 Command | Description
 ------- | -----------
 Open Sesame: Open Project | Open a project in a new window
-Open Sesame: Add Project Folder | Add a project to the active window
+Open Sesame: Add Project | Add a project to the active window
 
 ## KEY BINDINGS
 
@@ -59,8 +33,8 @@ OS X | Windows / Linux | Description
 
 Key | Description | Type | Default
 ----|-------------|------|--------
-`open-sesame.keymaps` | Disable the default keymaps. | `boolean` | `true`
-`open-sesame.projects_path` | Path(s) to search for projects. | `string` | `null`
+`open-sesame.keymaps` | Enable the default keymaps. | `boolean` | `true`
+`open-sesame.projects_path` | Location of projects. | `string` | `null`
 
 ### Projects path
 
@@ -82,19 +56,13 @@ The projects path can also be configured per project: `Project > Edit Project`
 }
 ```
 
-Multiple projects paths can be configured by using a path separater (':' for POSIX or ';' for Windows): `Preferences > Settings - User`
+#### Multiple projects paths
 
-```json
-{
-    "open-sesame.projects_path": "~/work:~/src"
-}
-```
+Set multiple paths by separating them with the PATH environment separater (':' for POSIX or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
 
-Alternatively, an environment variable (`PROJECTS_PATH`) can be used to specify the projects path. For example, on Linux set a projects path environment in `~/.profile` (requires restart):
+#### PROJECTS_PATH environment variable
 
-```sh
-echo "export PROJECTS_PATH=~/projects" >> ~/.profile
-```
+The projects path can be configured using a PROJECTS_PATH environment variable e.g. on Linux edit `~/.profile` (requires restart) `export PROJECTS_PATH=~/projects`.
 
 ## INSTALLATION
 

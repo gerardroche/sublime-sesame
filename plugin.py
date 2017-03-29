@@ -69,7 +69,6 @@ def find_folders(base_path = None):
     if not base_path:
         return None
 
-
     paths = base_path.split(os.pathsep)
     paths = [os.path.expanduser(path) for path in paths]
 
@@ -174,8 +173,10 @@ def subl_add_folder(window, folder):
 
     window.set_project_data(project_data)
 
+
 def subl_async(args=[]):
     sublime.set_timeout_async(lambda: subl(args))
+
 
 def subl(args=[]):
     executable_path = sublime.executable_path()
