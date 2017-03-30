@@ -35,11 +35,11 @@ Key | Description | Type | Default
 ----|-------------|------|--------
 `open-sesame.keymaps` | Enable the default keymaps. | `boolean` | `true`
 `open-sesame.projects_path` | Location of projects. | `string` | `null`
-`open-sesame.projects_depth` | How many levels deep projects are within projects path. | `1` or `2` | `2`
+`open-sesame.projects_depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
 
 ### Projects path
 
-The projects path can be configured globally: `Preferences > Settings - User`
+Set it globally: `Preferences > Settings - User`
 
 ```json
 {
@@ -47,7 +47,7 @@ The projects path can be configured globally: `Preferences > Settings - User`
 }
 ```
 
-The projects path can also be configured per project: `Project > Edit Project`
+Set it per project: `Project > Edit Project`
 
 ```json
 {
@@ -59,32 +59,57 @@ The projects path can also be configured per project: `Project > Edit Project`
 
 #### Multiple projects paths
 
-Set multiple paths by separating them with the PATH environment separater (':' for POSIX or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
+A PATH separator (':' for POSIX or ';' for Windows) can be used to set multiple locations e.g. `"~/projects:~/work:~/src"`.
 
 #### PROJECTS_PATH environment variable
 
-The projects path can be configured using a PROJECTS_PATH environment variable e.g. on Linux edit `~/.profile` (requires restart) `export PROJECTS_PATH=~/projects`.
+A PROJECTS_PATH environment variable can be used to set the projects path e.g. on Linux edit `~/.profile` (requires system restart) with `export PROJECTS_PATH=~/projects`.
 
 ### Depth
 
-By default projects are listed as two directory structures i.e. `projects_path/*/*`. To list projects as one directory structures i.e. `projects_path/*`, set the depth to 1.
+By default projects are listed as "2-folder" deep structures (`projects_path/*/*`) and are listed in the format `*/*` (like a `Username/Repository` part of a GitHub URL).
 
-Configure globally: `Preferences > Settings - User`
+If you prefer to organise your projects at a single level under projects path i.e. `projects_path/*`, then set projects depth to 1.
+
+Set it globally: `Preferences > Settings - User`
 
 ```json
 {
-    "open-sesame.projects_depth": 1
+    "open-sesame.projects_depth": 2
 }
 ```
 
-Per project: `Project > Edit Project`
+Set it per project: `Project > Edit Project`
 
 ```json
 {
     "settings": {
-        "open-sesame.projects_depth": 1
+        "open-sesame.projects_depth": 2
     }
 }
+```
+
+### Custom Commands
+
+Here is an example of creating custom commands for a specific path (in this case `~/vendor`).
+
+`User/Default.sublime-commands`
+
+(Find the User directory via `Menu > Preferences > Browse Packages`)
+
+```
+[
+    {
+        "caption": "Open Sesame: Open Vendor",
+        "command": "open_sesame",
+        "args": { "path": "~/vendor" }
+    },
+    {
+        "caption": "Open Sesame: Add Vendor Folder",
+        "command": "open_sesame_add_folder",
+        "args": { "path": "~/vendor" }
+    }
+]
 ```
 
 ## INSTALLATION
