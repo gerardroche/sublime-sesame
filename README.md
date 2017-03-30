@@ -65,7 +65,7 @@ A PATH separator (':' for POSIX or ';' for Windows) can be used to set multiple 
 
 A PROJECTS_PATH environment variable can be used to set the projects path e.g. on Linux edit `~/.profile` (requires system restart) with `export PROJECTS_PATH=~/projects`.
 
-### Depth
+### Projects Depth
 
 By default projects are listed as "2-folder" deep structures (`projects_path/*/*`) and are listed in the format `*/*` (like a `Username/Repository` part of a GitHub URL).
 
