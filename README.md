@@ -59,7 +59,7 @@ Set it per project: `Project > Edit Project`
 
 #### Multiple projects paths
 
-A PATH separator (':' for POSIX or ';' for Windows) can be used to set multiple locations e.g. `"~/projects:~/work:~/src"`.
+A PATH separator (':' for POSIX or ';' for Windows) can be used to set multiple paths e.g. `"~/projects:~/work:~/src"`.
 
 #### PROJECTS_PATH environment variable
 
@@ -91,7 +91,7 @@ Set it per project: `Project > Edit Project`
 
 ### Custom Commands
 
-Here is an example of creating custom commands for a specific path (in this case `~/vendor`).
+Here is an example of custom Open Sesame commands for a specific path (in this case `~/vendor`).
 
 `User/Default.sublime-commands`
 
