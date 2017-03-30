@@ -1,5 +1,8 @@
 # OPEN-SESAME
 
+* Added: Project Menu o mnemonic
+* Changed: Project Menu now opens Command Palette overlay
+
 ## [1.4.0]
 
 * Added [#4](https://github.com/gerardroche/sublime-open-sesame/issues/4): Single level directory projects structures
