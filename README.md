@@ -1,8 +1,8 @@
 # WHAT OPEN SESAME IS
 
-[![Author](https://img.shields.io/badge/author-@gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche) [![Source Code](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame) [![License](https://img.shields.io/badge/license-BSD--3-blue.svg?style=flat-square)](LICENSE) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Sublime version](https://img.shields.io/badge/sublime-v3.0.0-green.svg?style=flat-square)](https://sublimetext.com) [![Latest version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?label=release&style=flat-square&maxAge=2592000)](https://github.com/gerardroche/sublime-open-sesame/tags) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat-square&maxAge=2592000)](https://packagecontrol.io/packages/open-sesame)
+[![Minimum Sublime version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat-square)](https://packagecontrol.io/packages/open-sesame) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?label=packagecontrol&style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/tags) [![Source Code](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame) [![Author](https://img.shields.io/badge/author-@gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
 
-Add, open and launch folders and projects quickly in Sublime Text.
+An alternative way to open projects in Sublime Text. Stop using the mouse to open projects when all you need is <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> Open Sesame.
 
 ![Screenshot](screenshot.png)
 
@@ -27,7 +27,7 @@ Open Sesame: Add Project | Add a project to the active window
 
 OS X | Windows / Linux | Description
 -----|-----------------|------------
-<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>O</kbd> | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>O</kbd> | Open Sesame: Open Project
+<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> | Open Sesame: Open Project
 
 ## CONFIGURATION
 

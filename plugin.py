@@ -52,6 +52,7 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
     def on_done(self, index):
         if index == -1:
             return
+
         subl_add_folder(self.window, self.folders[index][1])
 
 
@@ -92,7 +93,6 @@ def glob_paths(paths):
 
 
 def glob_path(base_path = None):
-
     depth = 2
     window = sublime.active_window()
     if window:
@@ -103,15 +103,15 @@ def glob_path(base_path = None):
     if depth == 1:
         glob_pattern = base_path + '/*/'
         if sublime.platform() == 'windows':
-            folder_match_pattern = '^.*\\\\([a-zA-Z0-9\._-]+)\\\\$'
+            folder_match_pattern = '^.*\\\\([a-zA-Z0-9 \._-]+)\\\\$'
         else:
-            folder_match_pattern = '^.*\/([a-zA-Z0-9\._-]+)\/$'
+            folder_match_pattern = '^.*\/([a-zA-Z0-9 \._-]+)\/$'
     else:
         glob_pattern = base_path + '/*/*/'
         if sublime.platform() == 'windows':
-            folder_match_pattern = '^.*\\\\([a-zA-Z0-9\._-]+\\\\[a-zA-Z0-9\._-]+)\\\\$'
+            folder_match_pattern = '^.*\\\\([a-zA-Z0-9\._-]+\\\\[a-zA-Z0-9 \._-]+)\\\\$'
         else:
-            folder_match_pattern = '^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9\._-]+)\/$'
+            folder_match_pattern = '^.*\/([a-zA-Z0-9\._-]+\/[a-zA-Z0-9 \._-]+)\/$'
 
     folders = []
     for folder in glob.glob(glob_pattern):
