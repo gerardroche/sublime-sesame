@@ -10,7 +10,7 @@ import sublime_plugin
 
 class OpenSesameCommand(sublime_plugin.WindowCommand):
 
-    def run(self, path = None):
+    def run(self, path=None):
         self.folders = find_folders(path)
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
@@ -30,7 +30,7 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
 
 class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
 
-    def run(self, path = None):
+    def run(self, path=None):
         # Exclude folders that already exist
         existing_folders = []
         project_data = self.window.project_data()
@@ -56,7 +56,7 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
         subl_add_folder(self.window, self.folders[index][1])
 
 
-def find_folders(base_path = None):
+def find_folders(base_path=None):
     if not base_path:
         window = sublime.active_window()
         if window:
@@ -71,7 +71,7 @@ def find_folders(base_path = None):
         return None
 
     paths = base_path.split(os.pathsep)
-    paths = [os.path.expanduser(path) for path in paths]
+    paths = [os.path.expandvars(os.path.expanduser(path)) for path in paths]
 
     for path in paths:
         if not os.path.isdir(path):
@@ -92,7 +92,7 @@ def glob_paths(paths):
     return folders
 
 
-def glob_path(base_path = None):
+def glob_path(base_path=None):
     depth = 2
     window = sublime.active_window()
     if window:

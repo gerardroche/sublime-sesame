@@ -1,5 +1,9 @@
 # OPEN-SESAME
 
+## [1.5.1]
+
+Fixed: 'projects_path' setting now expands environment variables
+
 ## [1.5.0]
 
 * Added: `o` mnemonic for `Project > open Sesame` menu
@@ -71,6 +75,7 @@
 
 * Initial import
 
+[1.5.1]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.0...1.5.1
 [1.5.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.3.1...1.4.0
 [1.3.1]: https://github.com/gerardroche/sublime-open-sesame/compare/1.3.0...1.3.1
