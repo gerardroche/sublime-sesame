@@ -57,12 +57,7 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
 
 
 def find_folders(base_path=None):
-    if not base_path:
-        window = sublime.active_window()
-        if window:
-            view = window.active_view()
-            if view:
-                base_path = view.settings().get('open-sesame.projects_path')
+    base_path = get_setting('open-sesame.projects_path', base_path)
 
     if not base_path:
         base_path = os.getenv('PROJECTS_PATH')
@@ -82,6 +77,16 @@ def find_folders(base_path=None):
     return folders
 
 
+def get_setting(key, default):
+    window = sublime.active_window()
+    if window:
+        view = window.active_view()
+        if view:
+            return view.settings().get(key, default)
+
+    return default
+
+
 def flatten_once(array_of_arrays):
     return [item for array in array_of_arrays for item in array]
 
@@ -92,13 +97,8 @@ def glob_paths(paths):
     return folders
 
 
-def glob_path(base_path=None):
-    depth = 2
-    window = sublime.active_window()
-    if window:
-        view = window.active_view()
-        if view:
-            depth = int(view.settings().get('open-sesame.projects_depth'))
+def glob_path(base_path, depth=2):
+    depth = get_setting('open-sesame.projects_depth', depth)
 
     if depth == 1:
         glob_pattern = base_path + '/*/'
