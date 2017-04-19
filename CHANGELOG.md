@@ -1,8 +1,10 @@
 # OPEN-SESAME
 
+* Fixed: Cannot open folders that have a space in the name
+
 ## [1.5.1]
 
-Fixed: 'projects_path' setting now expands environment variables
+* Fixed: 'projects_path' setting now expands environment variables
 
 ## [1.5.0]
 
