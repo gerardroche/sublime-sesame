@@ -1,5 +1,6 @@
 # OPEN-SESAME
 
+* Fixed [#6](https://github.com/gerardroche/sublime-open-sesame/issues/6): Cannot open folders that a pipe character in the name
 * Fixed: Cannot open folders that have a space in the name
 
 ## [1.5.1]
