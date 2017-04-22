@@ -14,6 +14,8 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
         self.folders = find_folders(path)
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
+        else:
+            sublime.status_message('Open Sesame: no projects found')
 
     def on_done(self, index):
         if index == -1:
@@ -48,6 +50,8 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
 
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
+        else:
+            sublime.status_message('Open Sesame: no projects found')
 
     def on_done(self, index):
         if index == -1:
