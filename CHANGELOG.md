@@ -1,86 +1,136 @@
-# OPEN-SESAME
+# OPEN-SESAME CHANGELOG
 
-## [1.5.3]
+All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+
+## [1.5.3] - 2017-04-22
+
+### Fixed
 
 * Fixed: should display a status message if no projects are found
 
-## [1.5.2]
+## [1.5.2] - 2017-04-19
+
+### Fixed
 
 * Fixed [#6](https://github.com/gerardroche/sublime-open-sesame/issues/6): Cannot open folders that a pipe character in the name
 * Fixed: Cannot open folders that have a space in the name
 
-## [1.5.1]
+## [1.5.1] - 2017-04-14
+
+### Fixed
 
 * Fixed: 'projects_path' setting now expands environment variables
 
-## [1.5.0]
+## [1.5.0] - 2017-04-02
+
+### Added
 
 * Added: `o` mnemonic for `Project > open Sesame` menu
+
+### Changed
+
 * Changed: `Project > open Sesame` menu now opens Command Palette with a list of all available commands
+
+### Fixed
+
 * Fixed: Project names containing spaces are now included in project list
 
-## [1.4.0]
+## [1.4.0] - 2017-03-29
+
+### Added
 
 * Added [#4](https://github.com/gerardroche/sublime-open-sesame/issues/4): Single level directory projects structures
 
-## [1.3.1]
+## [1.3.1] - 2017-03-24
+
+### Fixed
 
 * Fixed: Projects path (Windows)
 * Fixed: Preferences menus
 
-## [1.3.0]
+## [1.3.0] - 2017-02-09
+
+### Added
 
 * Added [#3](https://github.com/gerardroche/sublime-open-sesame/pull/3): Allow for multiple project (@tijn)
 
-## [1.2.2]
+## [1.2.2] - 2016-12-14
+
+### Fixed
 
 * Fixed: adding folder doesn't work
 
-## [1.2.1]
+## [1.2.1] - 2016-10-28
+
+### Fixed
 
 * Fixed: Race condition when adding a folder to the active window
 
-## [1.2.0]
+## [1.2.0] - 2016-10-16
+
+### Added
 
 * Added: Open Sesame Project Menu
 * Added: Default keymap <kbd>Ctrl+Shift+O</kbd> (Win, Linux) <kbd>Super+Shift+O</kbd> (OSX)
 
-## [1.1.1]
+## [1.1.1] - 2016-10-01
+
+### Fixed
 
 * Fixed: error trying to add a folder when the project has no existing folders
 
-## [1.1.0]
+## [1.1.0] - 2016-08-11
+
+### Added
 
 * Added: project path is now displayed below project name in quick panel list
 
-## [1.0.0]
+## [1.0.0] - 2016-08-01
+
+### Added
 
 * Added: readme usage and badges via shields.io
 
-## [0.5.0]
+## [0.5.0] - 2016-06-22
+
+### Changed
 
 * Changed: "Open Sesame: Add Folder" caption to "Open Sesame: Add Project Folder"
 
-## [0.4.0]
+## [0.4.0] - 2016-05-11
+
+### Changed
 
 * Changed: "Open Sesame: Add Project" command caption to "Open Sesame: Add Folder"
+
+### Fixed
+
 * Fixed: The Add Folder command now only displays folders that have not already been added
 
-## [0.3.0]
+## [0.3.0] - 2015-11-17
+
+### Added
 
 * Added: "Open Sesame: Add Folder" command
+
+### Changed
+
 * Changed: "Open Sesame: Project" command caption to "Open Sesame: Open Project"
 
-## [0.2.1]
+## [0.2.1] - 2015-11-13
+
+### Fixed
 
 * Fixed: #1 should only prompts to open projects and folders not files
 * Fixed: #2 should not raise runtime error if any projects folder contains special characters
 
-## [0.2.0]
+## [0.2.0] - 2015-11-03
+
+### Added
 
 * Added: CHANGELOG link to package settings menu
 
-## 0.1.0
+## 0.1.0 - 2015-10-29
 
 * Initial import
 
