@@ -181,7 +181,8 @@ def subl_add_folder(window, folder):
 
     for f in project_data['folders']:
         if f['path'] and folder == f['path']:
-            return # already exists
+            # already exists
+            return
 
     folder_struct = {
         'path': folder
