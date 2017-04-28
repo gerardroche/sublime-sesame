@@ -67,9 +67,9 @@ A PROJECTS_PATH environment variable can be used to set the projects path e.g. o
 
 ### Projects Depth
 
-By default projects are listed as "2-folder" deep structures (`projects_path/*/*`) and are listed in the format `*/*` (like a `Username/Repository` part of a GitHub URL).
+By default projects are listed as *"2-FOLDER-DEEP"* structures like the `Username/Repository` part of a GitHub URL i.e. projects are found in the pattern `PROJECTS_PATH/*/*`.
 
-If you prefer to organise your projects at a single level under projects path i.e. `projects_path/*`, then set projects depth to 1.
+If you prefer to organise your projects at a single level within your projects path then you can set projects depth setting to `1`. It defaults to `2`.
 
 Set it globally: `Preferences > Settings - User`
 
