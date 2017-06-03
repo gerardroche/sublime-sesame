@@ -1,6 +1,6 @@
 # WHAT OPEN SESAME IS
 
-[![Minimum Sublime version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat-square)](https://packagecontrol.io/packages/open-sesame) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?label=packagecontrol&style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/tags) [![Source Code](https://img.shields.io/badge/source-GitHub-blue.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame) [![Author](https://img.shields.io/badge/author-@gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
+[![Minimum Sublime version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat-square)](https://packagecontrol.io/packages/open-sesame) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-open-sesame/tags) [![Source Code](https://img.shields.io/badge/source-github-blue.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame) [![Author](https://img.shields.io/badge/author-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
 
 An alternative way to open projects in Sublime Text. Stop using the mouse to open projects when all you need is <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> Open Sesame.
 
@@ -8,28 +8,43 @@ An alternative way to open projects in Sublime Text. Stop using the mouse to ope
 
 ## OVERVIEW
 
-* [Commands](#commands)
-* [Key Bindings](#key-bindings)
-* [Configuration](#configuration)
-* [Contributing](#contributing)
 * [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
 * [Changelog](#changelog)
 * [License](#license)
 
-## COMMANDS
+## INSTALLATION
+
+### Package Control installation
+
+The preferred method of installation is [Package Control](https://packagecontrol.io/browse/authors/gerardroche).
+
+### Manual installation
+
+1. Close Sublime Text.
+2. Download or clone this repository to a directory named `open-sesame` in the Sublime Text Packages directory:
+    * Linux: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/.config/sublime-text-3/Packages/open-sesame`
+    * OS X: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/open-sesame`
+    * Windows: `git clone https://github.com/gerardroche/sublime-open-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/open-sesame`
+3. Done!
+
+## USAGE
+
+### Command palette
 
 Command | Description
 ------- | -----------
 Open Sesame: Open Project | Open a project in a new window
 Open Sesame: Add Project | Add a project to the active window
 
-## KEY BINDINGS
+### Key bindings
 
 OS X | Windows / Linux | Description
 -----|-----------------|------------
 <kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> | Open Sesame: Open Project
 
-## CONFIGURATION
+### Configuration
 
 Key | Description | Type | Default
 ----|-------------|------|--------
@@ -37,7 +52,7 @@ Key | Description | Type | Default
 `open-sesame.projects_path` | Location of projects. | `string` | `null`
 `open-sesame.projects_depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
 
-### Projects path
+#### Projects path
 
 Set it globally: `Preferences > Settings - User`
 
@@ -57,15 +72,15 @@ Set it per project: `Project > Edit Project`
 }
 ```
 
-#### Multiple projects paths
+##### Multiple projects paths
 
 A PATH separator (':' for POSIX or ';' for Windows) can be used to set multiple paths e.g. `"~/projects:~/work:~/src"`.
 
-#### PROJECTS_PATH environment variable
+##### PROJECTS_PATH environment variable
 
 A PROJECTS_PATH environment variable can be used to set the projects path e.g. on Linux edit `~/.profile` (requires system restart) with `export PROJECTS_PATH=~/projects`.
 
-### Projects Depth
+#### Projects Depth
 
 By default projects are listed as *"2-FOLDER-DEEP"* structures like the `Username/Repository` part of a GitHub URL i.e. projects are found in the pattern `PROJECTS_PATH/*/*`.
 
@@ -89,7 +104,7 @@ Set it per project: `Project > Edit Project`
 }
 ```
 
-### Custom Commands
+#### Custom Commands
 
 Here is an example of custom Open Sesame commands for a specific path (in this case `~/vendor`).
 
@@ -111,21 +126,6 @@ Here is an example of custom Open Sesame commands for a specific path (in this c
     }
 ]
 ```
-
-## INSTALLATION
-
-### Package Control installation
-
-The preferred method of installation is [Package Control](https://packagecontrol.io/browse/authors/gerardroche).
-
-### Manual installation
-
-1. Close Sublime Text.
-2. Download or clone this repository to a directory named `open-sesame` in the Sublime Text Packages directory:
-    * Linux: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/.config/sublime-text-3/Packages/open-sesame`
-    * OS X: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/open-sesame`
-    * Windows: `git clone https://github.com/gerardroche/sublime-open-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/open-sesame`
-3. Done!
 
 ## CONTRIBUTING
 
