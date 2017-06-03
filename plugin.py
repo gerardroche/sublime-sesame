@@ -40,8 +40,13 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
             if 'folders' in project_data:
                 for folder in project_data['folders']:
                     if folder['path']:
-                        if folder['path'] not in existing_folders:
-                            existing_folders.append(folder['path'])
+                        folder_path = folder['path']
+                        if folder_path == '.':
+                            if self.window.active_project_file_name():
+                                folder_path = os.path.dirname(self.window.active_project_file_name())
+
+                        if folder_path not in existing_folders:
+                            existing_folders.append(folder_path)
 
         self.folders = []
         for folder in find_folders(path):

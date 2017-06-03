@@ -2,6 +2,12 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.5.4] - 2017-06-03
+
+### Fixed
+
+* Fixed: Add Project Folder command select list shouldn't included current project
+
 ## [1.5.3] - 2017-04-22
 
 ### Fixed
@@ -134,6 +140,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial import
 
+[1.5.4]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.3...1.5.4
 [1.5.3]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.2...1.5.3
 [1.5.2]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.1...1.5.2
 [1.5.1]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.0...1.5.1
