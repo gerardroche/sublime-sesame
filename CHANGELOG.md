@@ -2,6 +2,12 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.5.5] - 2017-06-03
+
+### Fixed
+
+* Fixed: AttributeError: 'Window' object has no attribute 'active_project_file_name'
+
 ## [1.5.4] - 2017-06-03
 
 ### Fixed
@@ -140,6 +146,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial import
 
+[1.5.5]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.4...1.5.5
 [1.5.4]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.3...1.5.4
 [1.5.3]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.2...1.5.3
 [1.5.2]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.1...1.5.2
