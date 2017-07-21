@@ -1,8 +1,10 @@
 # WHAT OPEN SESAME IS
 
-[![Minimum Sublime version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg)](https://sublimetext.com) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg)](https://packagecontrol.io/packages/open-sesame) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?label=stable)](https://github.com/gerardroche/sublime-open-sesame/tags) [![Source Code](https://img.shields.io/badge/source-github-blue.svg)](https://github.com/gerardroche/sublime-open-sesame) [![Author](https://img.shields.io/badge/author-gerardroche-blue.svg)](https://twitter.com/gerardroche)
+[![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-open-sesame/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat-square)](https://packagecontrol.io/packages/open-sesame) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
 
-An alternative way to open projects in Sublime Text. Stop using the mouse to open projects when all you need is <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> Open Sesame.
+Open projects faster than the speed of thought.
+
+Stop using the mouse to open projects, all you need is Open Sesame: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd>.
 
 ![Screenshot](screenshot.png)
 
