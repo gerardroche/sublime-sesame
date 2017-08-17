@@ -2,14 +2,17 @@
     // Enable the default keymaps.
     "open-sesame.keymaps": true,
 
-    // Location of projects.
-    //
-    // A PATH separator (':' for POSIX or ';' for Windows) can be used to set
-    // multiple locations e.g. "~/projects:~/work:~/src".
-    //
-    // A PROJECTS_PATH environment variable can be used to set the projects
-    // path e.g. on Linux edit `~/profile` (requires system restart) with
-    // `export PROJECTS_PATH=~/projects`.
+    // // Location of your projects.
+    // //
+    // // # Multiple paths
+    // //
+    // // A PATH separator (':' for POSIX or ';' for Windows) can be used to set
+    // // multiple locations e.g. "~/projects:~/work:~/src".
+    // //
+    // // A PROJECTS_PATH environment variable can be used to set the projects
+    // // path e.g. on Linux edit `~/profile` (requires system restart) with
+    // // `export PROJECTS_PATH=~/projects`.
+    // //
     // "open-sesame.projects_path": "~/projects",
 
     // Number of levels deep to look for projects within projects path.

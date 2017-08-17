@@ -1,17 +1,18 @@
 # WHAT OPEN SESAME IS
 
-[![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-open-sesame/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat-square)](https://packagecontrol.io/packages/open-sesame) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
-
 Open projects faster than the speed of thought.
 
-Stop using the mouse to open projects, all you need is Open Sesame: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd>.
+[![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-open-sesame/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat-square)](https://packagecontrol.io/packages/open-sesame) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
 
-![Screenshot](screenshot.png)
+![Command palette screenshot](screenshot-a.png)
+![Overlay screenshot](screenshot-b.png)
 
 ## OVERVIEW
 
 * [Installation](#installation)
-* [Usage](#usage)
+* [Commands](#commands)
+* [Keybindings](#key-bindings)
+* [Configuration](#configuration)
 * [Contributing](#contributing)
 * [Changelog](#changelog)
 * [License](#license)
@@ -31,32 +32,30 @@ The preferred method of installation is [Package Control](https://packagecontrol
     * Windows: `git clone https://github.com/gerardroche/sublime-open-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/open-sesame`
 3. Done!
 
-## USAGE
+## Commands
 
-### Command palette
+Command Palette | Command | Description
+--------------- | ------- | -----------
+Open Sesame: Open Project | `open_sesame` | Open a project in a new window
+Open Sesame: Add Project | `open_sesame_add_folder` | Add a project to the active window
 
-Command | Description
-------- | -----------
-Open Sesame: Open Project | Open a project in a new window
-Open Sesame: Add Project | Add a project to the active window
-
-### Key bindings
+## Key bindings
 
 OS X | Windows / Linux | Description
 -----|-----------------|------------
-<kbd>Super</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> | Open Sesame: Open Project
+`Super+Alt+o` | `Ctrl+Alt+o` | Open Sesame: Open Project
 
-### Configuration
+## Configuration
 
 Key | Description | Type | Default
 ----|-------------|------|--------
 `open-sesame.keymaps` | Enable the default keymaps. | `boolean` | `true`
-`open-sesame.projects_path` | Location of projects. | `string` | `null`
+`open-sesame.projects_path` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
 `open-sesame.projects_depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
 
-#### Projects path
+### Projects path
 
-Set it globally: `Preferences > Settings - User`
+`Preferences > Settings - User`
 
 ```json
 {
@@ -64,7 +63,7 @@ Set it globally: `Preferences > Settings - User`
 }
 ```
 
-Set it per project: `Project > Edit Project`
+Or per project: `Project > Edit Project`
 
 ```json
 {
@@ -74,13 +73,13 @@ Set it per project: `Project > Edit Project`
 }
 ```
 
-##### Multiple projects paths
+#### Multiple projects paths
 
-A PATH separator (':' for POSIX or ';' for Windows) can be used to set multiple paths e.g. `"~/projects:~/work:~/src"`.
+A `PATH` separator (':' for POSIX or ';' for Windows) can be used to set multiple paths e.g. `"~/projects:~/work:~/src"`.
 
-##### PROJECTS_PATH environment variable
+#### PROJECTS_PATH environment variable
 
-A PROJECTS_PATH environment variable can be used to set the projects path e.g. on Linux edit `~/.profile` (requires system restart) with `export PROJECTS_PATH=~/projects`.
+A `PROJECTS_PATH` environment variable can be used to set the projects path e.g. on Linux edit `~/.profile` (requires system restart) with `export PROJECTS_PATH=~/projects`.
 
 #### Projects Depth
 
@@ -88,7 +87,7 @@ By default projects are listed as *"2-FOLDER-DEEP"* structures like the `Usernam
 
 If you prefer to organise your projects at a single level within your projects path then you can set projects depth setting to `1`. It defaults to `2`.
 
-Set it globally: `Preferences > Settings - User`
+`Preferences > Settings - User`
 
 ```json
 {
@@ -96,7 +95,7 @@ Set it globally: `Preferences > Settings - User`
 }
 ```
 
-Set it per project: `Project > Edit Project`
+`Project > Edit Project`
 
 ```json
 {
@@ -114,7 +113,7 @@ Here is an example of custom Open Sesame commands for a specific path (in this c
 
 (Find the User directory via `Menu > Preferences > Browse Packages`)
 
-```
+```json
 [
     {
         "caption": "Open Sesame: Open Vendor",
