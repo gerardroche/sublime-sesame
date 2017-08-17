@@ -3,19 +3,23 @@ import glob
 import re
 import subprocess
 
+from sublime import Window
+from sublime import set_timeout_async
+from sublime import active_window
+from sublime import executable_path
+from sublime import status_message
+from sublime import platform
+from sublime_plugin import WindowCommand
 
-import sublime
-import sublime_plugin
 
-
-class OpenSesameCommand(sublime_plugin.WindowCommand):
+class OpenSesameCommand(WindowCommand):
 
     def run(self, path=None):
-        self.folders = find_folders(path)
+        self.folders = _find_folders(path)
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
-            sublime.status_message('Open Sesame: no projects found')
+            status_message('Open Sesame: no projects found')
 
     def on_done(self, index):
         if index == -1:
@@ -25,12 +29,12 @@ class OpenSesameCommand(sublime_plugin.WindowCommand):
         folder_projects = glob.glob(folder + '/*.sublime-project')
 
         if len(folder_projects) == 1 and os.path.isfile(folder_projects[0]):
-            subl_open_project_in_new_window(folder_projects[0])
+            _subl_open_project_in_new_window(folder_projects[0])
         elif os.path.isdir(folder):
-            subl_open_folder_in_new_window(folder)
+            _subl_open_folder_in_new_window(folder)
 
 
-class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
+class OpenSesameAddFolderCommand(WindowCommand):
 
     def run(self, path=None):
         # Exclude folders that already exist
@@ -49,24 +53,24 @@ class OpenSesameAddFolderCommand(sublime_plugin.WindowCommand):
                             existing_folders.append(folder_path)
 
         self.folders = []
-        for folder in find_folders(path):
+        for folder in _find_folders(path):
             if folder[1] not in existing_folders:
                 self.folders.append(folder)
 
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
-            sublime.status_message('Open Sesame: no projects found')
+            status_message('Open Sesame: no projects found')
 
     def on_done(self, index):
         if index == -1:
             return
 
-        subl_add_folder(self.window, self.folders[index][1])
+        _subl_add_folder(self.window, self.folders[index][1])
 
 
-def find_folders(base_path=None):
-    base_path = get_setting('open-sesame.projects_path', base_path)
+def _find_folders(base_path=None):
+    base_path = _get_setting('open-sesame.projects_path', base_path)
 
     if not base_path:
         base_path = os.getenv('PROJECTS_PATH')
@@ -81,13 +85,14 @@ def find_folders(base_path=None):
         if not os.path.isdir(path):
             raise ValueError("{path} must be a valid directory".format(path=path))
 
-    folders = glob_paths(paths)
+    folders = _glob_paths(paths)
     folders.sort()
+
     return folders
 
 
-def get_setting(key, default):
-    window = sublime.active_window()
+def _get_setting(key, default):
+    window = active_window()
     if window:
         view = window.active_view()
         if view:
@@ -96,28 +101,29 @@ def get_setting(key, default):
     return default
 
 
-def flatten_once(array_of_arrays):
+def _flatten_once(array_of_arrays):
     return [item for array in array_of_arrays for item in array]
 
 
-def glob_paths(paths):
-    globs = [glob_path(path) for path in paths]
-    folders = flatten_once(globs)
+def _glob_paths(paths):
+    globs = [_glob_path(path) for path in paths]
+    folders = _flatten_once(globs)
+
     return folders
 
 
-def glob_path(base_path, depth=2):
-    depth = get_setting('open-sesame.projects_depth', depth)
+def _glob_path(base_path, depth=2):
+    depth = _get_setting('open-sesame.projects_depth', depth)
 
     if depth == 1:
         glob_pattern = base_path + '/*/'
-        if sublime.platform() == 'windows':
+        if platform() == 'windows':
             folder_match_pattern = '^.*\\\\([a-zA-Z0-9 \\|\\._-]+)\\\\$'
         else:
             folder_match_pattern = '^.*\\/([a-zA-Z0-9 \\|\\._-]+)\\/$'
     else:
         glob_pattern = base_path + '/*/*/'
-        if sublime.platform() == 'windows':
+        if platform() == 'windows':
             folder_match_pattern = '^.*\\\\([a-zA-Z0-9 \\|\\._-]+\\\\[a-zA-Z0-9  \\|\\._-]+)\\\\$'
         else:
             folder_match_pattern = '^.*\\/([a-zA-Z0-9 \\|\\._-]+\\/[a-zA-Z0-9 \\|\\._-]+)\\/$'
@@ -135,7 +141,7 @@ def glob_path(base_path, depth=2):
     return folders
 
 
-def subl_open_project_in_new_window(sublime_project_file):
+def _subl_open_project_in_new_window(sublime_project_file):
     if not sublime_project_file:
         return
 
@@ -148,7 +154,7 @@ def subl_open_project_in_new_window(sublime_project_file):
     subl_async(['--new-window', '--project', sublime_project_file])
 
 
-def subl_open_folder_in_new_window(folder):
+def _subl_open_folder_in_new_window(folder):
     if not folder:
         return
 
@@ -158,8 +164,8 @@ def subl_open_folder_in_new_window(folder):
     subl_async(['--new-window', folder])
 
 
-def subl_add_folder(window, folder):
-    if not isinstance(window, sublime.Window):
+def _subl_add_folder(window, folder):
+    if not isinstance(window, Window):
         return
 
     if not folder:
@@ -202,12 +208,13 @@ def subl_add_folder(window, folder):
 
 
 def subl_async(args=[]):
-    sublime.set_timeout_async(lambda: subl(args))
+    set_timeout_async(lambda: subl(args))
 
 
 def subl(args=[]):
-    executable_path = sublime.executable_path()
-    if sublime.platform() == 'osx':
-        app_path = executable_path[:executable_path.rfind('.app/') + 5]
-        executable_path = app_path + 'Contents/SharedSupport/bin/subl'
-    subprocess.Popen([executable_path] + args)
+    path = executable_path()
+    if platform() == 'osx':
+        app_path = path[:path.rfind('.app/') + 5]
+        path = app_path + 'Contents/SharedSupport/bin/subl'
+
+    subprocess.Popen([path] + args)
