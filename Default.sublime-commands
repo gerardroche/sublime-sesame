@@ -4,7 +4,7 @@
         "command": "open_sesame"
     },
     {
-        "caption": "Open Sesame: Add Project Folder",
+        "caption": "Open Sesame: Add Project",
         "command": "open_sesame_add_folder"
     }
 ]
