@@ -4,6 +4,10 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ## Unreleased
 
+### Added
+
+* Added: Remove Folder command
+
 ### Deprecated
 
 * Deprecated: `open_sesame` command; use `open_sesame_open_project` instead

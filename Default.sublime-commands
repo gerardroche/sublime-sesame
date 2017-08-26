@@ -6,5 +6,9 @@
     {
         "caption": "Open Sesame: Open Project",
         "command": "open_sesame_open_project"
+    },
+    {
+        "caption": "Open Sesame: Remove Folder",
+        "command": "open_sesame_remove_folder"
     }
 ]

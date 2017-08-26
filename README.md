@@ -38,6 +38,7 @@ Command Palette | Command | Description
 --------------- | ------- | -----------
 Open Sesame: Add Project | `open_sesame_add_project` | Add a project to the current window
 Open Sesame: Open Project | `open_sesame_open_project` | Open a project in a new window
+Open Sesame: Remove Folder | `open_sesame_remove_folder` | Remove a folder from the current window
 
 ## Key bindings
 

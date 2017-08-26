@@ -86,6 +86,21 @@ class OpenSesameAddFolderCommand(OpenSesameAddProjectCommand):
         super().run(*args, **kwargs)
 
 
+class OpenSesameRemoveFolderCommand(WindowCommand):
+
+    def run(self, *args, **kwargs):
+        self.folders = self.window.folders()
+        self.window.show_quick_panel(self.folders, self.on_done)
+
+    def on_done(self, index):
+        if index == -1:
+            return
+
+        self.window.run_command('remove_folder', {
+            'dirs': [self.folders[index]]
+        })
+
+
 def _status_message(msg):
     status_message('open-sesame:' + msg)
 
