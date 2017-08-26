@@ -2,6 +2,12 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## Unreleased
+
+### Deprecated
+
+* Deprecated: `open_sesame_add_folder` command; use `open_sesame_add_project` instead
+
 ## [1.5.7] - 2017-08-26
 
 ### Fixed

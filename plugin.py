@@ -34,9 +34,9 @@ class OpenSesameCommand(WindowCommand):
             _subl_open_folder_in_new_window(folder)
 
 
-class OpenSesameAddFolderCommand(WindowCommand):
+class OpenSesameAddProjectCommand(WindowCommand):
 
-    def run(self, path=None):
+    def run(self, path=None, *args, **kwargs):
         # Exclude folders that already exist
         existing_folders = []
         project_data = self.window.project_data()
@@ -71,8 +71,21 @@ class OpenSesameAddFolderCommand(WindowCommand):
         _subl_add_folder(self.window, self.folders[index][1])
 
 
+# DEPRECATED Remove in v2.0.0
+class OpenSesameAddFolderCommand(OpenSesameAddProjectCommand):
+
+    def run(self, *args, **kwargs):
+        _message('***DEPRECATED*** \'open_sesame_add_folder\' command is deprecated; use \'open_sesame_add_project\'')
+        super().run(*args, **kwargs)
+
+
 def _status_message(msg):
     status_message('open-sesame:' + msg)
+
+
+def _message(msg):
+    _status_message(msg)
+    print('open-sesame: ' + msg)
 
 
 def _find_folders(base_path=None):

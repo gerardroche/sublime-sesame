@@ -36,7 +36,7 @@ The preferred method of installation is [Package Control](https://packagecontrol
 
 Command Palette | Command | Description
 --------------- | ------- | -----------
-Open Sesame: Add Project | `open_sesame_add_folder` | Add a project to the current window
+Open Sesame: Add Project | `open_sesame_add_project` | Add a project to the current window
 Open Sesame: Open Project | `open_sesame` | Open a project in a new window
 
 ## Key bindings
@@ -122,7 +122,7 @@ Edit `User/Default.sublime-commands` (create the file if it doesn't already exis
     },
     {
         "caption": "Open Sesame: Add Vendor",
-        "command": "open_sesame_add_folder",
+        "command": "open_sesame_add_project",
         "args": { "path": "~/vendor" }
     }
 ]
