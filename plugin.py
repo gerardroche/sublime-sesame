@@ -19,7 +19,7 @@ class OpenSesameCommand(WindowCommand):
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
-            status_message('Open Sesame: no projects found')
+            _status_message('no projects found')
 
     def on_done(self, index):
         if index == -1:
@@ -60,13 +60,17 @@ class OpenSesameAddFolderCommand(WindowCommand):
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
-            status_message('Open Sesame: no projects found')
+            _status_message('no projects found')
 
     def on_done(self, index):
         if index == -1:
             return
 
         _subl_add_folder(self.window, self.folders[index][1])
+
+
+def _status_message(msg):
+    status_message('open-sesame:' + msg)
 
 
 def _find_folders(base_path=None):
@@ -151,7 +155,7 @@ def _subl_open_project_in_new_window(sublime_project_file):
     if not os.path.isfile(sublime_project_file):
         return
 
-    subl_async(['--new-window', '--project', sublime_project_file])
+    _subl_async(['--new-window', '--project', sublime_project_file])
 
 
 def _subl_open_folder_in_new_window(folder):
@@ -161,7 +165,7 @@ def _subl_open_folder_in_new_window(folder):
     if not os.path.isdir(folder):
         return
 
-    subl_async(['--new-window', folder])
+    _subl_async(['--new-window', folder])
 
 
 def _subl_add_folder(window, folder):
@@ -207,11 +211,11 @@ def _subl_add_folder(window, folder):
     window.set_project_data(project_data)
 
 
-def subl_async(args=[]):
-    set_timeout_async(lambda: subl(args))
+def _subl_async(args=[]):
+    set_timeout_async(lambda: _subl(args))
 
 
-def subl(args=[]):
+def _subl(args=[]):
     path = executable_path()
     if platform() == 'osx':
         app_path = path[:path.rfind('.app/') + 5]
