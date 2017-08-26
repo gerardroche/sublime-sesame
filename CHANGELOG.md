@@ -2,6 +2,12 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.5.7] - 2017-08-26
+
+### Fixed
+
+* Fixed: Projects depth setting (regression)
+
 ## [1.5.6] - 2017-08-26
 
 ### Fixed
@@ -153,6 +159,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial import
 
+[1.5.7]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.6...1.5.7
 [1.5.6]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.5...1.5.6
 [1.5.5]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.4...1.5.5
 [1.5.4]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.3...1.5.4
