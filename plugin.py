@@ -76,7 +76,8 @@ def _status_message(msg):
 
 
 def _find_folders(base_path=None):
-    base_path = _get_setting('open-sesame.projects_path', base_path)
+    if not base_path:
+        base_path = _get_setting('open-sesame.projects_path')
 
     if not base_path:
         base_path = os.getenv('PROJECTS_PATH')
@@ -97,7 +98,7 @@ def _find_folders(base_path=None):
     return folders
 
 
-def _get_setting(key, default):
+def _get_setting(key, default=None):
     window = active_window()
     if window:
         view = window.active_view()
