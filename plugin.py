@@ -101,6 +101,22 @@ class OpenSesameRemoveFolderCommand(WindowCommand):
         })
 
 
+class OpenSesameSwitchProjectCommand(OpenSesameOpenProjectCommand):
+
+    def on_done(self, index):
+        super().on_done(index)
+
+        if index == -1:
+            return
+
+        # TODO There's got to be a better way to switch projects
+        # TODO The sidebar moves/jitters when switching projects
+
+        self.window.run_command('close_workspace')
+        self.window.run_command('close_project')
+        self.window.run_command('close_all')
+
+
 def _status_message(msg):
     status_message('open-sesame:' + msg)
 

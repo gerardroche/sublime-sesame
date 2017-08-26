@@ -6,6 +6,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Added
 
+* Added: Switch Project command
 * Added: Remove Folder command
 
 ### Deprecated
