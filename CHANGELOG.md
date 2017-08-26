@@ -2,6 +2,10 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+### Fixed
+
+* Fixed: Edge case exception raised when no projects found
+
 ## [1.5.5] - 2017-06-03
 
 ### Fixed

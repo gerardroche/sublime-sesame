@@ -53,9 +53,11 @@ class OpenSesameAddFolderCommand(WindowCommand):
                             existing_folders.append(folder_path)
 
         self.folders = []
-        for folder in _find_folders(path):
-            if folder[1] not in existing_folders:
-                self.folders.append(folder)
+        folders = _find_folders(path)
+        if folders:
+            for folder in folders:
+                if folder[1] not in existing_folders:
+                    self.folders.append(folder)
 
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
