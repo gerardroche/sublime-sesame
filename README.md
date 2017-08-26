@@ -51,17 +51,17 @@ OS X | Windows / Linux | Description
 
 Key | Description | Type | Default
 ----|-------------|------|--------
+`open-sesame.depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
 `open-sesame.keymaps` | Enable the default keymaps. | `boolean` | `true`
-`open-sesame.projects_depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
-`open-sesame.projects_path` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
+`open-sesame.path` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
 
-### Projects path
+### Path
 
 `Preferences > Settings`
 
 ```json
 {
-    "open-sesame.projects_path": "~/projects"
+    "open-sesame.path": "~/projects"
 }
 ```
 
@@ -70,12 +70,12 @@ Key | Description | Type | Default
 ```json
 {
     "settings": {
-        "open-sesame.projects_path": "~/projects"
+        "open-sesame.path": "~/projects"
     }
 }
 ```
 
-#### Projects Depth
+#### Depth
 
 The default depth is `2` which means that projects are listed using the pattern `*/*` e.g. `your/project`.
 
@@ -85,7 +85,7 @@ If you prefer to organise your projects at a single level, set the depth to `1`.
 
 ```json
 {
-    "open-sesame.projects_depth": 1
+    "open-sesame.depth": 1
 }
 ```
 
@@ -94,14 +94,14 @@ If you prefer to organise your projects at a single level, set the depth to `1`.
 ```json
 {
     "settings": {
-        "open-sesame.projects_depth": 1
+        "open-sesame.depth": 1
     }
 }
 ```
 
 #### Multiple paths
 
-A `PATH` separator (':' for POSIX or ';' for Windows) can be used to set multiple paths e.g. `"~/projects:~/work:~/src"`.
+Multiple paths can be set using a `PATH` separator (':' for POSIX or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
 
 #### PROJECTS_PATH environment variable
 

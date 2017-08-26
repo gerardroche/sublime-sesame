@@ -1,32 +1,18 @@
 {
-    // Number of levels deep to look for projects within projects path.
+    // A depth of `2` (the default) means that your projects are listed using
+    // the pattern `*/*` e.g. `your/project`.
     //
-    // Supported values are 1 and 2.
-    //
-    // 1 is equivalent to path/*
-    // 2 is path/*/*
-    //
-    // By default projects are listed as "2-folder" deep structures
-    // (`path/*/*`) and are listed in the format `*/*` (like a
-    // `Username/Repository` part of a GitHub URL).
-    //
-    // If you prefer to organise your projects at a single level under
-    // projects path i.e. `path/*`, then set projects depth to 1.
-    "open-sesame.projects_depth": 2,
+    // If you prefer to organise your projects at a single level, set the depth
+    // to `1`.
+    "open-sesame.depth": 2,
 
     // Enable the default keymaps.
     "open-sesame.keymaps": true,
 
     // // Location of your projects.
     // //
-    // // # Multiple paths
+    // // Multiple paths can be set using a `PATH` separator (':' for POSIX
+    // // or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
     // //
-    // // A PATH separator (':' for POSIX or ';' for Windows) can be used to set
-    // // multiple locations e.g. "~/projects:~/work:~/src".
-    // //
-    // // A PROJECTS_PATH environment variable can be used to set the projects
-    // // path e.g. on Linux edit `~/profile` (requires system restart) with
-    // // `export PROJECTS_PATH=~/projects`.
-    // //
-    // "open-sesame.projects_path": "~/projects"
+    // "open-sesame.path": "~/projects"
 }

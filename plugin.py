@@ -3,12 +3,14 @@ import glob
 import re
 import subprocess
 
-from sublime import Window
-from sublime import set_timeout_async
 from sublime import active_window
 from sublime import executable_path
-from sublime import status_message
+from sublime import load_settings
 from sublime import platform
+from sublime import save_settings
+from sublime import set_timeout_async
+from sublime import status_message
+from sublime import Window
 from sublime_plugin import WindowCommand
 
 
@@ -128,7 +130,17 @@ def _message(msg):
 
 def _find_folders(base_path=None):
     if not base_path:
-        base_path = _get_setting('open-sesame.projects_path')
+        base_path = _get_setting('open-sesame.path')
+        if not base_path:  # DEPRECATED To be removed in v2.0.0
+            base_path = _get_setting('open-sesame.projects_path')
+            if base_path:
+                settings = load_settings('Preferences.sublime-settings')
+                settings.set('open-sesame.path', base_path)
+                settings.erase('open-sesame.projects_path')
+                save_settings('Preferences.sublime-settings')
+                _message(
+                    'updated deprecated settting '
+                    '\'open-sesame.projects_path\' to \'open-sesame.path\'')
 
     if not base_path:
         base_path = os.getenv('PROJECTS_PATH')
@@ -170,8 +182,18 @@ def _glob_paths(paths):
     return folders
 
 
-def _glob_path(base_path, depth=2):
-    depth = _get_setting('open-sesame.projects_depth', depth)
+def _glob_path(base_path):
+    depth = _get_setting('open-sesame.projects_depth')
+    if depth:  # DEPRECATED To be removed in v2.0.0
+        settings = load_settings('Preferences.sublime-settings')
+        settings.set('open-sesame.depth', depth)
+        settings.erase('open-sesame.projects_depth')
+        save_settings('Preferences.sublime-settings')
+        _message(
+            'updated deprecated settting '
+            '\'open-sesame.projects_depth\' to \'open-sesame.depth\'')
+
+    depth = _get_setting('open-sesame.depth')
 
     if depth == 1:
         glob_pattern = base_path + '/*/'
