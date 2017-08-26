@@ -1,10 +1,10 @@
 [
     {
-        "caption": "Open Sesame: Open Project",
-        "command": "open_sesame"
-    },
-    {
         "caption": "Open Sesame: Add Project",
         "command": "open_sesame_add_folder"
+    },
+    {
+        "caption": "Open Sesame: Open Project",
+        "command": "open_sesame"
     }
 ]
