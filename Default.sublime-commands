@@ -5,6 +5,6 @@
     },
     {
         "caption": "Open Sesame: Open Project",
-        "command": "open_sesame"
+        "command": "open_sesame_open_project"
     }
 ]

@@ -12,9 +12,9 @@ from sublime import platform
 from sublime_plugin import WindowCommand
 
 
-class OpenSesameCommand(WindowCommand):
+class OpenSesameOpenProjectCommand(WindowCommand):
 
-    def run(self, path=None):
+    def run(self, path=None, *args, **kwargs):
         self.folders = _find_folders(path)
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
@@ -32,6 +32,13 @@ class OpenSesameCommand(WindowCommand):
             _subl_open_project_in_new_window(folder_projects[0])
         elif os.path.isdir(folder):
             _subl_open_folder_in_new_window(folder)
+
+
+# DEPRECATED Remove in v2.0.0
+class OpenSesameCommand(OpenSesameOpenProjectCommand):
+    def run(self, *args, **kwargs):
+        _message('***DEPRECATED*** \'open_sesame\' command is deprecated; use \'open_sesame_open_project\'')
+        super().run(*args, **kwargs)
 
 
 class OpenSesameAddProjectCommand(WindowCommand):

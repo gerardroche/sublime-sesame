@@ -1,7 +1,7 @@
 [
     {
         "keys": ["super+alt+o"],
-        "command": "open_sesame",
+        "command": "open_sesame_open_project",
         "context": [
             {
                 "key": "setting.open-sesame.keymaps"
