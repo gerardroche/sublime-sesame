@@ -2,7 +2,7 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## Unreleased
+## [1.6.0] - 2017-08-27
 
 ### Added
 
@@ -174,6 +174,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial import
 
+[1.6.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.7...1.6.0
 [1.5.7]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.6...1.5.7
 [1.5.6]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.5...1.5.6
 [1.5.5]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.4...1.5.5

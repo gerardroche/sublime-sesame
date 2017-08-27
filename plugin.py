@@ -14,35 +14,6 @@ from sublime import Window
 from sublime_plugin import WindowCommand
 
 
-class OpenSesameOpenProjectCommand(WindowCommand):
-
-    def run(self, path=None, *args, **kwargs):
-        self.folders = _find_folders(path)
-        if self.folders:
-            self.window.show_quick_panel(self.folders, self.on_done)
-        else:
-            _status_message('no projects found')
-
-    def on_done(self, index):
-        if index == -1:
-            return
-
-        folder = self.folders[index][1]
-        folder_projects = glob.glob(folder + '/*.sublime-project')
-
-        if len(folder_projects) == 1 and os.path.isfile(folder_projects[0]):
-            _subl_open_project_in_new_window(folder_projects[0])
-        elif os.path.isdir(folder):
-            _subl_open_folder_in_new_window(folder)
-
-
-# DEPRECATED Remove in v2.0.0
-class OpenSesameCommand(OpenSesameOpenProjectCommand):
-    def run(self, *args, **kwargs):
-        _message('***DEPRECATED*** \'open_sesame\' command is deprecated; use \'open_sesame_open_project\'')
-        super().run(*args, **kwargs)
-
-
 class OpenSesameAddProjectCommand(WindowCommand):
 
     def run(self, path=None, *args, **kwargs):
@@ -85,6 +56,35 @@ class OpenSesameAddFolderCommand(OpenSesameAddProjectCommand):
 
     def run(self, *args, **kwargs):
         _message('***DEPRECATED*** \'open_sesame_add_folder\' command is deprecated; use \'open_sesame_add_project\'')
+        super().run(*args, **kwargs)
+
+
+class OpenSesameOpenProjectCommand(WindowCommand):
+
+    def run(self, path=None, *args, **kwargs):
+        self.folders = _find_folders(path)
+        if self.folders:
+            self.window.show_quick_panel(self.folders, self.on_done)
+        else:
+            _status_message('no projects found')
+
+    def on_done(self, index):
+        if index == -1:
+            return
+
+        folder = self.folders[index][1]
+        folder_projects = glob.glob(folder + '/*.sublime-project')
+
+        if len(folder_projects) == 1 and os.path.isfile(folder_projects[0]):
+            _subl_open_project_in_new_window(folder_projects[0])
+        elif os.path.isdir(folder):
+            _subl_open_folder_in_new_window(folder)
+
+
+# DEPRECATED Remove in v2.0.0
+class OpenSesameCommand(OpenSesameOpenProjectCommand):
+    def run(self, *args, **kwargs):
+        _message('***DEPRECATED*** \'open_sesame\' command is deprecated; use \'open_sesame_open_project\'')
         super().run(*args, **kwargs)
 
 
