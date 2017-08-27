@@ -4,18 +4,34 @@ Add, open, remove, switch, and manage projects and folders, using the command pa
 
 [![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-open-sesame/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat-square)](https://packagecontrol.io/packages/open-sesame) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
 
+
+Set the location of your projects:
+
+`Preferences > Settings`
+
+```json
+{
+    "open-sesame.path": "~/projects"
+}
+```
+
 ![Command palette screenshot](screenshot-a.png)
+
+Adding, opening, or switching a project will prompt an overlay for you to select a project.
+
+By default your projects are listed in the format `your/project`.
+
 ![Overlay screenshot](screenshot-b.png)
 
-## OVERVIEW
+If you prefer to organise your projects at a single level then set the depth to `1`:
 
-* [Installation](#installation)
-* [Commands](#commands)
-* [Keybindings](#key-bindings)
-* [Configuration](#configuration)
-* [Contributing](#contributing)
-* [Changelog](#changelog)
-* [License](#license)
+`Preferences > Settings`
+
+```json
+{
+    "open-sesame.depth": 1
+}
+```
 
 ## INSTALLATION
 
