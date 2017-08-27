@@ -59,9 +59,26 @@ Open Sesame: Switch Project | `open_sesame_switch_project` | Add a project to th
 
 ## Key bindings
 
-OS X | Windows / Linux | Description
------|-----------------|------------
-`Super+Alt+o` | `Ctrl+Alt+o` | Open Sesame: Open Project
+Windows / Linux | OSX | Description
+--------------- | --- | -----------
+`Ctrl+Alt+O` | `Super+Alt+O` | Open Sesame: Open Project
+
+Add your preferred key bindings:
+
+`Menu > Preferences > Key Bindings`
+
+```json
+[
+    { "keys": ["ctrl+alt+a"], "command": "open_sesame_add_project" },
+    { "keys": ["ctrl+alt+o"], "command": "open_sesame_open_project" },
+    { "keys": ["ctrl+alt+r"], "command": "open_sesame_remove_folder" },
+    { "keys": ["ctrl+alt+s"], "command": "open_sesame_switch_project" },
+]
+```
+
+On Ubuntu you may have conflict issues with key bindings such as `ctrl+alt+s` that may be mapped to something like the system `toggle-shaded` window command. You can clear the system keybinding with a command at terminal. If you have issues with key bindings on Ubuntu, ping me on twitter and I'll do my best to help you resolve it.
+
+    $ gsettings set org.gnome.desktop.wm.keybindings toggle-shaded "[]"
 
 ## Configuration
 

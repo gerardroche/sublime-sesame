@@ -9,6 +9,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 * Added: Switch Project command
 * Added: Remove Folder command
 * Doc: Setup guide
+* Doc: Setup key bindings
 
 ### Deprecated
 
