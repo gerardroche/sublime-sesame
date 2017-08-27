@@ -13,7 +13,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Deprecated
 
-* Deprecated: `projects_path` and `projects_depth` settings; renamed to `path` and `depth` respectively; existing settings are auto migrated to the new settings so there is nothing for you do.
+* Deprecated: `projects_path` and `projects_depth` settings; renamed to `path` and `depth` respectively; existing settings are auto migrated to the new settings so there is nothing for you to do.
 * Deprecated: `open_sesame` command; use `open_sesame_open_project` instead
 * Deprecated: `open_sesame_add_folder` command; use `open_sesame_add_project` instead
 
