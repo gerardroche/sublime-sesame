@@ -2,6 +2,12 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.7.0] - 2017-09-15
+
+### Added
+
+* Added [#7](https://github.com/gerardroche/sublime-open-sesame/issues/7): Option to only include version controlled projects e.g. Git, Mercurial, Subversion
+
 ## [1.6.0] - 2017-08-27
 
 ### Added
@@ -174,6 +180,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial import
 
+[1.7.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.7...1.6.0
 [1.5.7]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.6...1.5.7
 [1.5.6]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.5...1.5.6

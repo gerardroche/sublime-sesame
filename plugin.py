@@ -218,6 +218,18 @@ def _glob_path(base_path):
             if folder_struct not in folders:
                 folders.append(folder_struct)
 
+    if _get_setting('open-sesame.vcs'):
+        vcs_items = []
+        vcs_candidates = ['.git', '.hg', '.svn', 'CVS']
+        for name, path in folders:
+            for candidate in vcs_candidates:
+                vcs_marker_file = os.path.join(path, candidate)
+                if os.path.exists(vcs_marker_file):
+                    vcs_items.append([name, path])
+                    break
+
+        folders = vcs_items
+
     return folders
 
 

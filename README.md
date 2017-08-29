@@ -19,11 +19,11 @@ Set the location of your projects:
 
 Adding, opening, or switching a project will prompt an overlay for you to select a project.
 
-By default your projects are listed in the format `your/project`.
+Projects are listed in the format `x/y` by default:
 
 ![Overlay screenshot](screenshot-b.png)
 
-If you prefer to organise your projects at a single level then set the depth to `1`:
+If you prefer to organise your projects at a single level then set depth to `1`:
 
 `Preferences > Settings`
 
@@ -48,7 +48,7 @@ The preferred method of installation is [Package Control](https://packagecontrol
     * Windows: `git clone https://github.com/gerardroche/sublime-open-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/open-sesame`
 3. Done!
 
-## Commands
+## COMMANDS
 
 Command Palette | Command | Description
 --------------- | ------- | -----------
@@ -57,7 +57,7 @@ Open Sesame: Open Project | `open_sesame_open_project` | Open a project in a new
 Open Sesame: Remove Folder | `open_sesame_remove_folder` | Remove a folder from the current window
 Open Sesame: Switch Project | `open_sesame_switch_project` | Add a project to the current window
 
-## Key bindings
+## KEY BINDINGS
 
 Windows / Linux | OSX | Description
 --------------- | --- | -----------
@@ -80,13 +80,14 @@ On Ubuntu you may have conflict issues with key bindings such as `ctrl+alt+s` th
 
     $ gsettings set org.gnome.desktop.wm.keybindings toggle-shaded "[]"
 
-## Configuration
+## CONFIGURATION
 
 Key | Description | Type | Default
 ----|-------------|------|--------
 `open-sesame.depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
 `open-sesame.keymaps` | Enable the default keymaps. | `boolean` | `true`
 `open-sesame.path` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
+`open-sesame.vcs` | Include only version controlled projects e.g. Git, Mercurial, Subversion | `boolean` | `false`
 
 ### Path
 
@@ -140,7 +141,7 @@ Multiple paths can be set using a `PATH` separator (':' for POSIX or ';' for Win
 
 A `PROJECTS_PATH` environment variable can be used to set the default path e.g. on Linux edit `~/.profile` (requires system restart) with `export PROJECTS_PATH=~/projects`.
 
-#### Custom Commands
+#### Additional custom commands
 
 Example of creating some custom commands for `~/vendor` path.
 

@@ -14,5 +14,9 @@
     // // Multiple paths can be set using a `PATH` separator (':' for POSIX
     // // or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
     // //
-    // "open-sesame.path": "~/projects"
+    // "open-sesame.path": "~/projects",
+
+    // Enable include only version controlled projects e.g. Git, Mercurial,
+    // Subversion.
+    "open-sesame.vcs": false
 }
