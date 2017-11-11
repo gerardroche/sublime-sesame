@@ -14,7 +14,7 @@ from sublime import Window
 from sublime_plugin import WindowCommand
 
 
-class OpenSesameAddProjectCommand(WindowCommand):
+class SesameAddCommand(WindowCommand):
 
     def run(self, path=None, *args, **kwargs):
         # Exclude folders that already exist
@@ -51,15 +51,7 @@ class OpenSesameAddProjectCommand(WindowCommand):
         _subl_add_folder(self.window, self.folders[index][1])
 
 
-# DEPRECATED Remove in v2.0.0
-class OpenSesameAddFolderCommand(OpenSesameAddProjectCommand):
-
-    def run(self, *args, **kwargs):
-        _message('***DEPRECATED*** \'open_sesame_add_folder\' command is deprecated; use \'open_sesame_add_project\'')
-        super().run(*args, **kwargs)
-
-
-class OpenSesameOpenProjectCommand(WindowCommand):
+class SesameOpenCommand(WindowCommand):
 
     def run(self, path=None, *args, **kwargs):
         self.folders = _find_folders(path)
@@ -81,14 +73,7 @@ class OpenSesameOpenProjectCommand(WindowCommand):
             _subl_open_folder_in_new_window(folder)
 
 
-# DEPRECATED Remove in v2.0.0
-class OpenSesameCommand(OpenSesameOpenProjectCommand):
-    def run(self, *args, **kwargs):
-        _message('***DEPRECATED*** \'open_sesame\' command is deprecated; use \'open_sesame_open_project\'')
-        super().run(*args, **kwargs)
-
-
-class OpenSesameRemoveFolderCommand(WindowCommand):
+class SesameRemoveCommand(WindowCommand):
 
     def run(self, *args, **kwargs):
         self.folders = self.window.folders()
@@ -103,47 +88,97 @@ class OpenSesameRemoveFolderCommand(WindowCommand):
         })
 
 
-class OpenSesameSwitchProjectCommand(OpenSesameOpenProjectCommand):
+class SesameSwitchCommand(SesameOpenCommand):
 
     def on_done(self, index):
         super().on_done(index)
-
         if index == -1:
             return
 
         # TODO There's got to be a better way to switch projects
         # TODO The sidebar moves/jitters when switching projects
-
         self.window.run_command('close_workspace')
         self.window.run_command('close_project')
         self.window.run_command('close_all')
 
 
+# DEPRECATED To be removed in v2.0.0
+class OpenSesameAddFolderCommand(SesameAddCommand):
+
+    def run(self, *args, **kwargs):
+        _message('***DEPRECATED*** \'open_sesame_add_folder\' command is deprecated; use \'sesame_add\' instead')
+        super().run(*args, **kwargs)
+
+
+# DEPRECATED To be remove in v2.0.0
+class OpenSesameAddProjectCommand(SesameAddCommand):
+    def run(self, *args, **kwargs):
+        _message('***DEPRECATED*** \'open_sesame_add_project\' command is deprecated; use \'sesame_add\' instead')
+        super().run(*args, **kwargs)
+
+
+# DEPRECATED To be removed in v2.0.0
+class OpenSesameOpenProjectCommand(SesameOpenCommand):
+    def run(self, *args, **kwargs):
+        _message('***DEPRECATED*** \'open_sesame_open_project\' command is deprecated; use \'sesame_open\' instead')
+        super().run(*args, **kwargs)
+
+
+# DEPRECATED To be removed in v2.0.0
+class OpenSesameCommand(OpenSesameOpenProjectCommand):
+    def run(self, *args, **kwargs):
+        _message('***DEPRECATED*** \'open_sesame\' command is deprecated; use \'sesame_open\' instead')
+        super().run(*args, **kwargs)
+
+
+# DEPRECATED To be removed in v2.0.0
+class OpenSesameRemoveFolderCommand(SesameRemoveCommand):
+    def run(self, *args, **kwargs):
+        _message('***DEPRECATED*** \'open_sesame_remove_folder\' command is deprecated; use \'sesame_remove\' instead')
+        super().run(*args, **kwargs)
+
+
+# DEPRECATED To be removed in v2.0.0
+class OpenSesameSwitchProjectCommand(SesameSwitchCommand):
+    def run(self, *args, **kwargs):
+        _message('***DEPRECATED*** \'open_sesame_switch_project\' command is deprecated; use \'sesame_switch\' instead')
+        super().run(*args, **kwargs)
+
+
 def _status_message(msg):
-    status_message('open-sesame:' + msg)
+    status_message('Sesame: ' + msg)
 
 
 def _message(msg):
     _status_message(msg)
-    print('open-sesame: ' + msg)
+    print('Sesame: ' + msg)
 
 
 def _find_folders(base_path=None):
     if not base_path:
-        base_path = _get_setting('open-sesame.path')
-        if not base_path:  # DEPRECATED To be removed in v2.0.0
-            base_path = _get_setting('open-sesame.projects_path')
+        base_path = _get_setting('sesame.path')
+
+        # Migrate old setting
+        # DEPRECATED To be removed in v2.0.0
+        if not base_path:
+            base_path = _get_setting('open-sesame.path')
             if base_path:
                 settings = load_settings('Preferences.sublime-settings')
-                settings.set('open-sesame.path', base_path)
-                settings.erase('open-sesame.projects_path')
+                settings.set('sesame.path', base_path)
+                settings.erase('open-sesame.path')
                 save_settings('Preferences.sublime-settings')
-                _message(
-                    'updated deprecated settting '
-                    '\'open-sesame.projects_path\' to \'open-sesame.path\'')
+                _message('updated deprecated settting \'open-sesame.path\' to \'sesame.path\'')
+            else:
+                base_path = _get_setting('open-sesame.projects_path')
+                if base_path:
+                    settings = load_settings('Preferences.sublime-settings')
+                    settings.set('sesame.path', base_path)
+                    settings.erase('open-sesame.projects_path')
+                    save_settings('Preferences.sublime-settings')
+                    _message('updated deprecated settting \'open-sesame.projects_path\' to \'sesame.path\'')
 
-    if not base_path:
-        base_path = os.getenv('PROJECTS_PATH')
+    # if not base_path:
+    #     base_path = os.getenv('PROJECTS_PATH')
 
     if not base_path:
         return None
@@ -183,15 +218,26 @@ def _glob_paths(paths):
 
 
 def _glob_path(base_path):
+
+    # Migrate old setting
+    # DEPRECATED To be removed in v2.0.0
     depth = _get_setting('open-sesame.projects_depth')
-    if depth:  # DEPRECATED To be removed in v2.0.0
+    if depth:
         settings = load_settings('Preferences.sublime-settings')
-        settings.set('open-sesame.depth', depth)
+        settings.set('sesame.depth', depth)
         settings.erase('open-sesame.projects_depth')
         save_settings('Preferences.sublime-settings')
-        _message(
-            'updated deprecated settting '
-            '\'open-sesame.projects_depth\' to \'open-sesame.depth\'')
+        _message('updated deprecated settting \'open-sesame.projects_depth\' to \'sesame.depth\'')
+
+    # Migrate old setting
+    # DEPRECATED To be removed in v2.0.0
+    depth = _get_setting('open-sesame.depth')
+    if depth:
+        settings = load_settings('Preferences.sublime-settings')
+        settings.set('sesame.depth', depth)
+        settings.erase('open-sesame.depth')
+        save_settings('Preferences.sublime-settings')
+        _message('updated deprecated settting \'open-sesame.depth\' to \'sesame.depth\'')
 
     depth = _get_setting('open-sesame.depth')
 
@@ -218,6 +264,16 @@ def _glob_path(base_path):
             if folder_struct not in folders:
                 folders.append(folder_struct)
 
+    # Migrate old setting
+    # DEPRECATED To be removed in v2.0.0
+    depth = _get_setting('open-sesame.vcs')
+    if depth:
+        settings = load_settings('Preferences.sublime-settings')
+        settings.set('sesame.vcs', depth)
+        settings.erase('open-sesame.vcs')
+        save_settings('Preferences.sublime-settings')
+        _message('updated deprecated settting \'open-sesame.vcs\' to \'sesame.vcs\'')
+
     if _get_setting('open-sesame.vcs'):
         vcs_items = []
         vcs_candidates = ['.git', '.hg', '.svn', 'CVS']
@@ -237,7 +293,7 @@ def _subl_open_project_in_new_window(sublime_project_file):
     if not sublime_project_file:
         return
 
-    if not re.match('^.+\.sublime-project$', sublime_project_file):
+    if not re.match('^.+\\.sublime-project$', sublime_project_file):
         return
 
     if not os.path.isfile(sublime_project_file):

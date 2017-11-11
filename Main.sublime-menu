@@ -6,12 +6,12 @@
                 "caption": "-"
             },
             {
-                "caption": "Open Sesame",
-                "mnemonic": "O",
+                "caption": "Sesame",
+                "mnemonic": "S",
                 "command": "show_overlay",
                 "args": {
                     "overlay": "command_palette",
-                    "text": "Open Sesame: "
+                    "text": "Sesame: "
                 }
             }
         ]
@@ -23,13 +23,13 @@
                 "id": "package-settings",
                 "children": [
                     {
-                        "caption": "Open Sesame",
+                        "caption": "Sesame",
                         "children": [
                             {
                                 "caption": "Settings – Default",
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/open-sesame/Preferences.sublime-settings"
+                                    "file": "${packages}/Sesame/Preferences.sublime-settings"
                                 }
                             },
                             {
@@ -46,7 +46,7 @@
                                 "caption": "Key Bindings – Default",
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/open-sesame/Default (${platform}).sublime-keymap"
+                                    "file": "${packages}/Sesame/Default (${platform}).sublime-keymap"
                                 }
                             },
                             {
@@ -63,21 +63,21 @@
                                 "caption": "README",
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/open-sesame/README.md"
+                                    "file": "${packages}/Sesame/README.md"
                                 }
                             },
                             {
                                 "caption": "CHANGELOG",
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/open-sesame/CHANGELOG.md"
+                                    "file": "${packages}/Sesame/CHANGELOG.md"
                                 }
                             },
                             {
                                 "caption": "LICENSE",
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/open-sesame/LICENSE"
+                                    "file": "${packages}/Sesame/LICENSE"
                                 }
                             }
                         ]

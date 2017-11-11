@@ -4,19 +4,19 @@
     //
     // If you prefer to organise your projects at a single level, set the depth
     // to `1`.
-    "open-sesame.depth": 2,
+    "sesame.depth": 2,
 
     // Enable the default keymaps.
-    "open-sesame.keymaps": true,
+    "sesame.keymaps": true,
 
     // // Location of your projects.
     // //
     // // Multiple paths can be set using a `PATH` separator (':' for POSIX
     // // or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
     // //
-    // "open-sesame.path": "~/projects",
+    // "sesame.path": "~/projects",
 
     // Enable include only version controlled projects e.g. Git, Mercurial,
     // Subversion.
-    "open-sesame.vcs": false
+    "sesame.vcs": false
 }

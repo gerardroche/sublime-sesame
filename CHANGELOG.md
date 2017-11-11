@@ -1,6 +1,22 @@
-# OPEN-SESAME CHANGELOG
+# SESAME CHANGELOG
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+
+## Unreleased
+
+### Changed
+
+* Changed: Renamed plugin name from "open-sesame" to "Sesame"
+
+### Deprecated
+
+* Deprecated: `open_sesame_add_folder` command; use `sesame_add` instead
+* Deprecated: `open_sesame_add_project` command; use `sesame_add` instead
+* Deprecated: `open_sesame_open_project` command; use `sesame_open` instead
+* Deprecated: `open_sesame_remove_folder` command; use `sesame_remove` instead
+* Deprecated: `open_sesame_switch_project` command; use `sesame_switch` instead
+* Deprecated: `open_sesame` command; use `sesame_open` instead
+* Deprecated: `open-sesame.*` settings; use `sesame.*` instead; existing settings are auto migrated to the new settings so there is nothing for you to do.
 
 ## [1.7.0] - 2017-09-15
 

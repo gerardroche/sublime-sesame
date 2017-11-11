@@ -1,9 +1,8 @@
-# WHAT OPEN SESAME IS
+# WHAT SESAME IS
 
-Add, open, remove, switch, and manage projects and folders, using the command palette and key bindings.
+Add, open, remove, switch, projects and folders, using the command palette and key bindings.
 
 [![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Stable Version](https://img.shields.io/github/tag/gerardroche/sublime-open-sesame.svg?style=flat-square&label=stable)](https://github.com/gerardroche/sublime-open-sesame/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-open-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-open-sesame/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/open-sesame.svg?style=flat-square)](https://packagecontrol.io/packages/open-sesame) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
-
 
 Set the location of your projects:
 
@@ -11,7 +10,7 @@ Set the location of your projects:
 
 ```json
 {
-    "open-sesame.path": "~/projects"
+    "sesame.path": "~/projects"
 }
 ```
 
@@ -29,7 +28,7 @@ If you prefer to organise your projects at a single level then set depth to `1`:
 
 ```json
 {
-    "open-sesame.depth": 1
+    "sesame.depth": 1
 }
 ```
 
@@ -42,26 +41,26 @@ The preferred method of installation is [Package Control](https://packagecontrol
 ### Manual installation
 
 1. Close Sublime Text.
-2. Download or clone this repository to a directory named `open-sesame` in the Sublime Text Packages directory:
-    * Linux: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/.config/sublime-text-3/Packages/open-sesame`
-    * OS X: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/open-sesame`
-    * Windows: `git clone https://github.com/gerardroche/sublime-open-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/open-sesame`
+2. Download or clone this repository to a directory named `Sesame` in the Sublime Text Packages directory:
+    * Linux: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/.config/sublime-text-3/Packages/Sesame`
+    * OS X: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/Sesame`
+    * Windows: `git clone https://github.com/gerardroche/sublime-open-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/Sesame`
 3. Done!
 
 ## COMMANDS
 
 Command Palette | Command | Description
 --------------- | ------- | -----------
-Open Sesame: Add Project | `open_sesame_add_project` | Add a project to the current window
-Open Sesame: Open Project | `open_sesame_open_project` | Open a project in a new window
-Open Sesame: Remove Folder | `open_sesame_remove_folder` | Remove a folder from the current window
-Open Sesame: Switch Project | `open_sesame_switch_project` | Add a project to the current window
+Sesame: Add Project | `sesame_add` | Add a project to the current window
+Sesame: Open Project | `sesame_open` | Open a project in a new window
+Sesame: Remove Folder | `sesame_remove` | Remove a folder from the current window
+Sesame: Switch Project | `sesame_switch` | Add a project to the current window
 
 ## KEY BINDINGS
 
 Windows / Linux | OSX | Description
 --------------- | --- | -----------
-`Ctrl+Alt+O` | `Super+Alt+O` | Open Sesame: Open Project
+`Ctrl+Alt+O` | `Super+Alt+O` | Sesame: Open Project
 
 Add your preferred key bindings:
 
@@ -69,10 +68,10 @@ Add your preferred key bindings:
 
 ```json
 [
-    { "keys": ["ctrl+alt+a"], "command": "open_sesame_add_project" },
-    { "keys": ["ctrl+alt+o"], "command": "open_sesame_open_project" },
-    { "keys": ["ctrl+alt+r"], "command": "open_sesame_remove_folder" },
-    { "keys": ["ctrl+alt+s"], "command": "open_sesame_switch_project" },
+    { "keys": ["ctrl+alt+a"], "command": "sesame_add" },
+    { "keys": ["ctrl+alt+o"], "command": "sesame_open" },
+    { "keys": ["ctrl+alt+r"], "command": "sesame_remove" },
+    { "keys": ["ctrl+alt+s"], "command": "sesame_switch" },
 ]
 ```
 
@@ -84,10 +83,10 @@ On Ubuntu you may have conflict issues with key bindings such as `ctrl+alt+s` th
 
 Key | Description | Type | Default
 ----|-------------|------|--------
-`open-sesame.depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
-`open-sesame.keymaps` | Enable the default keymaps. | `boolean` | `true`
-`open-sesame.path` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
-`open-sesame.vcs` | Include only version controlled projects e.g. Git, Mercurial, Subversion | `boolean` | `false`
+`sesame.depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
+`sesame.keymaps` | Enable the default keymaps. | `boolean` | `true`
+`sesame.path` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
+`sesame.vcs` | Include only version controlled projects e.g. Git, Mercurial, Subversion | `boolean` | `false`
 
 ### Path
 
@@ -95,7 +94,7 @@ Key | Description | Type | Default
 
 ```json
 {
-    "open-sesame.path": "~/projects"
+    "sesame.path": "~/projects"
 }
 ```
 
@@ -104,7 +103,7 @@ Key | Description | Type | Default
 ```json
 {
     "settings": {
-        "open-sesame.path": "~/projects"
+        "sesame.path": "~/projects"
     }
 }
 ```
@@ -119,7 +118,7 @@ If you prefer to organise your projects at a single level, set the depth to `1`.
 
 ```json
 {
-    "open-sesame.depth": 1
+    "sesame.depth": 1
 }
 ```
 
@@ -128,7 +127,7 @@ If you prefer to organise your projects at a single level, set the depth to `1`.
 ```json
 {
     "settings": {
-        "open-sesame.depth": 1
+        "sesame.depth": 1
     }
 }
 ```
@@ -152,18 +151,18 @@ Edit `User/Default.sublime-commands` (create the file if it doesn't already exis
 ```json
 [
     {
-        "caption": "Open Sesame: Open Vendor",
-        "command": "open_sesame_open_project",
+        "caption": "Sesame: Open Vendor",
+        "command": "sesame_open",
         "args": { "path": "~/vendor" }
     },
     {
-        "caption": "Open Sesame: Add Vendor",
-        "command": "open_sesame_add_project",
+        "caption": "Sesame: Add Vendor",
+        "command": "sesame_add",
         "args": { "path": "~/vendor" }
     },
     {
-        "caption": "Open Sesame: Switch Vendor",
-        "command": "open_sesame_switch_project",
+        "caption": "Sesame: Switch Vendor",
+        "command": "sesame_switch",
         "args": { "path": "~/vendor" }
     }
 ]
@@ -177,7 +176,7 @@ Add preferred key bindings:
 [
     {
         "keys": ["ctrl+alt+v"],
-        "command": "open_sesame_open_project",
+        "command": "sesame_open",
         "args": { "path": "~/vendor" }
     }
 ]
