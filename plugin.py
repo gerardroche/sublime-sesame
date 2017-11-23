@@ -177,8 +177,8 @@ def _find_folders(base_path=None):
                     save_settings('Preferences.sublime-settings')
                     _message('updated deprecated settting \'open-sesame.projects_path\' to \'sesame.path\'')
 
-    # if not base_path:
-    #     base_path = os.getenv('PROJECTS_PATH')
+    if not base_path:
+        base_path = os.getenv('PROJECTS_PATH')
 
     if not base_path:
         return None
