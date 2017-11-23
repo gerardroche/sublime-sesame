@@ -239,7 +239,7 @@ def _glob_path(base_path):
         save_settings('Preferences.sublime-settings')
         _message('updated deprecated settting \'open-sesame.depth\' to \'sesame.depth\'')
 
-    depth = _get_setting('open-sesame.depth')
+    depth = _get_setting('sesame.depth')
 
     if depth == 1:
         glob_pattern = base_path + '/*/'
