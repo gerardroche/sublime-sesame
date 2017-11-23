@@ -11,10 +11,10 @@ from sublime import save_settings
 from sublime import set_timeout_async
 from sublime import status_message
 from sublime import Window
-from sublime_plugin import WindowCommand
+import sublime_plugin
 
 
-class SesameAddCommand(WindowCommand):
+class SesameAddCommand(sublime_plugin.WindowCommand):
 
     def run(self, path=None, *args, **kwargs):
         # Exclude folders that already exist
@@ -51,7 +51,7 @@ class SesameAddCommand(WindowCommand):
         _subl_add_folder(self.window, self.folders[index][1])
 
 
-class SesameOpenCommand(WindowCommand):
+class SesameOpenCommand(sublime_plugin.WindowCommand):
 
     def run(self, path=None, *args, **kwargs):
         self.folders = _find_folders(path)
@@ -73,7 +73,7 @@ class SesameOpenCommand(WindowCommand):
             _subl_open_folder_in_new_window(folder)
 
 
-class SesameRemoveCommand(WindowCommand):
+class SesameRemoveCommand(sublime_plugin.WindowCommand):
 
     def run(self, *args, **kwargs):
         self.folders = self.window.folders()
