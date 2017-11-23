@@ -239,9 +239,7 @@ def _glob_path(base_path):
         save_settings('Preferences.sublime-settings')
         _message('updated deprecated settting \'open-sesame.depth\' to \'sesame.depth\'')
 
-    depth = _get_setting('sesame.depth')
-
-    if depth == 1:
+    if _get_setting('sesame.depth') == 1:
         glob_pattern = base_path + '/*/'
         if platform() == 'windows':
             folder_match_pattern = '^.*\\\\([a-zA-Z0-9 \\|\\._-]+)\\\\$'
@@ -266,10 +264,10 @@ def _glob_path(base_path):
 
     # Migrate old setting
     # DEPRECATED To be removed in v2.0.0
-    depth = _get_setting('open-sesame.vcs')
-    if depth:
+    vcs = _get_setting('open-sesame.vcs')
+    if vcs:
         settings = load_settings('Preferences.sublime-settings')
-        settings.set('sesame.vcs', depth)
+        settings.set('sesame.vcs', vcs)
         settings.erase('open-sesame.vcs')
         save_settings('Preferences.sublime-settings')
         _message('updated deprecated settting \'open-sesame.vcs\' to \'sesame.vcs\'')
