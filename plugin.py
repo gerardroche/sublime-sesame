@@ -274,7 +274,7 @@ def _glob_path(base_path):
         save_settings('Preferences.sublime-settings')
         _message('updated deprecated settting \'open-sesame.vcs\' to \'sesame.vcs\'')
 
-    if _get_setting('open-sesame.vcs'):
+    if _get_setting('sesame.vcs'):
         vcs_items = []
         vcs_candidates = ['.git', '.hg', '.svn', 'CVS']
         for name, path in folders:
