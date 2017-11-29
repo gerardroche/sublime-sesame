@@ -2,15 +2,18 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## Unreleased
+## [1.8.0] - 2017-11-29
 
-This release renames the plugin from "open-sesame" to "Sesame".
+Important! The plugin has been renamed "Sesame" (the old name was open-sesame).
 
 What you need to do:
 
-  * Update your key bindings and any custom commands you may have created. See the [README](README.md).
-  * If you installed manually via Git (opposed to via Package Control), then rename the plugin folder from "open-sesame" to "Sesame" and update the git url to https://github.com/gerardroche/sublime-sesame.git. Alternatively, uninstall and reinstall fresh.
-  * The settings will be auto migrated to the new ones.
+* Update your key bindings (if you created any).
+* Update your custom commands (if you've created any).
+* If you installed manually: Rename the plugin folder to "Sesame".
+* If you installed manually via Git: Update the Git url to https://github.com/gerardroche/sublime-sesame.git.
+
+*Old settings will be auto migrated to the new ones.*
 
 ### Changed
 
@@ -204,6 +207,7 @@ What you need to do:
 
 * Initial import
 
+[1.8.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.7.0...1.8.0
 [1.7.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.7...1.6.0
 [1.5.7]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.6...1.5.7
