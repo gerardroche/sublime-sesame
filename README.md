@@ -40,12 +40,11 @@ The preferred method of installation is [Package Control](https://packagecontrol
 
 ### Manual installation
 
-1. Close Sublime Text.
-2. Download or clone this repository to a directory named `Sesame` in the Sublime Text Packages directory:
-    * Linux: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/.config/sublime-text-3/Packages/Sesame`
-    * OS X: `git clone https://github.com/gerardroche/sublime-open-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/Sesame`
-    * Windows: `git clone https://github.com/gerardroche/sublime-open-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/Sesame`
-3. Done!
+Close Sublime Text, then download or clone this repository to a directory named `Sesame` in the Sublime Text Packages directory for your platform:
+
+* Linux: `git clone https://github.com/gerardroche/sublime-sesame.git ~/.config/sublime-text-3/Packages/Sesame`
+* OSX: `git clone https://github.com/gerardroche/sublime-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/Sesame`
+* Windows: `git clone https://github.com/gerardroche/sublime-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/Sesame`
 
 ## COMMANDS
 
@@ -151,13 +150,13 @@ Edit `User/Default.sublime-commands` (create the file if it doesn't already exis
 ```json
 [
     {
-        "caption": "Sesame: Open Vendor",
-        "command": "sesame_open",
+        "caption": "Sesame: Add Vendor",
+        "command": "sesame_add",
         "args": { "path": "~/vendor" }
     },
     {
-        "caption": "Sesame: Add Vendor",
-        "command": "sesame_add",
+        "caption": "Sesame: Open Vendor",
+        "command": "sesame_open",
         "args": { "path": "~/vendor" }
     },
     {
@@ -181,10 +180,6 @@ Add preferred key bindings:
     }
 ]
 ```
-
-## CONTRIBUTING
-
-Your issue reports and pull requests are always welcome.
 
 ## CHANGELOG
 
