@@ -2,6 +2,17 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## Unreleased
+
+### Removed
+
+* Removed: Deprecated command `open_sesame`; use `sesame_open` instead
+* Removed: Deprecated command `open_sesame_add_folder`; use `sesame_add` instead
+* Removed: Deprecated command `open_sesame_add_project`; use `sesame_add` instead
+* Removed: Deprecated command `open_sesame_open_project`; use `sesame_open` instead
+* Removed: Deprecated command `open_sesame_remove_folder`; use `sesame_remove` instead
+* Removed: Deprecated command `open_sesame_switch_project`; use `sesame_switch` instead
+
 ## [1.8.0] - 2017-11-29
 
 Important! The plugin has been renamed "Sesame" (the old name was open-sesame).

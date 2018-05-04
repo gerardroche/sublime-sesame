@@ -102,49 +102,6 @@ class SesameSwitchCommand(SesameOpenCommand):
         self.window.run_command('close_all')
 
 
-# DEPRECATED To be removed in v2.0.0
-class OpenSesameAddFolderCommand(SesameAddCommand):
-
-    def run(self, *args, **kwargs):
-        _message('***DEPRECATED*** \'open_sesame_add_folder\' command is deprecated; use \'sesame_add\' instead')
-        super().run(*args, **kwargs)
-
-
-# DEPRECATED To be remove in v2.0.0
-class OpenSesameAddProjectCommand(SesameAddCommand):
-    def run(self, *args, **kwargs):
-        _message('***DEPRECATED*** \'open_sesame_add_project\' command is deprecated; use \'sesame_add\' instead')
-        super().run(*args, **kwargs)
-
-
-# DEPRECATED To be removed in v2.0.0
-class OpenSesameOpenProjectCommand(SesameOpenCommand):
-    def run(self, *args, **kwargs):
-        _message('***DEPRECATED*** \'open_sesame_open_project\' command is deprecated; use \'sesame_open\' instead')
-        super().run(*args, **kwargs)
-
-
-# DEPRECATED To be removed in v2.0.0
-class OpenSesameCommand(OpenSesameOpenProjectCommand):
-    def run(self, *args, **kwargs):
-        _message('***DEPRECATED*** \'open_sesame\' command is deprecated; use \'sesame_open\' instead')
-        super().run(*args, **kwargs)
-
-
-# DEPRECATED To be removed in v2.0.0
-class OpenSesameRemoveFolderCommand(SesameRemoveCommand):
-    def run(self, *args, **kwargs):
-        _message('***DEPRECATED*** \'open_sesame_remove_folder\' command is deprecated; use \'sesame_remove\' instead')
-        super().run(*args, **kwargs)
-
-
-# DEPRECATED To be removed in v2.0.0
-class OpenSesameSwitchProjectCommand(SesameSwitchCommand):
-    def run(self, *args, **kwargs):
-        _message('***DEPRECATED*** \'open_sesame_switch_project\' command is deprecated; use \'sesame_switch\' instead')
-        super().run(*args, **kwargs)
-
-
 def _status_message(msg):
     status_message('Sesame: ' + msg)
 
