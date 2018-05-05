@@ -5,9 +5,7 @@ import subprocess
 
 from sublime import active_window
 from sublime import executable_path
-from sublime import load_settings
 from sublime import platform
-from sublime import save_settings
 from sublime import set_timeout_async
 from sublime import status_message
 from sublime import Window
@@ -115,25 +113,6 @@ def _find_folders(base_path=None):
     if not base_path:
         base_path = _get_setting('sesame.path')
 
-        # Migrate old setting
-        # DEPRECATED To be removed in v2.0.0
-        if not base_path:
-            base_path = _get_setting('open-sesame.path')
-            if base_path:
-                settings = load_settings('Preferences.sublime-settings')
-                settings.set('sesame.path', base_path)
-                settings.erase('open-sesame.path')
-                save_settings('Preferences.sublime-settings')
-                _message('updated deprecated settting \'open-sesame.path\' to \'sesame.path\'')
-            else:
-                base_path = _get_setting('open-sesame.projects_path')
-                if base_path:
-                    settings = load_settings('Preferences.sublime-settings')
-                    settings.set('sesame.path', base_path)
-                    settings.erase('open-sesame.projects_path')
-                    save_settings('Preferences.sublime-settings')
-                    _message('updated deprecated settting \'open-sesame.projects_path\' to \'sesame.path\'')
-
     if not base_path:
         base_path = os.getenv('PROJECTS_PATH')
 
@@ -175,27 +154,6 @@ def _glob_paths(paths):
 
 
 def _glob_path(base_path):
-
-    # Migrate old setting
-    # DEPRECATED To be removed in v2.0.0
-    depth = _get_setting('open-sesame.projects_depth')
-    if depth:
-        settings = load_settings('Preferences.sublime-settings')
-        settings.set('sesame.depth', depth)
-        settings.erase('open-sesame.projects_depth')
-        save_settings('Preferences.sublime-settings')
-        _message('updated deprecated settting \'open-sesame.projects_depth\' to \'sesame.depth\'')
-
-    # Migrate old setting
-    # DEPRECATED To be removed in v2.0.0
-    depth = _get_setting('open-sesame.depth')
-    if depth:
-        settings = load_settings('Preferences.sublime-settings')
-        settings.set('sesame.depth', depth)
-        settings.erase('open-sesame.depth')
-        save_settings('Preferences.sublime-settings')
-        _message('updated deprecated settting \'open-sesame.depth\' to \'sesame.depth\'')
-
     if _get_setting('sesame.depth') == 1:
         glob_pattern = base_path + '/*/'
         if platform() == 'windows':
@@ -218,16 +176,6 @@ def _glob_path(base_path):
             folder_struct = [folder_name, folder_path]
             if folder_struct not in folders:
                 folders.append(folder_struct)
-
-    # Migrate old setting
-    # DEPRECATED To be removed in v2.0.0
-    vcs = _get_setting('open-sesame.vcs')
-    if vcs:
-        settings = load_settings('Preferences.sublime-settings')
-        settings.set('sesame.vcs', vcs)
-        settings.erase('open-sesame.vcs')
-        save_settings('Preferences.sublime-settings')
-        _message('updated deprecated settting \'open-sesame.vcs\' to \'sesame.vcs\'')
 
     if _get_setting('sesame.vcs'):
         vcs_items = []
