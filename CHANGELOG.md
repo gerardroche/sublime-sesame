@@ -21,10 +21,10 @@ What you need to do:
 
 * Update your key bindings (if you created any).
 * Update your custom commands (if you've created any).
-* If you installed manually: Rename the plugin folder to "Sesame".
-* If you installed manually via Git: Update the Git url to https://github.com/gerardroche/sublime-sesame.git.
+* Rename the plugin folder to "Sesame" (if you installed manually).
+* Update the Git repository URL to https://github.com/gerardroche/sublime-sesame.git (if you installed manually via Git).
 
-*Old settings will be auto migrated to the new ones.*
+Old settings `open-sesame.*` have been renamed `sesame.*`, these will be auto migrated so there is nothing for you to do.
 
 ### Changed
 
@@ -52,8 +52,8 @@ What you need to do:
 
 * Added: Switch Project command
 * Added: Remove Folder command
-* Doc: Setup guide
-* Doc: Setup key bindings
+* Added: Documentation setup guide
+* Added: Documentation setup key bindings
 
 ### Deprecated
 

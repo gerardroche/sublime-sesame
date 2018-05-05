@@ -6,7 +6,9 @@ Add, open, remove, and switch, projects or folders, using the Command Palette an
 
 ## QUICK START
 
-Set the location of your projects: `Menu > Preferences > Settings`
+Set the location of your projects:
+
+`Menu > Preferences > Settings`
 
 ```json
 {
@@ -14,7 +16,7 @@ Set the location of your projects: `Menu > Preferences > Settings`
 }
 ```
 
-Press `Ctrl+Alt+o` to open a projects.
+Press `ctrl+alt+o` to open a project.
 
 ## INSTALLATION
 
@@ -36,12 +38,14 @@ Command Palette | Command | Description
 --------------- | ------- | -----------
 Sesame: Add | `sesame_add` | Add a project to the current window
 Sesame: Open | `sesame_open` | Open a project in a new window
-Sesame: Remove | `sesame_remove` | Remove a folder from the current window
-Sesame: Switch | `sesame_switch` | Add a project to the current window
+Sesame: Remove | `sesame_remove` | Remove a project from the current window
+Sesame: Switch | `sesame_switch` | Switch to a project in the current window
 
 ## KEY BINDINGS
 
-Add your preferred key bindings: `Menu > Preferences > Key Bindings`
+Add your preferred key bindings:
+
+`Menu > Preferences > Key Bindings`
 
 ```json
 [
@@ -52,24 +56,18 @@ Add your preferred key bindings: `Menu > Preferences > Key Bindings`
 ]
 ```
 
-Defaults:
+Default key bindings:
 
 Windows / Linux | OSX | Description
 --------------- | --- | -----------
-`Ctrl+Alt+o` | `Super+Alt+o` | Sesame: Open
-
-Resolving Ubuntu Key Bindings Conflicts:
-
-On Ubuntu you may have conflict issues with key bindings such as `ctrl+alt+s` that may be mapped to something like the system `toggle-shaded` window command. You can clear the system keybinding with a command at terminal. If you have issues with key bindings on Ubuntu, ping me on twitter and I'll do my best to help you resolve it.
-
-    $ gsettings set org.gnome.desktop.wm.keybindings toggle-shaded "[]"
+`ctrl+alt+o` | `super+alt+o` | Sesame: Open
 
 ## CONFIGURATION
 
 Key | Description | Type | Default
 ----|-------------|------|--------
 `sesame.depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
-`sesame.keymaps` | Enable default keymaps. | `boolean` | `true`
+`sesame.keymaps` | Enable default key bindings. | `boolean` | `true`
 `sesame.path` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
 `sesame.vcs` | Include only version controlled projects e.g. Git, Mercurial, Subversion | `boolean` | `false`
 
@@ -83,7 +81,7 @@ Key | Description | Type | Default
 }
 ```
 
-`Menu > Project > Edit Project`
+`Menu > Project > Edit Project` (per-project)
 
 ```json
 {
@@ -93,11 +91,17 @@ Key | Description | Type | Default
 }
 ```
 
-#### Depth
+**Multiple paths**
 
-The default depth is `2` which means that projects are listed using the pattern `*/*` e.g. `your/project`.
+Multiple paths can be set using a `PATH` separator (':' for POSIX or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
 
-If you prefer to organise your projects at a single level, set the depth to `1`.
+**Path environment variable**
+
+A `PROJECTS_PATH` environment variable can be used to set the default path e.g. on Linux edit `~/.profile` and add `export PROJECTS_PATH=~/projects` (may require a system restart).
+
+### Depth
+
+The default depth is `2` which means that projects are listed using the pattern `*/*` e.g. `name/name`. If you prefer to organise your projects at a single level, set the depth to `1`.
 
 `Menu > Preferences > Settings`
 
@@ -107,63 +111,30 @@ If you prefer to organise your projects at a single level, set the depth to `1`.
 }
 ```
 
-`Menu > Project > Edit Project`
+### Custom commands
+
+Custom commands with alternate paths can be created:
+
+`Menu > Preferences > Key Bindings`
 
 ```json
-{
-    "settings": {
-        "sesame.depth": 1
-    }
-}
+[
+   { "keys": ["ctrl+alt+v"], "command": "sesame_open", "args": { "path": "~/vendor" } }
+]
 ```
 
-#### Multiple paths
 
-Multiple paths can be set using a `PATH` separator (':' for POSIX or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
+Add custom commands to the Command Palette:
 
-#### Environment variables
+`User/Default.sublime-commands`
 
-A `PROJECTS_PATH` environment variable can be used to set the default path e.g. on Linux edit `~/.profile` (requires system restart) with `export PROJECTS_PATH=~/projects`.
-
-#### Custom commands
-
-An example.
-
-Setup custom commands for the path `~/vendor`:
-
-1. Add the following to `User/Default.sublime-commands`:
-
-   ```json
-   [
-       {
-           "caption": "Sesame: Add Vendor",
-           "command": "sesame_add",
-           "args": { "path": "~/vendor" }
-       },
-       {
-           "caption": "Sesame: Open Vendor",
-           "command": "sesame_open",
-           "args": { "path": "~/vendor" }
-       },
-       {
-           "caption": "Sesame: Switch Vendor",
-           "command": "sesame_switch",
-           "args": { "path": "~/vendor" }
-       }
-   ]
-   ```
-
-2. Add your preferred key bindings: `Menu > Preferences > Key Bindings`
-
-   ```json
-   [
-       {
-           "keys": ["ctrl+alt+v"],
-           "command": "sesame_open",
-           "args": { "path": "~/vendor" }
-       }
-   ]
-   ```
+```json
+[
+   { "caption": "Sesame: Add Vendor", "command": "sesame_add", "args": { "path": "~/vendor" } },
+   { "caption": "Sesame: Open Vendor", "command": "sesame_open", "args": { "path": "~/vendor" } },
+   { "caption": "Sesame: Switch Vendor", "command": "sesame_switch", "args": { "path": "~/vendor" } }
+]
+```
 
 ## CHANGELOG
 
