@@ -68,7 +68,7 @@ Key | Description | Type | Default
 ----|-------------|------|--------
 `sesame.depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
 `sesame.keymaps` | Enable default key bindings. | `boolean` | `true`
-`sesame.path` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
+`sesame.paths` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
 `sesame.vcs` | Include only version controlled projects e.g. Git, Mercurial, Subversion | `boolean` | `false`
 
 ### Path
@@ -77,7 +77,10 @@ Key | Description | Type | Default
 
 ```json
 {
-    "sesame.path": "~/projects"
+    "sesame.paths": [{ 
+      "path": "~/projects",
+      "depth": 1
+    }]
 }
 ```
 
@@ -86,14 +89,26 @@ Key | Description | Type | Default
 ```json
 {
     "settings": {
-        "sesame.path": "~/projects"
+        "sesame.paths": [{ 
+          "path": "~/projects",
+          "depth": 1
+        }]
     }
 }
 ```
 
 **Multiple paths**
 
-Multiple paths can be set using a `PATH` separator (':' for POSIX or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
+Multiple paths can be set into a single record using a `PATH` separator (':' for POSIX or ';' for Windows) e.g.
+
+```json
+{
+    "sesame.paths": [{ 
+      "path": "~/projects:~/work",
+      "depth": 1
+      }]
+}
+```
 
 **Path environment variable**
 
@@ -101,13 +116,23 @@ A `PROJECTS_PATH` environment variable can be used to set the default path e.g. 
 
 ### Depth
 
+Setting `depth` to every single path in `paths` is not required. If you omit `depth`, the value fo `sesame.depth` will be applied.
+
 The default depth is `2` which means that projects are listed using the pattern `*/*` e.g. `name/name`. If you prefer to organise your projects at a single level, set the depth to `1`.
 
 `Menu > Preferences > Settings`
 
 ```json
 {
-    "sesame.depth": 1
+    "sesame.depth": 1,
+    "sesame.paths": [
+      { 
+        "path": "~/projects"
+      }, 
+      { 
+        "path": "~/work"
+      }
+    ]
 }
 ```
 
