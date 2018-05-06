@@ -14,7 +14,15 @@
     // // Multiple paths can be set using a `PATH` separator (':' for POSIX
     // // or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
     // //
-    // "sesame.path": "~/projects",
+    // "sesame.paths": [{
+    //     "path": "~/projects:~/work",
+    //     "depth": 1
+    // }, {
+    //     "path": "~/src",
+    //     "depth": 2
+    // }, {
+    //     "path": "~/gohome"
+    // }]
 
     // Enable include only version controlled projects e.g. Git, Mercurial,
     // Subversion.

@@ -15,6 +15,7 @@ import sublime_plugin
 class SesameAddCommand(sublime_plugin.WindowCommand):
 
     def run(self, path=None, *args, **kwargs):
+        _init()
         # Exclude folders that already exist
         existing_folders = []
         project_data = self.window.project_data()
@@ -31,7 +32,8 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
                             existing_folders.append(folder_path)
 
         self.folders = []
-        folders = _find_folders(path)
+        # paths = None if path == None else [path]
+        folders = _find_folders(None if path == None else [path])
         if folders:
             for folder in folders:
                 if folder[1] not in existing_folders:
@@ -52,7 +54,8 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
 class SesameOpenCommand(sublime_plugin.WindowCommand):
 
     def run(self, path=None, *args, **kwargs):
-        self.folders = _find_folders(path)
+        _init()
+        self.folders = _find_folders(None if path == None else [path])
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
@@ -74,6 +77,7 @@ class SesameOpenCommand(sublime_plugin.WindowCommand):
 class SesameRemoveCommand(sublime_plugin.WindowCommand):
 
     def run(self, *args, **kwargs):
+        _init()
         self.folders = self.window.folders()
         self.window.show_quick_panel(self.folders, self.on_done)
 
@@ -108,25 +112,65 @@ def _message(msg):
     _status_message(msg)
     print('Sesame: ' + msg)
 
+def _init():
+    _init_paths()
+    _init_vcs()
 
-def _find_folders(base_path=None):
-    if not base_path:
-        base_path = _get_setting('sesame.path')
+def _init_vcs():
+    vcs = _get_setting('sesame.vcs')
+    if vcs:
+        return
 
+def _init_paths():
+    base_paths = _get_setting('sesame.paths')
+    if base_paths:
+        return
+
+    # Migrate old setting
+    # DEPRECATED To be removed in v3.0.0
+    base_path = _get_setting('sesame.path')
     if not base_path:
         base_path = os.getenv('PROJECTS_PATH')
 
-    if not base_path:
+    depth = int(_get_setting('sesame.depth', 2))
+
+    base_paths = { 
+        "path": base_path,
+        "depth": _get_setting('sesame.depth', depth)
+    }
+    settings = load_settings('Preferences.sublime-settings')
+    settings.set('sesame.paths', [ base_paths ])
+    settings.erase('sesame.path')
+    save_settings('Preferences.sublime-settings')
+    _message('updated deprecated settting \'sesame.path\' to \'sesame.paths\'')
+
+def _default_depth(base_path):
+    if 'depth' in base_path:
+        return base_path["depth"]
+
+    return int(_get_setting('sesame.depth', '2'))
+
+def _find_folders(base_paths=None):
+    if not base_paths:
+        base_paths = _get_setting('sesame.paths')
+
+    if not base_paths:
         return None
 
-    paths = base_path.split(os.pathsep)
-    paths = [os.path.expandvars(os.path.expanduser(path)) for path in paths]
+    folders = []
 
-    for path in paths:
-        if not os.path.isdir(path):
-            raise ValueError("{path} must be a valid directory".format(path=path))
+    for base_path in base_paths:
+        p = base_path["path"]
+        depth = _default_depth(base_path)
 
-    folders = _glob_paths(paths)
+        paths = p.split(os.pathsep)
+        paths = [os.path.expandvars(os.path.expanduser(path)) for path in paths]
+
+        for path in paths:
+            if not os.path.isdir(path):
+                raise ValueError("{path} must be a valid directory".format(path=path))
+
+        folders.extend(_glob_paths(paths, depth))
     folders.sort()
 
     return folders
@@ -146,26 +190,35 @@ def _flatten_once(array_of_arrays):
     return [item for array in array_of_arrays for item in array]
 
 
-def _glob_paths(paths):
-    globs = [_glob_path(path) for path in paths]
+def _glob_paths(paths, depth):
+    globs = [_glob_path(path, depth) for path in paths]
     folders = _flatten_once(globs)
 
     return folders
 
+def _glob_pattern(base_path, depth): 
+    return base_path + '/' + ( '*/' * depth )
 
 def _glob_path(base_path):
     if _get_setting('sesame.depth') == 1:
         glob_pattern = base_path + '/*/'
+
+def _folder_match_pattern(depth):
+    if depth == 1:
         if platform() == 'windows':
-            folder_match_pattern = '^.*\\\\([a-zA-Z0-9 \\|\\._-]+)\\\\$'
-        else:
-            folder_match_pattern = '^.*\\/([a-zA-Z0-9 \\|\\._-]+)\\/$'
-    else:
-        glob_pattern = base_path + '/*/*/'
+            return '^.*\\\\([a-zA-Z0-9 \\|\\._-]+)\\\\$'
+        return '^.*\\/([a-zA-Z0-9 \\|\\._-]+)\\/$'
+    
+    if depth == 2:
         if platform() == 'windows':
-            folder_match_pattern = '^.*\\\\([a-zA-Z0-9 \\|\\._-]+\\\\[a-zA-Z0-9  \\|\\._-]+)\\\\$'
-        else:
-            folder_match_pattern = '^.*\\/([a-zA-Z0-9 \\|\\._-]+\\/[a-zA-Z0-9 \\|\\._-]+)\\/$'
+            return '^.*\\\\([a-zA-Z0-9 \\|\\._-]+\\\\[a-zA-Z0-9  \\|\\._-]+)\\\\$'
+        return '^.*\\/([a-zA-Z0-9 \\|\\._-]+\\/[a-zA-Z0-9 \\|\\._-]+)\\/$'
+
+    raise ValueError("{depth} must be 1 or 2".format(depth=depth))
+
+def _glob_path(base_path, depth):
+    glob_pattern = _glob_pattern(base_path, depth)
+    folder_match_pattern = _folder_match_pattern(depth)
 
     folders = []
     for folder in glob.glob(glob_pattern):
