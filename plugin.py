@@ -14,7 +14,7 @@ import sublime_plugin
 
 class SesameAddCommand(sublime_plugin.WindowCommand):
 
-    def run(self, path=None, *args, **kwargs):
+    def run(self, **kwargs):
         # Exclude folders that already exist
         existing_folders = []
         project_data = self.window.project_data()
@@ -31,7 +31,7 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
                             existing_folders.append(folder_path)
 
         self.folders = []
-        folders = _find_folders(path)
+        folders = _find_folders(kwargs.get('path'))
         if folders:
             for folder in folders:
                 if folder[1] not in existing_folders:
@@ -51,8 +51,8 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
 
 class SesameOpenCommand(sublime_plugin.WindowCommand):
 
-    def run(self, path=None, *args, **kwargs):
-        self.folders = _find_folders(path)
+    def run(self, **kwargs):
+        self.folders = _find_folders(kwargs.get('path'))
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
