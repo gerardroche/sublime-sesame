@@ -73,7 +73,7 @@ class SesameOpenCommand(sublime_plugin.WindowCommand):
 
 class SesameRemoveCommand(sublime_plugin.WindowCommand):
 
-    def run(self, *args, **kwargs):
+    def run(self):
         self.folders = self.window.folders()
         self.window.show_quick_panel(self.folders, self.on_done)
 
