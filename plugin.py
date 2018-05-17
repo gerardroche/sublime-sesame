@@ -3,7 +3,6 @@ import os
 import re
 import subprocess
 
-from sublime import active_window
 from sublime import executable_path
 from sublime import platform
 from sublime import set_timeout_async
@@ -31,7 +30,7 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
                             existing_folders.append(folder_path)
 
         self.folders = []
-        folders = _find_folders(**kwargs)
+        folders = _find_folders(self.window, **kwargs)
         if folders:
             for folder in folders:
                 if folder[1] not in existing_folders:
@@ -52,7 +51,7 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
 class SesameOpenCommand(sublime_plugin.WindowCommand):
 
     def run(self, **kwargs):
-        self.folders = _find_folders(**kwargs)
+        self.folders = _find_folders(self.window, **kwargs)
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
@@ -109,10 +108,16 @@ def _message(msg):
     print('Sesame: ' + msg)
 
 
-def _find_folders(**kwargs):
+def _find_folders(window, **kwargs):
+    view = window.active_view()
+    if view:
+        settings = view.settings()
+    else:
+        settings = window.settings()
+
     path = kwargs.get('path')
     if not path:
-        path = _get_setting('sesame.path')
+        path = settings.get('sesame.path')
 
     if not path:
         path = os.getenv('PROJECTS_PATH')
@@ -120,8 +125,8 @@ def _find_folders(**kwargs):
     if not path:
         return _status_message('no path found')
 
-    depth = int(kwargs.get('depth', _get_setting('sesame.depth')))
-    vcs = bool(kwargs.get('vcs', _get_setting('sesame.vcs')))
+    depth = int(kwargs.get('depth', settings.get('sesame.depth')))
+    vcs = bool(kwargs.get('vcs', settings.get('sesame.vcs')))
 
     paths = path.split(os.pathsep)
     paths = [os.path.expandvars(os.path.expanduser(path)) for path in paths]
@@ -134,16 +139,6 @@ def _find_folders(**kwargs):
     folders.sort()
 
     return folders
-
-
-def _get_setting(key, default=None):
-    window = active_window()
-    if window:
-        view = window.active_view()
-        if view:
-            return view.settings().get(key, default)
-
-    return default
 
 
 def _flatten_once(array_of_arrays):
