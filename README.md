@@ -66,9 +66,9 @@ Windows / Linux | OSX | Description
 
 Key | Description | Type | Default
 ----|-------------|------|--------
-`sesame.depth` | Number of levels deep to look for projects within projects path. | `1` or `2` | `2`
+`sesame.depth` | Number of levels deep to look for projects within path. | `int` `1` or `2` | `2`
 `sesame.keymaps` | Enable default key bindings. | `boolean` | `true`
-`sesame.path` | Location of your projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
+`sesame.path` | Location of projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
 `sesame.vcs` | Include only version controlled projects e.g. Git, Mercurial, Subversion | `boolean` | `false`
 
 ### Path
@@ -113,7 +113,7 @@ The default depth is `2` which means that projects are listed using the pattern 
 
 ### Custom commands
 
-Custom commands with alternate paths can be created:
+Adding a custom command to Key Bindings:
 
 `Menu > Preferences > Key Bindings`
 
@@ -124,9 +124,7 @@ Custom commands with alternate paths can be created:
 ```
 
 
-Add custom commands to the Command Palette:
-
-`User/Default.sublime-commands`
+Adding custom commands to the Command Palette (edit `User/Default.sublime-commands`):
 
 ```json
 [
@@ -134,6 +132,20 @@ Add custom commands to the Command Palette:
    { "caption": "Sesame: Open Vendor", "command": "sesame_open", "args": { "path": "~/vendor" } },
    { "caption": "Sesame: Switch Vendor", "command": "sesame_switch", "args": { "path": "~/vendor" } }
 ]
+```
+
+Custom commands accept options (see configuration options above):
+
+```
+{
+    "caption": "Sesame: Open Vendor",
+    "command": "sesame_open",
+    "args": {
+      "path": "~/vendor",
+      "depth": 2,
+      "vcs": false
+    }
+}
 ```
 
 ## CHANGELOG

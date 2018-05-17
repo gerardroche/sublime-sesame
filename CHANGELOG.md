@@ -4,6 +4,10 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ## Unreleased
 
+### Added
+
+* Added: Custom commands now accept any of the available options
+
 ### Removed
 
 * Removed: Deprecated command `open_sesame`; use `sesame_open` instead

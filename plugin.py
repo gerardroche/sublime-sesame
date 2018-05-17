@@ -31,7 +31,7 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
                             existing_folders.append(folder_path)
 
         self.folders = []
-        folders = _find_folders(kwargs.get('path'))
+        folders = _find_folders(**kwargs)
         if folders:
             for folder in folders:
                 if folder[1] not in existing_folders:
@@ -52,7 +52,7 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
 class SesameOpenCommand(sublime_plugin.WindowCommand):
 
     def run(self, **kwargs):
-        self.folders = _find_folders(kwargs.get('path'))
+        self.folders = _find_folders(**kwargs)
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
@@ -109,24 +109,28 @@ def _message(msg):
     print('Sesame: ' + msg)
 
 
-def _find_folders(base_path=None):
-    if not base_path:
-        base_path = _get_setting('sesame.path')
+def _find_folders(**kwargs):
+    path = kwargs.get('path')
+    if not path:
+        path = _get_setting('sesame.path')
 
-    if not base_path:
-        base_path = os.getenv('PROJECTS_PATH')
+    if not path:
+        path = os.getenv('PROJECTS_PATH')
 
-    if not base_path:
-        return None
+    if not path:
+        return _status_message('no path found')
 
-    paths = base_path.split(os.pathsep)
+    depth = int(kwargs.get('depth', _get_setting('sesame.depth')))
+    vcs = bool(kwargs.get('vcs', _get_setting('sesame.vcs')))
+
+    paths = path.split(os.pathsep)
     paths = [os.path.expandvars(os.path.expanduser(path)) for path in paths]
 
     for path in paths:
         if not os.path.isdir(path):
             raise ValueError("{path} must be a valid directory".format(path=path))
 
-    folders = _glob_paths(paths)
+    folders = _glob_paths(paths, depth, vcs)
     folders.sort()
 
     return folders
@@ -146,22 +150,22 @@ def _flatten_once(array_of_arrays):
     return [item for array in array_of_arrays for item in array]
 
 
-def _glob_paths(paths):
-    globs = [_glob_path(path) for path in paths]
+def _glob_paths(paths, depth, vcs):
+    globs = [_glob_path(path, depth, vcs) for path in paths]
     folders = _flatten_once(globs)
 
     return folders
 
 
-def _glob_path(base_path):
-    if _get_setting('sesame.depth') == 1:
-        glob_pattern = base_path + '/*/'
+def _glob_path(path, depth, vcs):
+    if depth == 1:
+        glob_pattern = path + '/*/'
         if platform() == 'windows':
             folder_match_pattern = '^.*\\\\([a-zA-Z0-9 \\|\\._-]+)\\\\$'
         else:
             folder_match_pattern = '^.*\\/([a-zA-Z0-9 \\|\\._-]+)\\/$'
     else:
-        glob_pattern = base_path + '/*/*/'
+        glob_pattern = path + '/*/*/'
         if platform() == 'windows':
             folder_match_pattern = '^.*\\\\([a-zA-Z0-9 \\|\\._-]+\\\\[a-zA-Z0-9  \\|\\._-]+)\\\\$'
         else:
@@ -177,9 +181,9 @@ def _glob_path(base_path):
             if folder_struct not in folders:
                 folders.append(folder_struct)
 
-    if _get_setting('sesame.vcs'):
+    if vcs:
         vcs_items = []
-        vcs_candidates = ['.git', '.hg', '.svn', 'CVS']
+        vcs_candidates = ('.git', '.hg', '.svn', 'CVS')
         for name, path in folders:
             for candidate in vcs_candidates:
                 vcs_marker_file = os.path.join(path, candidate)
