@@ -6,6 +6,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Added
 
+* Added: Allow overriding options for specific paths
 * Added: Custom commands now accept any of the available options
 
 ### Removed

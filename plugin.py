@@ -125,17 +125,39 @@ def _find_folders(window, **kwargs):
     if not path:
         return _status_message('no path found')
 
-    depth = int(kwargs.get('depth', settings.get('sesame.depth')))
-    vcs = bool(kwargs.get('vcs', settings.get('sesame.vcs')))
+    if isinstance(path, str):
+        paths = [{'path': p} for p in path.split(os.pathsep)]
+    elif isinstance(path, list):
+        paths = []
+        for p in path:
+            if isinstance(p, str):
+                paths.append({'path': p})
+            elif isinstance(p, dict):
+                if 'path' in p:
+                    paths.append(p)
+                else:
+                    raise ValueError('path is required')
+            else:
+                raise ValueError('path is malformed, expected str or dict, got {}'.format(type(path)))
+    else:
+        raise ValueError('path must be a str or list, got {}'.format(type(path)))
 
-    paths = path.split(os.pathsep)
-    paths = [os.path.expandvars(os.path.expanduser(path)) for path in paths]
+    for p in paths:
+        p['path'] = os.path.expandvars(os.path.expanduser((p['path'])))
+        if not os.path.isdir(p['path']):
+            raise ValueError("{path} must be a valid directory".format(path=p['path']))
 
-    for path in paths:
-        if not os.path.isdir(path):
-            raise ValueError("{path} must be a valid directory".format(path=path))
+    defaults = {
+        "depth": int(kwargs.get('depth', settings.get('sesame.depth'))),
+        "vcs": bool(kwargs.get('vcs', settings.get('sesame.vcs')))
+    }
 
-    folders = _glob_paths(paths, depth, vcs)
+    for p in paths:
+        for k, v in defaults.items():
+            if k not in p:
+                p[k] = v
+
+    folders = _glob_paths(paths)
     folders.sort()
 
     return folders
@@ -145,8 +167,8 @@ def _flatten_once(array_of_arrays):
     return [item for array in array_of_arrays for item in array]
 
 
-def _glob_paths(paths, depth, vcs):
-    globs = [_glob_path(path, depth, vcs) for path in paths]
+def _glob_paths(paths):
+    globs = [_glob_path(**path) for path in paths]
     folders = _flatten_once(globs)
 
     return folders

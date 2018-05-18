@@ -68,7 +68,7 @@ Key | Description | Type | Default
 ----|-------------|------|--------
 `sesame.depth` | Number of levels deep to look for projects within path. | `int` `1` or `2` | `2`
 `sesame.keymaps` | Enable default key bindings. | `boolean` | `true`
-`sesame.path` | Location of projects. | `string` | The path found in the environment variable `PROJECTS_PATH` (if it exists).
+`sesame.path` | Location of projects. | `string` or `list[str, dict]` | The value found in the environment variable `PROJECTS_PATH` (if it exists).
 `sesame.vcs` | Include only version controlled projects e.g. Git, Mercurial, Subversion | `boolean` | `false`
 
 ### Path
@@ -81,7 +81,7 @@ Key | Description | Type | Default
 }
 ```
 
-`Menu > Project > Edit Project` (per-project)
+`Menu > Project > Edit Project` (Per-project)
 
 ```json
 {
@@ -91,17 +91,31 @@ Key | Description | Type | Default
 }
 ```
 
-**Multiple paths**
-
-Multiple paths can be set using a `PATH` separator (':' for POSIX or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
-
 **Path environment variable**
 
 A `PROJECTS_PATH` environment variable can be used to set the default path e.g. on Linux edit `~/.profile` and add `export PROJECTS_PATH=~/projects` (may require a system restart).
 
+**Multiple paths**
+
+Multiple paths can be set using a `PATH` separator (':' for POSIX or ';' for Windows):
+
+```json
+{
+    "sesame.path": "~/projects:~/work:~/src"
+}
+```
+
+Or as a list:
+
+```json
+{
+    "sesame.path": ["~/projects", "~/work", "~/src"]
+}
+```
+
 ### Depth
 
-The default depth is `2` which means that projects are listed using the pattern `*/*` e.g. `name/name`. If you prefer to organise your projects at a single level, set the depth to `1`.
+The default depth is `2` (projects are listed using the pattern `*/*` e.g. `name/name`). If you prefer to organise your projects at a single level, set the depth to `1`:
 
 `Menu > Preferences > Settings`
 
@@ -110,6 +124,24 @@ The default depth is `2` which means that projects are listed using the pattern 
     "sesame.depth": 1
 }
 ```
+
+### Overriding settings for specific paths
+
+`Menu > Preferences > Settings`
+
+```json
+{
+    "sesame.path": [
+        {"path": "~/projects/a", "depth": 1}
+        {"path": "~/projects/b", "vcs": true}
+    ],
+    "sesame.depth": 2
+}
+```
+
+Path *a* will use depth *1* and package defaults for all other settings.
+
+Path *b* will use depth *2*, vcs *true*, and package defaults for the all other settings.
 
 ### Custom commands
 
@@ -122,7 +154,6 @@ Adding a custom command to Key Bindings:
    { "keys": ["ctrl+alt+v"], "command": "sesame_open", "args": { "path": "~/vendor" } }
 ]
 ```
-
 
 Adding custom commands to the Command Palette (edit `User/Default.sublime-commands`):
 
