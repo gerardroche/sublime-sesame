@@ -14,25 +14,29 @@ import sublime_plugin
 class SesameAddCommand(sublime_plugin.WindowCommand):
 
     def run(self, **kwargs):
-        # Exclude folders that already exist
-        existing_folders = []
-        project_data = self.window.project_data()
-        if project_data:
-            if 'folders' in project_data:
-                for folder in project_data['folders']:
-                    if folder['path']:
-                        folder_path = folder['path']
-                        if folder_path == '.':
-                            if self.window.project_file_name():
-                                folder_path = os.path.dirname(self.window.project_file_name())
+        def existing_folders():
+            existing_folders = []
+            project_data = self.window.project_data()
+            if project_data:
+                if 'folders' in project_data:
+                    for folder in project_data['folders']:
+                        if folder['path']:
+                            folder_path = folder['path']
+                            if folder_path == '.':
+                                if self.window.project_file_name():
+                                    folder_path = os.path.dirname(self.window.project_file_name())
 
-                        if folder_path not in existing_folders:
-                            existing_folders.append(folder_path)
+                            if folder_path not in existing_folders:
+                                existing_folders.append(folder_path)
+
+            return existing_folders
 
         self.folders = []
+        existing_folders = existing_folders()
         folders = _find_folders(self.window, **kwargs)
         if folders:
             for folder in folders:
+                # Exclude folders that already exist
                 if folder[1] not in existing_folders:
                     self.folders.append(folder)
 
