@@ -218,36 +218,36 @@ def _glob_path(path, depth, vcs):
 
 def _subl_open_project_in_new_window(sublime_project_file):
     if not sublime_project_file:
-        return
+        raise ValueError('argument #1 is required')
 
     if not re.match('^.+\\.sublime-project$', sublime_project_file):
-        return
+        raise ValueError('argument #1 is not a valid sublime project file name')
 
     if not os.path.isfile(sublime_project_file):
-        return
+        raise ValueError('argument #1 is not a valid file')
 
     _subl_async(['--new-window', '--project', sublime_project_file])
 
 
 def _subl_open_folder_in_new_window(folder):
     if not folder:
-        return
+        raise ValueError('argument #1 is required')
 
     if not os.path.isdir(folder):
-        return
+        raise ValueError('argument #1 is not a valid directory')
 
     _subl_async(['--new-window', folder])
 
 
 def _subl_add_folder(window, folder):
     if not isinstance(window, Window):
-        return
+        raise ValueError('argument #1 is not a valid window')
 
     if not folder:
-        return
+        raise ValueError('argument #2 is not a valid folder')
 
     if not os.path.isdir(folder):
-        return
+        raise ValueError('argument #2 is not a valid directory')
 
     project_data = window.project_data()
     if not project_data:
