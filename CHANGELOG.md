@@ -9,6 +9,10 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 * Added: Allow overriding options for specific paths
 * Added: Custom commands now accept any of the available options
 
+### Changed
+
+* Changed: The `sesame.vcs` setting now accepts `boolean` or *`None`*: `true` means include only version controlled projects, `false` means exclude them, and `null` (default), means include version controlled *and* non-version controlled projects.
+
 ### Removed
 
 * Removed: Deprecated command `open_sesame`; use `sesame_open` instead

@@ -155,7 +155,7 @@ def _find_folders(window, **kwargs):
 
     defaults = {
         "depth": int(kwargs.get('depth', settings.get('sesame.depth'))),
-        "vcs": bool(kwargs.get('vcs', settings.get('sesame.vcs')))
+        "vcs": kwargs.get('vcs', settings.get('sesame.vcs'))
     }
 
     for p in paths:
@@ -201,7 +201,7 @@ def _glob_path(path, depth, vcs):
             if folder_struct not in folders:
                 folders.append(folder_struct)
 
-    if vcs:
+    if vcs is True or vcs is False:
         vcs_items = []
         vcs_candidates = ('.git', '.hg', '.svn', 'CVS')
         for name, path in folders:
@@ -211,7 +211,10 @@ def _glob_path(path, depth, vcs):
                     vcs_items.append([name, path])
                     break
 
-        folders = vcs_items
+        if vcs:
+            return vcs_items
+        else:
+            return [folder for folder in folders if folder not in vcs_items]
 
     return folders
 

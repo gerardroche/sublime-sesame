@@ -69,7 +69,7 @@ Key | Description | Type | Default
 `sesame.depth` | Number of levels deep to look for projects within path. | `int` `1` or `2` | `2`
 `sesame.keymaps` | Enable default key bindings. | `boolean` | `true`
 `sesame.path` | Location of projects. | `string` or `list[str, dict]` | The value found in the environment variable `PROJECTS_PATH` (if it exists).
-`sesame.vcs` | Include only version controlled projects e.g. Git, Mercurial, Subversion | `boolean` | `false`
+`sesame.vcs` | Include/exclude version controlled projects e.g. Git, Mercurial, Subversion: `true` means include only version controlled projects, `false` means exclude them, and `null` (default), means version controlled and non-version controlled projects are included. | `boolean` or `null` | `null`
 
 ### Path
 

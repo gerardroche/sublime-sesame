@@ -29,7 +29,12 @@
     //
     // "sesame.path": "~/projects",
 
-    // Enable include only version controlled projects e.g. Git, Mercurial,
-    // Subversion.
-    "sesame.vcs": false
+    // Include/exclude version controlled projects e.g. Git, Mercurial,
+    // Subversion: `true` means include only version controlled projects,
+    // `false` means exclude them, and `null` (default), means include version
+    // controlled *and* non-version controlled projects.
+    // * null: Include version controlled and non-version controlled projects
+    // * true: Include only version controlled projects
+    // * false: Exclude version controlled projects
+    "sesame.vcs": null
 }
