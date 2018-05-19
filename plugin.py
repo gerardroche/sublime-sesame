@@ -39,7 +39,7 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
-            _status_message('no projects found')
+            _status_message('No projects found')
 
     def on_done(self, index):
         if index == -1:
@@ -55,7 +55,7 @@ class SesameOpenCommand(sublime_plugin.WindowCommand):
         if self.folders:
             self.window.show_quick_panel(self.folders, self.on_done)
         else:
-            _status_message('no projects found')
+            _status_message('No projects found')
 
     def on_done(self, index):
         if index == -1:
