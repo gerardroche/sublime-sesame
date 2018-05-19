@@ -1,19 +1,32 @@
 {
-    // A depth of `2` (the default) means that your projects are listed using
-    // the pattern `*/*` e.g. `your/project`.
-    //
-    // If you prefer to organise your projects at a single level, set the depth
-    // to `1`.
+    // The default depth is `2` (projects are listed using the pattern `*/*`
+    // e.g. `name/name`). If you prefer to organise your projects at a single
+    // level, set the depth to `1`:
     "sesame.depth": 2,
 
     // Enable the default keymaps.
     "sesame.keymaps": true,
 
-    // // Location of your projects.
-    // //
-    // // Multiple paths can be set using a `PATH` separator (':' for POSIX
-    // // or ';' for Windows) e.g. `"~/projects:~/work:~/src"`.
-    // //
+    // Location of your projects.
+    //
+    //      "sesame.path": "~/projects"
+    //
+    // Multiple paths can be set using a `PATH` separator (':' for POSIX or
+    // ';' for Windows):
+    //
+    //      "sesame.path": "~/projects:~/work:~/src"
+    //
+    // Or:
+    //
+    //      "sesame.path": ["~/projects", "~/work", "~/src"]
+    //
+    // Overriding settings for specific paths:
+    //
+    //      "sesame.path": [
+    //          {"path": "~/projects", "depth": 1}
+    //          {"path": "~/work", "vcs": true}
+    //      ]
+    //
     // "sesame.path": "~/projects",
 
     // Enable include only version controlled projects e.g. Git, Mercurial,
