@@ -174,10 +174,7 @@ def _flatten_once(array_of_arrays):
 
 
 def _glob_paths(paths):
-    globs = [_glob_path(**path) for path in paths]
-    folders = _flatten_once(globs)
-
-    return folders
+    return _flatten_once([_glob_path(**path) for path in paths])
 
 
 def _glob_path(path, depth, vcs):
