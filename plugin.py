@@ -49,7 +49,8 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
         if index == -1:
             return
 
-        _subl_add_folder(self.window, self.folders[index][1])
+        if _subl_add_folder(self.window, self.folders[index][1]):
+            _status_message('Added {}'.format(self.folders[index][0]))
 
 
 class SesameOpenCommand(sublime_plugin.WindowCommand):
@@ -267,9 +268,9 @@ def _subl_add_folder(window, folder):
             folder = '.'
 
     for f in project_data['folders']:
-        if f['path'] and folder == f['path']:
-            # already exists
-            return
+        if f['path'] and (folder == f['path']):
+            # Already exists.
+            return False
 
     folder_struct = {
         'path': folder
@@ -281,6 +282,8 @@ def _subl_add_folder(window, folder):
     project_data['folders'].append(folder_struct)
 
     window.set_project_data(project_data)
+
+    return True
 
 
 def _subl_async(args=[]):
