@@ -93,9 +93,10 @@ class SesameRemoveCommand(sublime_plugin.WindowCommand):
 class SesameSwitchCommand(SesameOpenCommand):
 
     def on_done(self, index):
-        super().on_done(index)
         if index == -1:
             return
+
+        super().on_done(index)
 
         # TODO There's got to be a better way to switch projects
         # TODO The sidebar moves/jitters when switching projects
