@@ -2,7 +2,7 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## Unreleased
+## [2.0.0] - 2018-06-17
 
 ### Added
 
@@ -228,6 +228,7 @@ Old settings `open-sesame.*` have been renamed `sesame.*`, these will be auto mi
 
 * Initial import
 
+[2.0.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.8.0...2.0.0
 [1.8.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.7.0...1.8.0
 [1.7.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.5.7...1.6.0
