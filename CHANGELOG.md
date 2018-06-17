@@ -7,8 +7,8 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 ### Added
 
 * Added [#9](https://github.com/gerardroche/sublime-open-sesame/issues/9): Skip paths that don't exist instead of raising exception
-* Added: Allow overriding options for specific paths
-* Added: Custom commands now accept any of the available options
+* Added [#8](https://github.com/gerardroche/sublime-sesame/pull/8): Allow overriding options for specific paths
+* Added [#8](https://github.com/gerardroche/sublime-sesame/pull/8): Custom commands now accept any of the available options
 
 ### Changed
 
