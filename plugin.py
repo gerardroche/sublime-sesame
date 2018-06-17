@@ -148,10 +148,13 @@ def _find_folders(window, **kwargs):
     else:
         raise ValueError('path must be a str or list, got {}'.format(type(path)))
 
-    for p in paths:
+    for k, p in enumerate(paths):
         p['path'] = os.path.expandvars(os.path.expanduser((p['path'])))
         if not os.path.isdir(p['path']):
-            raise ValueError("{path} must be a valid directory".format(path=p['path']))
+            del paths[k]
+
+    if not paths:
+        return []
 
     defaults = {
         "depth": int(kwargs.get('depth', settings.get('sesame.depth'))),
