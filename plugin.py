@@ -74,6 +74,9 @@ class SesameOpenCommand(sublime_plugin.WindowCommand):
         elif os.path.isdir(folder):
             _subl_open_folder_in_new_window(folder)
 
+        if len(folder_projects) > 1:
+            _message('expected 1 .sublime-project, found %d'.format(len(folder_projects)))
+
 
 class SesameRemoveCommand(sublime_plugin.WindowCommand):
 
