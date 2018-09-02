@@ -2,6 +2,10 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.0.1] - 2018-09-02
+
+* Fixed [#10](https://github.com/gerardroche/sublime-open-sesame/issues/10): TypeError when using `CTRL+ALT+o`
+
 ## [2.0.0] - 2018-06-17
 
 ### Added
@@ -228,6 +232,7 @@ Old settings `open-sesame.*` have been renamed `sesame.*`, these will be auto mi
 
 * Initial import
 
+[2.0.1]: https://github.com/gerardroche/sublime-open-sesame/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.8.0...2.0.0
 [1.8.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.7.0...1.8.0
 [1.7.0]: https://github.com/gerardroche/sublime-open-sesame/compare/1.6.0...1.7.0

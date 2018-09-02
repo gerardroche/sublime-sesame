@@ -160,7 +160,7 @@ def _find_folders(window, **kwargs):
         return []
 
     defaults = {
-        "depth": int(kwargs.get('depth', settings.get('sesame.depth'))),
+        "depth": int(kwargs.get('depth', settings.get('sesame.depth', 2))),
         "vcs": kwargs.get('vcs', settings.get('sesame.vcs'))
     }
 
