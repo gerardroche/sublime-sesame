@@ -3,11 +3,12 @@ import os
 import re
 import subprocess
 
+from sublime import Window
 from sublime import executable_path
 from sublime import platform
 from sublime import set_timeout_async
 from sublime import status_message
-from sublime import Window
+from sublime import version
 import sublime_plugin
 
 
@@ -49,11 +50,13 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
         if index == -1:
             return
 
-        if _subl_add_folder(self.window, self.folders[index][1]):
+        if _add_folder(self.window, self.folders[index][1]):
             _status_message('Added {}'.format(self.folders[index][0]))
 
 
 class SesameOpenCommand(sublime_plugin.WindowCommand):
+
+    new_window = False
 
     def run(self, **kwargs):
         self.folders = _find_folders(self.window, **kwargs)
@@ -70,12 +73,17 @@ class SesameOpenCommand(sublime_plugin.WindowCommand):
         folder_projects = glob.glob(folder + '/*.sublime-project')
 
         if len(folder_projects) == 1 and os.path.isfile(folder_projects[0]):
-            _subl_open_project_in_new_window(folder_projects[0])
+            _open_project(self.window, folder_projects[0], new_window=self.new_window)
         elif os.path.isdir(folder):
-            _subl_open_folder_in_new_window(folder)
+            _open_folder(self.window, folder, new_window=self.new_window)
 
         if len(folder_projects) > 1:
             _message('expected 1 .sublime-project, found %d'.format(len(folder_projects)))
+
+
+class SesameSwitchCommand(SesameOpenCommand):
+
+    new_window = False
 
 
 class SesameRemoveCommand(sublime_plugin.WindowCommand):
@@ -91,21 +99,6 @@ class SesameRemoveCommand(sublime_plugin.WindowCommand):
         self.window.run_command('remove_folder', {
             'dirs': [self.folders[index]]
         })
-
-
-class SesameSwitchCommand(SesameOpenCommand):
-
-    def on_done(self, index):
-        if index == -1:
-            return
-
-        super().on_done(index)
-
-        # TODO There's got to be a better way to switch projects
-        # TODO The sidebar moves/jitters when switching projects
-        self.window.run_command('close_workspace')
-        self.window.run_command('close_project')
-        self.window.run_command('close_all')
 
 
 def _status_message(msg):
@@ -225,30 +218,30 @@ def _glob_path(path, depth, vcs):
     return folders
 
 
-def _subl_open_project_in_new_window(sublime_project_file):
-    if not sublime_project_file:
-        raise ValueError('argument #1 is required')
+def _open_project(window, file: str, new_window=True) -> None:
+    if not file:
+        raise ValueError('argument #2 is required')
 
-    if not re.match('^.+\\.sublime-project$', sublime_project_file):
-        raise ValueError('argument #1 is not a valid sublime project file name')
+    if not re.match('^.+\\.sublime-project$', file):
+        raise ValueError('argument #2 is not a valid sublime project file name')
 
-    if not os.path.isfile(sublime_project_file):
-        raise ValueError('argument #1 is not a valid file')
+    if not os.path.isfile(file):
+        raise ValueError('argument #2 is not a valid file')
 
-    _subl_async(['--new-window', '--project', sublime_project_file])
+    _subl_async(window, new_window=new_window, project=file)
 
 
-def _subl_open_folder_in_new_window(folder):
+def _open_folder(window, folder: str, new_window=True):
     if not folder:
         raise ValueError('argument #1 is required')
 
     if not os.path.isdir(folder):
         raise ValueError('argument #1 is not a valid directory')
 
-    _subl_async(['--new-window', folder])
+    _subl_async(window, folder, new_window=new_window)
 
 
-def _subl_add_folder(window, folder):
+def _add_folder(window, folder):
     if not isinstance(window, Window):
         raise ValueError('argument #1 is not a valid window')
 
@@ -293,8 +286,39 @@ def _subl_add_folder(window, folder):
     return True
 
 
-def _subl_async(args=[]):
-    set_timeout_async(lambda: _subl(args))
+def _subl_async(window, *args, new_window=None, project=None):
+    cmd = []
+
+    if new_window:
+        cmd.append('--new-window')
+
+    if project:
+        cmd.append('--project')
+        cmd.append(project)
+
+    for arg in args:
+        cmd.append(arg)
+
+    if project and int(version()) >= 4053:
+        window.run_command('open_project_or_workspace', {
+            'file': project,
+            'new_window': new_window
+        })
+    else:
+        set_timeout_async(lambda: _subl(cmd))
+
+        if not new_window:
+            # When a new window is specified then the project or folder is opened
+            # in a new window, but when a new window is not specified then the
+            # the current window is replaced.
+            #
+            # In ST >= 4053 the command "open_project_or_workspace" is used for
+            # projects, but it doesn't work for regular folders. So in earlier
+            # versions and when opening and switching folders the previous
+            # window needs to be closed if no new window is specified.
+            window.run_command('close_workspace')
+            window.run_command('close_project')
+            window.run_command('close_all')
 
 
 def _subl(args=[]):
@@ -303,4 +327,4 @@ def _subl(args=[]):
         app_path = path[:path.rfind('.app/') + 5]
         path = app_path + 'Contents/SharedSupport/bin/subl'
 
-    subprocess.Popen([path] + args)
+    subprocess.Popen([path] + list(args))
