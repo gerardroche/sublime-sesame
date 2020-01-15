@@ -6,7 +6,7 @@ Add, open, remove, and switch, projects or folders, using the Command Palette an
 
 ## QUICK START
 
-Set the location of your projects:
+Set the location of your projects and press `ctrl+alt+o` for prompt open project.
 
 `Menu > Preferences > Settings`
 
@@ -15,8 +15,6 @@ Set the location of your projects:
     "sesame.path": "~/projects"
 }
 ```
-
-Press `ctrl+alt+o` to open a project.
 
 ## INSTALLATION
 

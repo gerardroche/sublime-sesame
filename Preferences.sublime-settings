@@ -1,33 +1,30 @@
 {
-    // The default depth is `2` (projects are listed using the pattern `*/*`
-    // e.g. `name/name`). If you prefer to organise your projects at a single
-    // level, set the depth to `1`:
-    "sesame.depth": 2,
-
-    // Enable the default keymaps.
-    "sesame.keymaps": true,
-
-    // Location of your projects.
+    // Set the location of your projects.
     //
-    //      "sesame.path": "~/projects"
+    // Use the system PATH separator to specify multiple paths for example
+    // colon ':' for POSIX and semi-colon ';' for Windows:
     //
-    // Multiple paths can be set using a `PATH` separator (':' for POSIX or
-    // ';' for Windows):
+    // For example: "sesame.path": "~/projects"
+    //              "sesame.path": "~/projects:~/work:~/src"
+    //          OR  "sesame.path": ["~/projects", "~/work", "~/src"]
     //
-    //      "sesame.path": "~/projects:~/work:~/src"
-    //
-    // Or:
-    //
-    //      "sesame.path": ["~/projects", "~/work", "~/src"]
-    //
-    // Overriding settings for specific paths:
+    // Example overriding settings for specific paths:
     //
     //      "sesame.path": [
     //          {"path": "~/projects", "depth": 1}
     //          {"path": "~/work", "vcs": true}
     //      ]
-    //
-    // "sesame.path": "~/projects",
+
+    /*
+
+    "sesame.path": "",
+
+     */
+
+    // The default depth is `2` (projects are listed using the pattern `*/*`
+    // e.g. `name/name`). If you prefer to organise your projects at a single
+    // level, set the depth to `1`:
+    "sesame.depth": 2,
 
     // Include/exclude version controlled projects e.g. Git, Mercurial,
     // Subversion: `true` means include only version controlled projects,
@@ -36,5 +33,8 @@
     // * null: Include version controlled and non-version controlled projects
     // * true: Include only version controlled projects
     // * false: Exclude version controlled projects
-    "sesame.vcs": null
+    "sesame.vcs": null,
+
+    // Enable the default keymaps.
+    "sesame.keymaps": true
 }
