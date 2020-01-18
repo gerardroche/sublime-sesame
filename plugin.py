@@ -56,7 +56,7 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
 
 class SesameOpenCommand(sublime_plugin.WindowCommand):
 
-    new_window = False
+    new_window = True
 
     def run(self, **kwargs):
         self.folders = _find_folders(self.window, **kwargs)
