@@ -4,7 +4,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ## [2.0.3] - 2020-01-18
 
-* Added [#11](https://github.com/gerardroche/sublime-open-sesame/issues/11): Open starts working like switch
+* Fixed [#11](https://github.com/gerardroche/sublime-open-sesame/issues/11): Open starts working like switch
 
 ## [2.0.2] - 2020-01-13
 
