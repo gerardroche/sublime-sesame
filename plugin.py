@@ -78,7 +78,7 @@ class SesameOpenCommand(sublime_plugin.WindowCommand):
             _open_folder(self.window, folder, new_window=self.new_window)
 
         if len(folder_projects) > 1:
-            _message('expected 1 .sublime-project, found %d'.format(len(folder_projects)))
+            _message('expected 1 .sublime-project, found %d' % len(folder_projects))
 
 
 class SesameSwitchCommand(SesameOpenCommand):
