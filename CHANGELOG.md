@@ -2,6 +2,10 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.1.0] - 2020-01-22
+
+* Added: Support for ST4
+
 ## [2.0.3] - 2020-01-18
 
 * Fixed [#11](https://github.com/gerardroche/sublime-open-sesame/issues/11): Open starts working like switch
@@ -240,6 +244,7 @@ Old settings `open-sesame.*` have been renamed `sesame.*`, these will be auto mi
 
 * Initial import
 
+[2.0.4]: https://github.com/gerardroche/sublime-open-sesame/compare/2.0.3...2.0.4
 [2.0.3]: https://github.com/gerardroche/sublime-open-sesame/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/gerardroche/sublime-open-sesame/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/gerardroche/sublime-open-sesame/compare/2.0.0...2.0.1
