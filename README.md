@@ -2,7 +2,7 @@
 
 Add, open, remove, and switch, projects or folders, using the Command Palette and Key Bindings.
 
-[![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Version](https://img.shields.io/github/tag/gerardroche/sublime-sesame.svg?style=flat-square&label=version)](https://github.com/gerardroche/sublime-sesame/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-sesame/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/Sesame.svg?style=flat-square)](https://packagecontrol.io/packages/Sesame) [![Author](https://img.shields.io/badge/twitter-gerardroche-blue.svg?style=flat-square)](https://twitter.com/gerardroche)
+[![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Version](https://img.shields.io/github/tag/gerardroche/sublime-sesame.svg?style=flat-square&label=version)](https://github.com/gerardroche/sublime-sesame/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-sesame/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/Sesame.svg?style=flat-square)](https://packagecontrol.io/packages/Sesame)
 
 ## QUICK START
 
