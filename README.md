@@ -1,22 +1,18 @@
-# WHAT SESAME IS
+<h1 align="center">Sesame</h1>
 
-Add, open, remove, and switch, projects or folders, using the Command Palette and Key Bindings.
+<p align="center">
+    <a href="https://github.com/gerardroche/sublime-sesame/tags"><img alt="Latest Version" src="https://img.shields.io/github/tag/gerardroche/sublime-sesame.svg?style=flat-square&label=version"></a>
+    <a href="https://github.com/gerardroche/sublime-sesame/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/gerardroche/sublime-sesame.svg?style=flat-square"></a>
+    <a href="https://packagecontrol.io/packages/Sesame"><img alt="Downloads" src="https://img.shields.io/packagecontrol/dt/Sesame.svg?style=flat-square"></a>
+</p>
 
-[![Minimum Sublime Version](https://img.shields.io/badge/sublime-%3E%3D%203.0-brightgreen.svg?style=flat-square)](https://sublimetext.com) [![Latest Version](https://img.shields.io/github/tag/gerardroche/sublime-sesame.svg?style=flat-square&label=version)](https://github.com/gerardroche/sublime-sesame/tags) [![GitHub stars](https://img.shields.io/github/stars/gerardroche/sublime-sesame.svg?style=flat-square)](https://github.com/gerardroche/sublime-sesame/stargazers) [![Downloads](https://img.shields.io/packagecontrol/dt/Sesame.svg?style=flat-square)](https://packagecontrol.io/packages/Sesame)
+## About Sesame
 
-## QUICK START
+> "**Open sesame**" is a magical phrase in the story of "[Ali Baba and the Forty Thieves](https://en.wikipedia.org/wiki/Ali_Baba_and_the_Forty_Thieves)" in [Antoine Galland](https://en.wikipedia.org/wiki/Antoine_Galland)'s version of *[One Thousand and One Nights](https://en.wikipedia.org/wiki/Antoine_Galland)*. It opens the mouth of a cave in which forty thieves have hidden a treasure.
 
-Set the location of your projects and press `ctrl+alt+o` for prompt open project.
+Sesame is a Sublime Text that provides quick opening, adding, removing, and switching of your projects.
 
-`Menu > Preferences > Settings`
-
-```json
-{
-    "sesame.path": "~/projects"
-}
-```
-
-## INSTALLATION
+## Installation
 
 ### Package Control installation
 
@@ -24,13 +20,50 @@ The preferred method of installation is [Package Control](https://packagecontrol
 
 ### Manual installation
 
-Close Sublime Text, then download or clone this repository to a directory named `Sesame` in the Sublime Text Packages directory for your platform:
+Close Sublime Text, then download or clone this repository to a directory named **NeoVintageous** in the Sublime Text Packages directory for your platform:
 
-* Linux: `git clone https://github.com/gerardroche/sublime-sesame.git ~/.config/sublime-text-3/Packages/Sesame`
-* OSX: `git clone https://github.com/gerardroche/sublime-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/Sesame`
-* Windows: `git clone https://github.com/gerardroche/sublime-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/Sesame`
+**Linux**
 
-## COMMANDS
+`git clone https://github.com/gerardroche/sublime-sesame.git ~/.config/sublime-text-3/Packages/Sesame`
+
+**OSX**
+
+`git clone https://github.com/gerardroche/sublime-sesame.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/Sesame`
+
+**Windows**
+
+`git clone https://github.com/gerardroche/sublime-sesame.git %APPDATA%\Sublime/ Text/ 3/Packages/Sesame`
+
+## Quick start
+
+Set the location of your projects.
+
+**Menu > Preferences > Settings**
+
+```json
+{
+    "sesame.path": "~/projects"
+}
+```
+
+ Press `Ctrl+Alt+o` (Linux, Windows) or `Super+Alt+o` (OSX), to open a project.
+
+## Key bindings
+
+Configure your preferred key bindings. By default only the Open Sesame command enabled.
+
+**Menu > Preferences > Key Bindings**
+
+```json
+[
+    { "keys": ["ctrl+alt+o"], "command": "sesame_open" },
+    { "keys": ["ctrl+alt+a"], "command": "sesame_add" },
+    { "keys": ["ctrl+alt+r"], "command": "sesame_remove" },
+    { "keys": ["ctrl+alt+s"], "command": "sesame_switch" },
+]
+```
+
+## Commands
 
 Command Palette | Command | Description
 --------------- | ------- | -----------
@@ -39,61 +72,24 @@ Sesame: Open | `sesame_open` | Open a project in a new window
 Sesame: Remove | `sesame_remove` | Remove a project from the current window
 Sesame: Switch | `sesame_switch` | Switch to a project in the current window
 
-## KEY BINDINGS
-
-Add your preferred key bindings:
-
-`Menu > Preferences > Key Bindings`
-
-```json
-[
-    { "keys": ["ctrl+alt+a"], "command": "sesame_add" },
-    { "keys": ["ctrl+alt+o"], "command": "sesame_open" },
-    { "keys": ["ctrl+alt+r"], "command": "sesame_remove" },
-    { "keys": ["ctrl+alt+s"], "command": "sesame_switch" },
-]
-```
-
-Default key bindings:
-
-Windows / Linux | OSX | Description
---------------- | --- | -----------
-`ctrl+alt+o` | `super+alt+o` | Sesame: Open
-
-## CONFIGURATION
+## Configuration
 
 Key | Description | Type | Default
 ----|-------------|------|--------
-`sesame.depth` | Number of levels deep to look for projects within path. | `int` `1` or `2` | `2`
-`sesame.keymaps` | Enable default key bindings. | `boolean` | `true`
 `sesame.path` | Location of projects. | `string` or `list[str, dict]` | The value found in the environment variable `PROJECTS_PATH` (if it exists).
+`sesame.depth` | Number of levels deep to look for projects within path. | `int` `1` or `2` | `2`
 `sesame.vcs` | Include/exclude version controlled projects e.g. Git, Mercurial, Subversion: `true` means include only version controlled projects, `false` means exclude them, and `null` (default), means version controlled and non-version controlled projects are included. | `boolean` or `null` | `null`
+`sesame.keymaps` | Enable default key bindings. | `boolean` | `true`
 
-### Path
+### sesame.path
 
-`Menu > Preferences > Settings`
+**Menu > Preferences > Settings**
 
 ```json
 {
     "sesame.path": "~/projects"
 }
 ```
-
-`Menu > Project > Edit Project` (Per-project)
-
-```json
-{
-    "settings": {
-        "sesame.path": "~/projects"
-    }
-}
-```
-
-**Path environment variable**
-
-A `PROJECTS_PATH` environment variable can be used to set the default path e.g. on Linux edit `~/.profile` and add `export PROJECTS_PATH=~/projects` (may require a system restart).
-
-**Multiple paths**
 
 Multiple paths can be set using a `PATH` separator (':' for POSIX or ';' for Windows):
 
@@ -111,21 +107,33 @@ Or as a list:
 }
 ```
 
-### Depth
+A `PROJECTS_PATH` environment variable can be used to set a default projects path (instead of using the setting `sesame.path` described above) e.g. on Linux edit `~/.profile` (may require a system restart):
 
-The default depth is `2` (projects are listed using the pattern `*/*` e.g. `name/name`). If you prefer to organise your projects at a single level, set the depth to `1`:
+```
+export PROJECTS_PATH=~/projects
+```
 
-`Menu > Preferences > Settings`
+### sesame.depth
+
+Projects are located using the pattern `*/*` e.g. `vendor/name`.
+
+If you prefer to organise your projects on a single directory level, set the depth to `1`:
+
+The default depth is `2`
+
+**Menu > Preferences > Settings**
 
 ```json
 {
-    "sesame.depth": 1
+    "sesame.depth": 2
 }
 ```
 
-### Overriding settings for specific paths
+### Multiple project paths
 
-`Menu > Preferences > Settings`
+If you have multiple projects paths configured, you can configure the depth and other settings on a path-by-path basis in the following way. A path with no specific setting will fallback to the root setting.
+
+**Menu > Preferences > Settings**
 
 ```json
 {
@@ -137,15 +145,11 @@ The default depth is `2` (projects are listed using the pattern `*/*` e.g. `name
 }
 ```
 
-Path *a* will use depth *1* and package defaults for all other settings.
+### Example setups
 
-Path *b* will use depth *2*, vcs *true*, and package defaults for the all other settings.
+Adding sesame commands Key Bindings.
 
-### Custom commands
-
-Adding a custom command to Key Bindings:
-
-`Menu > Preferences > Key Bindings`
+**Menu > Preferences > Key Bindings**
 
 ```json
 [
@@ -153,34 +157,20 @@ Adding a custom command to Key Bindings:
 ]
 ```
 
-Adding custom commands to the Command Palette (edit `User/Default.sublime-commands`):
+Adding sesame commands to the Command Palette.
+
+**Create** `User/Default.sublime-commands`
 
 ```json
 [
-   { "caption": "Sesame: Add Vendor", "command": "sesame_add", "args": { "path": "~/vendor" } },
    { "caption": "Sesame: Open Vendor", "command": "sesame_open", "args": { "path": "~/vendor" } },
-   { "caption": "Sesame: Switch Vendor", "command": "sesame_switch", "args": { "path": "~/vendor" } }
 ]
 ```
 
-Custom commands accept options (see configuration options above):
-
-```
-{
-    "caption": "Sesame: Open Vendor",
-    "command": "sesame_open",
-    "args": {
-      "path": "~/vendor",
-      "depth": 2,
-      "vcs": false
-    }
-}
-```
-
-## CHANGELOG
+## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md).
 
-## LICENSE
+## License
 
 Released under the [BSD 3-Clause License](LICENSE).
