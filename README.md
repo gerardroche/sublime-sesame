@@ -50,7 +50,9 @@ Set the location of your projects.
 
 ## Key bindings
 
-Configure your preferred key bindings. By default only the Open Sesame command enabled.
+Configure your preferred key bindings.
+
+*By default only the Open Sesame command enabled.*
 
 **Menu > Preferences > Key Bindings**
 
