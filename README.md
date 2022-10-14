@@ -69,8 +69,8 @@ Configure your preferred key bindings.
 
 Command Palette | Command | Description
 --------------- | ------- | -----------
-Sesame: Add | `sesame_add` | Add a project to the current window
 Sesame: Open | `sesame_open` | Open a project in a new window
+Sesame: Add | `sesame_add` | Add a project to the current window
 Sesame: Remove | `sesame_remove` | Remove a project from the current window
 Sesame: Switch | `sesame_switch` | Switch to a project in the current window
 
@@ -80,8 +80,8 @@ Key | Description | Type | Default
 ----|-------------|------|--------
 `sesame.path` | Location of projects. | `string` or `list[str, dict]` | The value found in the environment variable `PROJECTS_PATH` (if it exists).
 `sesame.depth` | Number of levels deep to look for projects within path. | `int` `1` or `2` | `2`
-`sesame.vcs` | Include/exclude version controlled projects e.g. Git, Mercurial, Subversion: `true` means include only version controlled projects, `false` means exclude them, and `null` (default), means version controlled and non-version controlled projects are included. | `boolean` or `null` | `null`
 `sesame.keymaps` | Enable default key bindings. | `boolean` | `true`
+`sesame.vcs` | Include/exclude version controlled projects e.g. Git, Mercurial, Subversion: `true` means include only version controlled projects, `false` means exclude them, and `null` (default), means version controlled and non-version controlled projects are included. | `boolean` or `null` | `null`
 
 ### sesame.path
 
