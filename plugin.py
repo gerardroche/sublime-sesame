@@ -38,7 +38,7 @@ class SesameAddCommand(sublime_plugin.WindowCommand):
         if folders:
             for folder in folders:
                 # Exclude folders that already exist
-                if folder[1] not in existing_folders:
+                if folder[1] not in existing_folders:  # type: ignore[operator]
                     self.folders.append(folder)
 
         if self.folders:
@@ -96,9 +96,7 @@ class SesameRemoveCommand(sublime_plugin.WindowCommand):
         if index == -1:
             return
 
-        self.window.run_command('remove_folder', {
-            'dirs': [self.folders[index]]
-        })
+        _remove_folder(self.window, self.folders[index])
 
 
 def _status_message(msg):
@@ -284,6 +282,12 @@ def _add_folder(window, folder):
     window.set_project_data(project_data)
 
     return True
+
+
+def _remove_folder(window: Window, folder: str) -> None:
+    window.run_command('remove_folder', {
+        'dirs': [folder]
+    })
 
 
 def _subl_async(window, *args, new_window=None, project=None):
