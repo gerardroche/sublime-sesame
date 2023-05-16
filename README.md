@@ -4,11 +4,9 @@
     <a href="https://packagecontrol.io/packages/Sesame"><img alt="Downloads" src="https://img.shields.io/packagecontrol/dt/Sesame.svg?style=flat-square"></a>
 </p>
 
-## About Sesame
+![Ali Baba overhearing one of the thieves saying "Open Sesame"](open-sesame.webp)
 
-> "**Open sesame**" is a magical phrase in the story of "[Ali Baba and the Forty Thieves](https://en.wikipedia.org/wiki/Ali_Baba_and_the_Forty_Thieves)" in [Antoine Galland](https://en.wikipedia.org/wiki/Antoine_Galland)'s version of *[One Thousand and One Nights](https://en.wikipedia.org/wiki/Antoine_Galland)*. It opens the mouth of a cave in which forty thieves have hidden a treasure.
-
-Sesame is a Sublime Text that provides quick opening, adding, removing, and switching of your projects.
+Sesame is quick way to open, add, switch, and remove projects or folders. "Sesame" is play on the phrase "[Open Sesame](https://en.wikipedia.org/wiki/Open_sesame)". A magical phrase in the story of "[Ali Baba and the Forty Thieves](https://en.wikipedia.org/wiki/Ali_Baba_and_the_Forty_Thieves)" from Antoine Galland's version of [One Thousand and One Nights](https://en.wikipedia.org/wiki/One_Thousand_and_One_Nights). It opens the mouth of a cave in which forty thieves have hidden a treasure.
 
 ## Installation
 

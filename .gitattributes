@@ -9,3 +9,5 @@
 /.gitattributes             export-ignore
 /.gitignore                 export-ignore
 /.gitmodules                export-ignore
+/mypy.ini                   export-ignore
+/open-sesame.webp           export-ignore
