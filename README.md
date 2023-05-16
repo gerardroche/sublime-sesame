@@ -10,17 +10,19 @@ Sesame is quick way to open, add, switch, and remove projects or folders. "Sesam
 
 ## Installation
 
-Install Sesame via [Package Control](https://packagecontrol.io/packages/Sesame).
+You can install Sesame via [Package Control](https://packagecontrol.io/packages/Sesame).
 
 ## Setup
 
-Set the location of your projects via Menu &gt; Preferences &gt; Settings:
+Set the location of your projects and add your preferred key bindings.
+
+**Menu &gt; Preferences &gt; Settings**
 
 ```js
-"sesame.path": "~/projects"
+"sesame.path": "~/projects",
 ```
 
-Add your preferred key bindings via Menu &gt; Preferences &gt; Key Bindings:
+**Menu &gt; Preferences &gt; Key Bindings**
 
 ```js
 { "keys": ["ctrl+alt+o"], "command": "sesame_open" },
@@ -28,8 +30,6 @@ Add your preferred key bindings via Menu &gt; Preferences &gt; Key Bindings:
 { "keys": ["ctrl+alt+r"], "command": "sesame_remove" },
 { "keys": ["ctrl+alt+s"], "command": "sesame_switch" },
 ```
-
-Now you can open a project with <kbd>CTRL+ALT+o</kbd> (Linux, Windows) or <kbd>SUPER+ALT+o</kbd> (OSX).
 
 ## Commands
 
