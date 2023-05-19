@@ -8,6 +8,8 @@
 
 Sesame is quick way to open, add, switch, and remove projects or folders. "Sesame" is play on the phrase "[Open Sesame](https://en.wikipedia.org/wiki/Open_sesame)". A magical phrase in the story of "[Ali Baba and the Forty Thieves](https://en.wikipedia.org/wiki/Ali_Baba_and_the_Forty_Thieves)" from Antoine Galland's version of [One Thousand and One Nights](https://en.wikipedia.org/wiki/One_Thousand_and_One_Nights). It opens the mouth of a cave in which forty thieves have hidden a treasure.
 
+Read [Sesame - A Sublime Text plugin](https://blog.gerardroche.com/2023/05/19/neovintageous-open-sesame/) for a quick introduction of usage.
+
 ## Installation
 
 You can install Sesame via [Package Control](https://packagecontrol.io/packages/Sesame).
