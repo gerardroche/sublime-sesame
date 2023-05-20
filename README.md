@@ -12,7 +12,7 @@ Read [Sesame - A Sublime Text plugin](https://blog.gerardroche.com/2023/05/19/ne
 
 ## Installation
 
-You can install Sesame via [Package Control](https://packagecontrol.io/packages/Sesame).
+You can install via [Package Control](https://packagecontrol.io/packages/Sesame).
 
 ## Setup
 
@@ -118,7 +118,3 @@ Adding sesame commands to the Command Palette. **Create** `User/Default.sublime-
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md).
-
-## License
-
-Released under the [BSD 3-Clause License](LICENSE).
