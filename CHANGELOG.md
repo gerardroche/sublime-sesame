@@ -135,11 +135,11 @@ Old settings `open-sesame.*` have been renamed `sesame.*`, these will be auto mi
 
 ### Added
 
-* Added: `o` mnemonic for `Project > open Sesame` menu
+* Added: `o` mnemonic for `Project → open Sesame` menu
 
 ### Changed
 
-* Changed: `Project > open Sesame` menu now opens Command Palette with a list of all available commands
+* Changed: `Project → open Sesame` menu now opens Command Palette with a list of all available commands
 
 ### Fixed
 
