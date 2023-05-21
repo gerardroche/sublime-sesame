@@ -18,13 +18,13 @@ You can install via [Package Control](https://packagecontrol.io/packages/Sesame)
 
 Set the location of your projects and add your preferred key bindings.
 
-**Menu &gt; Preferences &gt; Settings**
+**Menu → Preferences → Settings**
 
 ```js
 "sesame.path": "~/projects",
 ```
 
-**Menu &gt; Preferences &gt; Key Bindings**
+**Menu → Preferences → Key Bindings**
 
 ```js
 { "keys": ["ctrl+alt+o"], "command": "sesame_open" },
@@ -42,9 +42,9 @@ Command | Description
 **Sesame:&nbsp;Remove** | Remove a project from the current window
 **Sesame:&nbsp;Switch** | Switch to a project in the current window
 
-## Configuration
+## Settings
 
-Edit settings via Menu &gt; Preferences &gt; Settings:
+**Menu → Preferences → Settings**
 
 Setting | Description | Type | Default
 :------ | :---------- | :--- | :------
