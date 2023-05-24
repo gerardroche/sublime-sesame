@@ -118,3 +118,7 @@ Adding sesame commands to the Command Palette. **Create** `User/Default.sublime-
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md).
+
+## License
+
+Released under the [GPL-3.0-or-later License](LICENSE).
