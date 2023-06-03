@@ -18,15 +18,17 @@ Install [Sesame](https://packagecontrol.io/packages/Sesame) via Package Control.
 
 ## Setup
 
-Set the location of your projects and add your preferred key bindings.
+Set the location of your projects.
 
-**Menu → Preferences → Settings**
+Menu → Preferences → Settings
 
 ```js
 "sesame.path": "~/projects",
 ```
 
-**Menu → Preferences → Key Bindings**
+Add your preferred key bindings.
+
+Menu → Preferences → Key Bindings
 
 ```js
 { "keys": ["ctrl+alt+o"], "command": "sesame_open" },
@@ -41,8 +43,8 @@ Command | Description
 :------ | :----------
 **Sesame:&nbsp;Open** | Open a project in a new window
 **Sesame:&nbsp;Add** | Add a project to the current window
-**Sesame:&nbsp;Remove** | Remove a project from the current window
 **Sesame:&nbsp;Switch** | Switch to a project in the current window
+**Sesame:&nbsp;Remove** | Remove a project from the current window
 
 ## Settings
 
@@ -50,10 +52,10 @@ Command | Description
 
 Setting | Description | Type | Default
 :------ | :---------- | :--- | :------
-`sesame.path` | Location of projects. | `string` or `list[str, dict]` | The value found in the environment variable `PROJECTS_PATH` (if it exists).
-`sesame.depth` | Number of levels deep to look for projects within path. | `int` `1` or `2` | `2`
-`sesame.keymaps` | Enable default key bindings. | `boolean` | `true`
-`sesame.vcs` | Include/exclude version controlled projects e.g. Git, Mercurial, Subversion: `true` means include only version controlled projects, `false` means exclude them, and `null` (default), means version controlled and non-version controlled projects are included. | `boolean` or `null` | `null`
+`sesame.path` | Location of projects. | `str|list` | `PROJECTS_PATH` environment variable.
+`sesame.depth` | Number of levels deep to look for projects within path. | `int` | `2`
+`sesame.keymaps` | Enable default key bindings. | `bool` | `true`
+`sesame.vcs` | Include and exclude version controlled projects. `true` means include only version controlled projects, `false` means exclude them, and `null` means include both version controlled and non-version controlled projects. | `bool|null` | `null`
 
 ### sesame.path
 
@@ -73,9 +75,9 @@ Or as a list:
 "sesame.path": ["~/projects", "~/work", "~/src"]
 ```
 
-A `PROJECTS_PATH` environment variable can be used to set a default projects path (instead of using the setting `sesame.path` described above) e.g. on Linux edit `~/.profile` (may require a system restart):
+A `PROJECTS_PATH` environment variable can be used to set a default projects path i.e. instead of using the `sesame.path` setting, e.g. on Linux edit `~/.profile` (may require a system restart):
 
-```
+```sh
 export PROJECTS_PATH=~/projects
 ```
 
