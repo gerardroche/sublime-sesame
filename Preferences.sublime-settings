@@ -1,19 +1,21 @@
 {
-    // Set the location of your projects.
-    //
-    // Use the system PATH separator to specify multiple paths for example
-    // colon ':' for POSIX and semi-colon ';' for Windows:
-    //
-    // For example: "sesame.path": "~/projects"
-    //              "sesame.path": "~/projects:~/work:~/src"
-    //          OR  "sesame.path": ["~/projects", "~/work", "~/src"]
-    //
-    // Example overriding settings for specific paths:
-    //
-    //      "sesame.path": [
-    //          {"path": "~/projects", "depth": 1}
-    //          {"path": "~/work", "vcs": true}
-    //      ]
+    // Set the default projects path for Sesame.
+    // You can specify multiple paths using ':' for POSIX or ';' for Windows.
+    // Examples:
+    // "sesame.path": "~/projects:~/work:~/src"
+    // "sesame.path": "~/projects"
+    // "sesame.path": "~/projects:~/work:~/src"
+    // "sesame.path": ["~/projects", "~/work", "~/src"]
+    // "sesame.path": [
+    //     {
+    //         "path": "~/projects",
+    //         "depth": 1
+    //     }
+    //     {
+    //         "path": "~/work",
+    //         "vcs": true
+    //     }
+    // ]
 
     /*
 
@@ -21,18 +23,14 @@
 
      */
 
-    // The default depth is `2` (projects are listed using the pattern `*/*`
-    // e.g. `name/name`). If you prefer to organise your projects at a single
-    // level, set the depth to `1`:
+    // Set the depth for organizing projects. Default is 2.
+    // For a single directory level, set "sesame.depth": 1.
     "sesame.depth": 2,
 
-    // Include/exclude version controlled projects e.g. Git, Mercurial,
-    // Subversion: `true` means include only version controlled projects,
-    // `false` means exclude them, and `null` (default), means include version
-    // controlled *and* non-version controlled projects.
-    // * null: Include version controlled and non-version controlled projects
-    // * true: Include only version controlled projects
-    // * false: Exclude version controlled projects
+    // Set whether to use version control system (VCS) integration for projects.
+    // - null: Include version controlled and non-version controlled projects.
+    // - true: Include only version controlled projects.
+    // - false: Exclude version controlled projects.
     "sesame.vcs": null,
 
     // Enable the default keymaps.
