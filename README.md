@@ -44,7 +44,7 @@ By using Sesame, you can streamline your project management workflow in Sublime 
     - On Linux: `~/.config/sublime-text/Packages`
 3. Clone the plugin repository directly into the Packages directory using Git:
    ```
-   git clone https://github.com/gerardroche/sublime-sesame.git
+   git clone https://github.com/gerardroche/sublime-sesame.git Sesame
    ```
 
 ## Setup
