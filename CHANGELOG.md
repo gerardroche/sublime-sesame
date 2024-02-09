@@ -2,6 +2,12 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 2.1.1 - 2024-02-09
+
+### Fixed
+
+- `follow_symlinks` option is commented out ST when removing folder
+
 ## [2.1.0] - 2020-01-22
 
 * Added: Support for ST4

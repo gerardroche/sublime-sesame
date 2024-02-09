@@ -291,9 +291,6 @@ def _add_folder(window, folder):
         'path': folder
     }
 
-    if folder != '.':
-        folder_struct['follow_symlinks'] = True
-
     project_data['folders'].append(folder_struct)
 
     window.set_project_data(project_data)
