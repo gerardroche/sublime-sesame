@@ -1,4 +1,4 @@
-# Sesame - A command palette for projects
+# Sesame - Command palette for projects
 
 Sesame is a command palette for projects. It provides commands to open, add, switch, and remove your projects.
 
@@ -168,7 +168,9 @@ Additionally, we have configured two specific project paths:
 
 By default, projects are discovered two level deep within the projects path: `~/projects/*/*`
 
-This maps nicely to `vendor/name` which is typical of endpoints on services like GitHub. For example, if your projects are structured as follows:
+This maps nicely to `vendor/name` which is typical of endpoints on services like GitHub.
+
+For example, if your projects are structured as follows:
 
 ```
 ❯ ~/projects
@@ -185,7 +187,7 @@ This maps nicely to `vendor/name` which is typical of endpoints on services like
     └── packagecontrol.io
 ```
 
-Sesame will discover and prompt you with the following items:
+When setting the depth to `2`, Sesame will discover and prompt you with the following:
 
 ```
 laravel/fortify
