@@ -85,7 +85,7 @@ The following commands are available via the Command Palette.
 
 | Setting          | Type               | Default   | Description
 | :----------------| :------------------| :-------- | :----------
-| `sesame.path`    | `string|list`      | The value of a `PROJECTS_PATH` environment variable or `null`    | The location of projects.
+| `sesame.path`    | `string\|list`     | The value of a `PROJECTS_PATH` environment variable or `null`    | The location of projects.
 | `sesame.depth`   | `integer`          | `2`       | The projects path depth to discover projects.
 | `sesame.keymaps` | `boolean`          | `true`    | Enable default key bindings.
 | `sesame.vcs`     | `boolean|null`     | `null`    | Set whether to use version control system (VCS) integration for projects.
