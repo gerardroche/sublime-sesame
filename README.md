@@ -21,7 +21,7 @@ $ /path/to/projects
     └── packagecontrol.io
 ```
 
-Sesame commands will prompt you:
+Sesame commands prompt:
 
 ```
 laravel/fortify
