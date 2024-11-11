@@ -1,15 +1,19 @@
-# Sesame - Projects Command Palette
+# Sesame
 
-[Sesame](https://github.com/gerardroche/sublime-sesame) is a Projects Command Palette. It provides commands to open, add, remove, and switch projects. For example, when you organise your projects like this:
+<p>
+    <a href="https://packagecontrol.io/packages/Sesame"><img alt="Downloads" src="https://img.shields.io/packagecontrol/dt/Sesame.svg?style=flat-square"></a>
+</p>
 
-```
-❯ ~/projects
+Sublime Text commands to open, add, remove, and switch projects or folders.
+
+For example when you organise your projects:
+
+```sh
+$ /path/to/projects
 ├── laravel
 │   ├── fortify
 │   ├── framework
-│   ├── jetstream
-│   ├── passport
-│   └── vite-plugin
+│   └── passport
 ├── sublimelsp
 │   └── LSP
 └── wbond
@@ -17,32 +21,18 @@
     └── packagecontrol.io
 ```
 
-Sesame will prompt you with this:
+Sesame commands will prompt you:
 
 ```
 laravel/fortify
 laravel/framework
-laravel/jetstream
 laravel/passport
-laravel/vite-plugin
 sublimelsp/LSP
 wbond/package_control
 wbond/packagecontrol.io
 ```
 
-If there is sublime project file in the root of the directory, it will be used by Sesame, otherwise the folder is the project.
-
-<p>
-    <a href="https://packagecontrol.io/packages/Sesame"><img alt="Downloads" src="https://img.shields.io/packagecontrol/dt/Sesame.svg?style=flat-square"></a>
-</p>
-
-## Documentation
-
-To check out docs, visit [docs](https://blog.gerardroche.com/projects/sublime-sesame).
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md).
+[📚 **Documentation**](https://blog.gerardroche.com/projects/sublime-sesame)
 
 ## License
 
