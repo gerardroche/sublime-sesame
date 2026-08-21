@@ -4,66 +4,53 @@
     <a href="https://packagecontrol.io/packages/Sesame"><img alt="Downloads" src="https://img.shields.io/packagecontrol/dt/Sesame.svg?style=flat-square"></a>
 </p>
 
-Sublime Text commands to open, add, remove, and switch projects or folders.
+Sublime Text commands to add, open, switch and remove folders and projects.
 
-For example when you organise your projects:
+Suppose you organise your projects:
 
 ```sh
-$ /path/to/projects
+$ ~/projects
 ├── laravel
-│   ├── fortify
 │   ├── framework
-│   └── passport
-├── sublimelsp
-│   └── LSP
-└── wbond
-    ├── package_control
-    └── packagecontrol.io
+│   └── lumen
+├── ruby
+│   └── rake
 ```
 
-Sesame commands will prompt you:
+The Sesame commands will prompt you with a fuzzy finder with selections:
 
 ```
-laravel/fortify
 laravel/framework
-laravel/passport
-sublimelsp/LSP
-wbond/package_control
-wbond/packagecontrol.io
+laravel/lumen
+ruby/rake
 ```
 
-If a project folder contains a `.sublime-project` file, it is used when opening the project.
+If the folder contains a project file (`*.sublime-project`), it will be used when opening it.
 
 ## Setup
 
-Set the projects path.
-
-> Command Palette → Preferences: Settings
+Set the projects path: `Command Palette → Preferences: Settings`
 
 ```jsonl
 "sesame.path": "~/projects",
 ```
 
-## Command Palette
+## Commands
 
-| Name              | Description |
-| ----------------- | ----------- |
-| Sesame: Open      | Open project or open folder. |
-| Sesame: Add       | Add project or add folder. |
-| Sesame: Remove    | Remove folder from window. |
-| Sesame: Switch    | Switch to project or folder. |
+| Name           | Description                  |
+|----------------|------------------------------|
+| Sesame: Open   | Open project or open folder. |
+| Sesame: Add    | Add project or add folder.   |
+| Sesame: Remove | Remove folder from window.   |
+| Sesame: Switch | Switch to project or folder. |
 
-## Key Bindings
+## Bindings
 
-One key binding is defined by default.
+| Command      | Linux / Win      | Mac               |
+|--------------|------------------|-------------------|
+| Sesame: Open | `Ctrl + Alt + o` | `Super + Alt + o` |
 
-| Command      | Linux / Win  | Mac           |
-| ------------ | ------------ | ------------- |
-| Sesame: Open | `ctrl + alt + o` | `super + alt + o` |
-
-Create your preferred key bindings.
-
-> Command Palette → Preferences: Key Bindings
+Create your preferred key bindings: `Command Palette → Preferences: Key Bindings`
 
 Linux / Win
 
@@ -87,29 +74,27 @@ Mac
 ]
 ```
 
-
 ## Settings
 
-### sesame.path
+### sesame.path (required)
 
 - Type: `string|list`
-- **Required**
 
-The location of projects.
+The location of projects. Environment variables and placeholders like `~` are expanded.
 
-Placeholders like `~` and environment variables are expanded.
+**Examples**
 
 ```jsonl
 "sesame.path": "~/projects"
 ```
 
-Multiple paths
+Set multiple paths:
 
 ```jsonl
 "sesame.path": ["~/projects", "~/vendor", "~/other"]
 ```
 
-A list of paths with specific settings for each path.
+Set a list of paths with specific settings for each path.
 
 ```jsonl
 "sesame.path": [
@@ -126,54 +111,43 @@ A list of paths with specific settings for each path.
 
 ### sesame.depth
 
-- Type: `integer (1 | 2)`
-- Default: `2`
+- Type: `integer (1 | 2)` (default = 2)
 
 By default, Sesame looks two levels deep inside the path. This maps nicely to `vendor/name`, which is typical on services like GitHub. For example, when you organise your projects like this:
 
-```
-❯ ~/projects
+```sh
+$ ~/projects
 ├── laravel
-│   ├── fortify
 │   ├── framework
-│   └── passport
-├── sublimelsp
-│   └── LSP
-└── wbond
-    ├── package_control
-    └── packagecontrol.io
+│   └── lumen
+├── ruby
+│   └── rake
 ```
 
-Sesame will prompt you with this:
+When depth is `2`, the selections are two levels deep:
 
 ```
-laravel/fortify
 laravel/framework
-laravel/passport
-sublimelsp/LSP
-wbond/package_control
-wbond/packagecontrol.io
+laravel/lumen
+ruby/rake
 ```
 
-When setting the depth to 1, Sesame will prompt you with this:
+When depth is `1`, the selections are one level:
 
 ```
 laravel
-sublimelsp
-wbond
+ruby
 ```
 
 ### sesame.keymaps
 
-- Type: `boolean`
-- Default: `true`
+- Type: `boolean` (default `true`)
 
 Enable default key bindings.
 
 ### sesame.vcs
 
-- Type: `null|boolean`
-- Default: `null`
+- Type: `null|boolean` (default `null`)
 
 The `sesame.vcs` setting allows you to control the inclusion of version control system projects. Here are the available options:
 
@@ -183,7 +157,7 @@ The `sesame.vcs` setting allows you to control the inclusion of version control 
 
 - `false`: This setting excludes version-controlled projects. Only projects without vcs integration will be considered.
 
-## Custom commands
+## Adding custom commands
 
 Sesame commands accept `path`, `depth`, and `vcs` arguments.
 
@@ -240,6 +214,7 @@ Manual Git installation
    ```bash
    git clone https://github.com/gerardroche/sublime-sesame.git Sesame
    ```
+
 ## License
 
 Released under the [GPL-3.0-or-later License](LICENSE).
